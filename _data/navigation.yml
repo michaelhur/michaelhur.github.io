@@ -3,6 +3,6 @@ main:
   - title: "Home"
     url: https://michaelhur.github.io/
   - title: "Posts"
-     url: /posts/
+    url: /posts/
   - title: "Project Code"
-     url: https://github.com/michaelhur
+    url: https://github.com/michaelhur
