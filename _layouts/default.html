@@ -1,61 +1,42 @@
-<!DOCTYPE html>
-<html lang="en-us">
-<!--  
-====================================================
-Homepage: {{ site.url }}
-Credits: {{ site.url }}/disclosure
-====================================================
+---
+---
+
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
 -->
-{% include head.html %}
+<html lang="{{ site.locale | slice: 0,2 | default: "en" }}" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+  </head>
 
-<body>
-{% include google_analytics.html %}
-{% include sidebar.html %}
+  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+    {% include_cached skip-links.html %}
+    {% include_cached browser-upgrade.html %}
+    {% include_cached masthead.html %}
 
-    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
-         content to avoid any CSS collisions with our real content. -->
-    <div class="wrap">
-      <div class="masthead">
-        <div class="container">
-          <h3 class="masthead-title">
-            <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
-            <!-- <small>{{ site.tagline }}</small> -->
-            <!--
-            <div class="headicons">
-              <small><a href="{{ site.url }}/about" rel="me" title="About"><i class="iconm iconm-user"></i></a></small>
-              <small><a href="{{ site.url }}/blog" rel="me" title="Blog"><i class="iconm iconm-quill"></i></a></small>
-              <small><a href="{{ site.url }}/contact" rel="me" title="Contact"><i class="iconm iconm-envelop"></i></a></small>
-            -->
-            </div>    
-          </h3>
-        </div>
-      </div>
-
-      <div class="container content">
-        {{ content }}
-        {% include footer.html %}
-      </div>
+    <div class="initial-content">
+      {{ content }}
     </div>
 
-    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    {% if site.search == true %}
+      <div class="search-content">
+        {% include_cached search/search_form.html %}
+      </div>
+    {% endif %}
 
-    <script>
-      (function(document) {
-        var toggle = document.querySelector('.sidebar-toggle');
-        var sidebar = document.querySelector('#sidebar');
-        var checkbox = document.querySelector('#sidebar-checkbox');
+    <div id="footer" class="page__footer">
+      <footer>
+        {% include footer/custom.html %}
+        {% include_cached footer.html %}
+      </footer>
+    </div>
 
-        document.addEventListener('click', function(e) {
-          var target = e.target;
-
-          if(!checkbox.checked ||
-             sidebar.contains(target) ||
-             (target === checkbox || target === toggle)) return;
-
-          checkbox.checked = false;
-        }, false);
-      })(document);
-    </script>
     {% include scripts.html %}
-</body>
+
+  </body>
 </html>
