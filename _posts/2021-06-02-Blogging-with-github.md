@@ -1,8 +1,5 @@
 ---
-title: Github, Jekyll과 Minimal Mistakes를 이용하여 블로그 만들기
-date: "2021-06-02"
-category: 
-  - post
+title: "Github, Jekyll과 Minimal Mistakes를 이용하여 블로그 만들기"
 tags:
   - Github
   - Blog
