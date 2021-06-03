@@ -1,4 +1,4 @@
-I"u
+I"|
 
 <div class="masthead">
   <div class="masthead__inner-wrap">
@@ -12,7 +12,7 @@
         <ul class="visible-links"><li class="masthead__menu-item">
               <a href="https://michaelhur.github.io/">Home</a>
             </li><li class="masthead__menu-item">
-              <a href="/posts/">Posts</a>
+              <a href="/year-archive/">Posts</a>
             </li><li class="masthead__menu-item">
               <a href="https://github.com/michaelhur">Project Code</a>
             </li></ul>

@@ -1,38 +1,3 @@
----
-title: "PyMLB: Exploring MLB Data using Python"
-tags:
-  - Python
-  - API
-  - Wrapper
-  - Baseball
-  - MLB
-  - Data
-toc: true
-toc_label: "On this page"
----
-
-### Sabermetrics: Analysis of Baseball
-As Bill James said "sabermetrics is the search for objective knowledge about baseball." Unlike the classical baseball statistics such as win or home run, it aims to derive statistic that can objectively quantify the players' performance. For example, in 2018 New York Mets' rookie pitcher Jacob deGrom has the record of 10 wins and 9 losses. Looking at win-loss ratio, it only implies that he is a mediocre pitcher, but he has received Cy Young Award (the Pitcher of the Year) and Rookie of the Year for his outstanding performance. [Over the span of four seasons, he has made 78 starts, in which he has only won 36 and lost 42.][1] During those 78 starts, [deGrom only conceived one or less runs in 33 games; yet, he was not able to pick up a win.][2] As the example of Jacob deGrom shows, the classical statistic often fails to correctly reflect the player's performance. As a result, Sabermetricians have derived statistics such as Wins Above Replacement (WAR), which measures a player's value as to how many more wins the player contributes to the team in comparison with a replacement player in the same position. deGrom's WAR was 9.0 in 2018, which in the transfer market translates to approximately $70 million making him one of the most expensive player in the league.
-
-
-### Where do we get raw data?
-Now that we know how important statistics is in baseball and want to be able to compute these more meaningful metrics, we first ened to figure out how to extract raw data. Fortunately, [Major League Baseball (MLB) has long made its data public](https://statsapi.mlb.com/api/) and this post will show you the guid on "how to extract data" from the MLB's stats API, by extracting each batter's at-bat outcome in the opening game of the 2021 season. 
-
-![Excerpt from the MLB's Stats API]("https://michaelhur.github.io/20210602/screenshot1.png")
-
-
-### Understanding the API Schema
-Although we can "brute-force" search every node in the tree until we obtain the desired fruit, the [API document](https://beta-statsapi.mlb.com/docs/) actually explains what the available keys are and what parameters the query takes at each level. Since we are interested in finding out the result of each "at-bat" in a specific game, we need to where these "play-by-play" data lies in. A thorough read tells us that such information is stroed under the "game" endpoints which stores all the data pertaining to the "game-level."
-![The "Game" endpoints of the MLB's Stats API]("https://michaelhur.github.io/20210602/screenshot1.png")
-
-This `game` key requires a `game_pk` parameter. `game_pk` is a unique identifier assigned to each game. In order to obtain this `game_pk`, we will have to look into the `schedule` operation, which will return all the game on a given date. In short, in order to get the `play-by-play` data we will have to:
-
-1. From the `schedule` key, we extract the `game_pk` of the opening game of 2021 season.
-2. Using this `game_pk`, we extract the `play-By-Play` data of the corresponding `game_pk.`
-
-
-### Python Approach
-
 ### This notebook explores and attempts to systemically extract data from the MLB Stats API. The approach aligns with [this blog post](https://michaelhur.github.io/PyMLB)
 
 This post has three goals:
@@ -420,7 +385,3 @@ def get_atbat_outcome(listofgameIDs):
         
     return(gameID_dict)
 ```
-
-
-[1]: https://www.fangraphs.com/players/jacob-degrom/10954/stats?position=P
-[2]: https://www.espn.com/mlb/story/_/id/31354867/new-york-mets-ace-jacob-degrom-lack-run-support-reaching-new-lows

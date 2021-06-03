@@ -1,0 +1,947 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>PyMLB: Exploring MLB Data using Python - Michael’s Data Story</title>
+<meta name="description" content="Sabermetrics: Analysis of Baseball As Bill James said “sabermetrics is the search for objective knowledge about baseball.” Unlike the classical baseball statistics such as win or home run, it aims to derive statistic that can objectively quantify the players’ performance. For example, in 2018 New York Mets’ rookie pitcher Jacob deGrom has the record of 10 wins and 9 losses. Looking at win-loss ratio, it only implies that he is a mediocre pitcher, but he has received Cy Young Award (the Pitcher of the Year) and Rookie of the Year for his outstanding performance. Over the span of four seasons, he has made 78 starts, in which he has only won 36 and lost 42. During those 78 starts, deGrom only conceived one or less runs in 33 games; yet, he was not able to pick up a win. As the example of Jacob deGrom shows, the classical statistic often fails to correctly reflect the player’s performance. As a result, Sabermetricians have derived statistics such as Wins Above Replacement (WAR), which measures a player’s value as to how many more wins the player contributes to the team in comparison with a replacement player in the same position. deGrom’s WAR was 9.0 in 2018, which in the transfer market translates to approximately $70 million making him one of the most expensive player in the league.">
+
+
+  <meta name="author" content="Michael Hur">
+  
+  <meta property="article:author" content="Michael Hur">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Michael's Data Story">
+<meta property="og:title" content="PyMLB: Exploring MLB Data using Python">
+<meta property="og:url" content="https://michaelhur.github.io/PyMLB/">
+
+
+  <meta property="og:description" content="Sabermetrics: Analysis of Baseball As Bill James said “sabermetrics is the search for objective knowledge about baseball.” Unlike the classical baseball statistics such as win or home run, it aims to derive statistic that can objectively quantify the players’ performance. For example, in 2018 New York Mets’ rookie pitcher Jacob deGrom has the record of 10 wins and 9 losses. Looking at win-loss ratio, it only implies that he is a mediocre pitcher, but he has received Cy Young Award (the Pitcher of the Year) and Rookie of the Year for his outstanding performance. Over the span of four seasons, he has made 78 starts, in which he has only won 36 and lost 42. During those 78 starts, deGrom only conceived one or less runs in 33 games; yet, he was not able to pick up a win. As the example of Jacob deGrom shows, the classical statistic often fails to correctly reflect the player’s performance. As a result, Sabermetricians have derived statistics such as Wins Above Replacement (WAR), which measures a player’s value as to how many more wins the player contributes to the team in comparison with a replacement player in the same position. deGrom’s WAR was 9.0 in 2018, which in the transfer market translates to approximately $70 million making him one of the most expensive player in the league.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-06-02T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://michaelhur.github.io/PyMLB/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Michael Hur",
+      "url": "https://michaelhur.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Michael's Data Story Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Michael's Data Story
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://michaelhur.github.io/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://github.com/michaelhur">Project Code</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Michael Hur</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>University of Waterloo Alumnus</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:jhhur716@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/michaelhur" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="PyMLB: Exploring MLB Data using Python">
+    <meta itemprop="description" content="Sabermetrics: Analysis of BaseballAs Bill James said “sabermetrics is the search for objective knowledge about baseball.” Unlike the classical baseball statistics such as win or home run, it aims to derive statistic that can objectively quantify the players’ performance. For example, in 2018 New York Mets’ rookie pitcher Jacob deGrom has the record of 10 wins and 9 losses. Looking at win-loss ratio, it only implies that he is a mediocre pitcher, but he has received Cy Young Award (the Pitcher of the Year) and Rookie of the Year for his outstanding performance. Over the span of four seasons, he has made 78 starts, in which he has only won 36 and lost 42. During those 78 starts, deGrom only conceived one or less runs in 33 games; yet, he was not able to pick up a win. As the example of Jacob deGrom shows, the classical statistic often fails to correctly reflect the player’s performance. As a result, Sabermetricians have derived statistics such as Wins Above Replacement (WAR), which measures a player’s value as to how many more wins the player contributes to the team in comparison with a replacement player in the same position. deGrom’s WAR was 9.0 in 2018, which in the transfer market translates to approximately $70 million making him one of the most expensive player in the league.">
+    <meta itemprop="datePublished" content="2021-06-02T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">PyMLB: Exploring MLB Data using Python
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          7 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#sabermetrics-analysis-of-baseball">Sabermetrics: Analysis of Baseball</a></li><li><a href="#where-do-we-get-raw-data">Where do we get raw data?</a></li><li><a href="#understanding-the-api-schema">Understanding the API Schema</a></li><li><a href="#python-approach">Python Approach</a></li><li><a href="#this-notebook-explores-and-attempts-to-systemically-extract-data-from-the-mlb-stats-api-the-approach-aligns-with-this-blog-post">This notebook explores and attempts to systemically extract data from the MLB Stats API. The approach aligns with this blog post</a></li><li><a href="#1-extract-game_pk-from-the-schedule-endpoints">1. Extract game_pk from the schedule endpoints</a></li><li><a href="#2-using-gamepk-to-extract-at-bat-data">2. Using gamePk to extract at-bat data</a></li><li><a href="#3-putting-it-altogether">3. Putting it altogether</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <h3 id="sabermetrics-analysis-of-baseball">Sabermetrics: Analysis of Baseball</h3>
+<p>As Bill James said “sabermetrics is the search for objective knowledge about baseball.” Unlike the classical baseball statistics such as win or home run, it aims to derive statistic that can objectively quantify the players’ performance. For example, in 2018 New York Mets’ rookie pitcher Jacob deGrom has the record of 10 wins and 9 losses. Looking at win-loss ratio, it only implies that he is a mediocre pitcher, but he has received Cy Young Award (the Pitcher of the Year) and Rookie of the Year for his outstanding performance. <a href="https://www.fangraphs.com/players/jacob-degrom/10954/stats?position=P">Over the span of four seasons, he has made 78 starts, in which he has only won 36 and lost 42.</a> During those 78 starts, <a href="https://www.espn.com/mlb/story/_/id/31354867/new-york-mets-ace-jacob-degrom-lack-run-support-reaching-new-lows">deGrom only conceived one or less runs in 33 games; yet, he was not able to pick up a win.</a> As the example of Jacob deGrom shows, the classical statistic often fails to correctly reflect the player’s performance. As a result, Sabermetricians have derived statistics such as Wins Above Replacement (WAR), which measures a player’s value as to how many more wins the player contributes to the team in comparison with a replacement player in the same position. deGrom’s WAR was 9.0 in 2018, which in the transfer market translates to approximately $70 million making him one of the most expensive player in the league.</p>
+
+<h3 id="where-do-we-get-raw-data">Where do we get raw data?</h3>
+<p>Now that we know how important statistics is in baseball and want to be able to compute these more meaningful metrics, we first ened to figure out how to extract raw data. Fortunately, <a href="https://statsapi.mlb.com/api/">Major League Baseball (MLB) has long made its data public</a> and this post will show you the guid on “how to extract data” from the MLB’s stats API, by extracting each batter’s at-bat outcome in the opening game of the 2021 season.</p>
+
+<p><img src="&quot;https://michaelhur.github.io/20210602/screenshot1.png&quot;" alt="Excerpt from the MLB's Stats API" /></p>
+
+<h3 id="understanding-the-api-schema">Understanding the API Schema</h3>
+<p>Although we can “brute-force” search every node in the tree until we obtain the desired fruit, the <a href="https://beta-statsapi.mlb.com/docs/">API document</a> actually explains what the available keys are and what parameters the query takes at each level. Since we are interested in finding out the result of each “at-bat” in a specific game, we need to where these “play-by-play” data lies in. A thorough read tells us that such information is stroed under the “game” endpoints which stores all the data pertaining to the “game-level.”
+<img src="&quot;https://michaelhur.github.io/20210602/screenshot1.png&quot;" alt="The &quot;Game&quot; endpoints of the MLB's Stats API" /></p>
+
+<p>This <code class="language-plaintext highlighter-rouge">game</code> key requires a <code class="language-plaintext highlighter-rouge">game_pk</code> parameter. <code class="language-plaintext highlighter-rouge">game_pk</code> is a unique identifier assigned to each game. In order to obtain this <code class="language-plaintext highlighter-rouge">game_pk</code>, we will have to look into the <code class="language-plaintext highlighter-rouge">schedule</code> operation, which will return all the game on a given date. In short, in order to get the <code class="language-plaintext highlighter-rouge">play-by-play</code> data we will have to:</p>
+
+<ol>
+  <li>From the <code class="language-plaintext highlighter-rouge">schedule</code> key, we extract the <code class="language-plaintext highlighter-rouge">game_pk</code> of the opening game of 2021 season.</li>
+  <li>Using this <code class="language-plaintext highlighter-rouge">game_pk</code>, we extract the <code class="language-plaintext highlighter-rouge">play-By-Play</code> data of the corresponding <code class="language-plaintext highlighter-rouge">game_pk.</code></li>
+</ol>
+
+<h3 id="python-approach">Python Approach</h3>
+
+<h3 id="this-notebook-explores-and-attempts-to-systemically-extract-data-from-the-mlb-stats-api-the-approach-aligns-with-this-blog-post">This notebook explores and attempts to systemically extract data from the MLB Stats API. The approach aligns with <a href="https://michaelhur.github.io/PyMLB">this blog post</a></h3>
+
+<p>This post has three goals:</p>
+
+<ol>
+  <li>From the <code class="language-plaintext highlighter-rouge">schedule</code> key, we extract the <code class="language-plaintext highlighter-rouge">game_pk</code> of the opening game of 2021 season.</li>
+  <li>Using this <code class="language-plaintext highlighter-rouge">game_pk</code>, we extract the <code class="language-plaintext highlighter-rouge">play-By-Play</code> data of the corresponding <code class="language-plaintext highlighter-rouge">game_pk.</code></li>
+  <li>Putting it all together so that we can extract other data with a simple change to the query.</li>
+</ol>
+
+<h2 id="import-libraries">Import Libraries</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+</code></pre></div></div>
+
+<h3 id="1-extract-game_pk-from-the-schedule-endpoints">1. Extract <code class="language-plaintext highlighter-rouge">game_pk</code> from the <code class="language-plaintext highlighter-rouge">schedule</code> endpoints</h3>
+
+<p>A quick tip:</p>
+<ul>
+  <li>The schedule endpoint requires either ‘sportId’ or ‘game_pk’.</li>
+  <li>Former will be used to obtain schedule on the given date(s).</li>
+  <li>Latter is used to obtain schedule given the unique game ID. Which seems like a backward operation, but think of the scenario where we want to figure out the detailed schedule such as date, venue or home/away of the specific game.</li>
+  <li>Parameter ‘sportId’ should be 1</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Production version url
+</span><span class="n">schedule_url</span> <span class="o">=</span> <span class="s">'http://statsapi.mlb.com/api/v1/schedule?sportId=1&amp;date=04/01/2021'</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">schedule_response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">schedule_url</span><span class="p">)</span>
+<span class="n">schedule_content</span> <span class="o">=</span> <span class="n">schedule_response</span><span class="p">.</span><span class="n">content</span>
+<span class="n">schedule_json_content</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">schedule_content</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>After a successful load of the content, we want to see what it looks like:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">schedule_json_content</span>
+</code></pre></div></div>
+<p>A quick skim of the content implies that the most of the contents are under the key “dates.” To check there are more endpoints of the schedule endpoints:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">schedule_json_content</span><span class="p">.</span><span class="n">keys</span><span class="p">()</span>
+</code></pre></div></div>
+<p>Since there is no other keys in this json object, we will explore more of the “dates” key.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">dates_content</span> <span class="o">=</span> <span class="n">schedule_json_content</span><span class="p">[</span><span class="s">'dates'</span><span class="p">]</span>
+<span class="n">dates_content</span>
+</code></pre></div></div>
+<p>The output object is a list of json object(s). Since we queried only on a single date, we will have one json object in the list. Each ‘date’ json object has multiple “games” tags. Each tag corresponds to a game played on the given date.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">games_content</span> <span class="o">=</span> <span class="n">dates_content</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'games'</span><span class="p">]</span>
+<span class="n">games_content</span>
+</code></pre></div></div>
+<p>Again, it returns a list of ‘game’ json object. Each ‘game’ object contains the information about each game played on the given date. These information include:</p>
+
+<ul>
+  <li>gamePk: The unique ID assigned to each game</li>
+  <li>link: The API link to this game</li>
+  <li>gameType: ‘R’ if regular game, ‘P’ if post-season, ‘N’ if pre-season</li>
+  <li>gameDate, officialDate: self-explanatory</li>
+  <li>status: has children tags such as detailedState, which tells us if the game is finished, cancelled, delayed, etc</li>
+  <li>teams: teams played the game, their current standings, scores, home/away status</li>
+</ul>
+
+<p>Since are interested in obtaining ‘gamePk’ of the opening game:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gamePk_opening</span> <span class="o">=</span> <span class="n">games_content</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'gamePk'</span><span class="p">]</span>
+<span class="n">gamePk_opening</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">634642</span>
+</code></pre></div></div>
+
+<p>To sum it up, we can find ‘gamePk’ parameter in the following order:</p>
+
+<ul>
+  <li>schedule -&gt; dates -&gt; games -&gt; gamePk.</li>
+</ul>
+
+<p>Or (not so) Pythonically:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gamePk_opening_alt</span> <span class="o">=</span> <span class="n">schedule_json_content</span><span class="p">[</span><span class="s">'dates'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'games'</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s">'gamePk'</span><span class="p">]</span>
+<span class="n">gamePk_opening_alt</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">634642</span>
+</code></pre></div></div>
+
+<h3 id="2-using-gamepk-to-extract-at-bat-data">2. Using <code class="language-plaintext highlighter-rouge">gamePk</code> to extract <code class="language-plaintext highlighter-rouge">at-bat</code> data</h3>
+
+<p><a href="https://beta-statsapi.mlb.com/docs/#!/game/playByPlay">The API document</a> says that we need to input the following url:</p>
+
+<p><code class="language-plaintext highlighter-rouge">http://statsapi.mlb.com/api/v1/game/{game_pk}/playByPlay</code></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">playbyplay_url</span> <span class="o">=</span> <span class="s">"http://statsapi.mlb.com/api/v1/game/634642/playByPlay"</span>
+</code></pre></div></div>
+
+<p>Following the same steps as we did with the schedule endpoints:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">playbyplay_response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">playbyplay_url</span><span class="p">)</span>
+<span class="n">playbyplay_content</span> <span class="o">=</span> <span class="n">playbyplay_response</span><span class="p">.</span><span class="n">content</span>
+<span class="n">playbyplay_json_content</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">playbyplay_content</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">playbyplay_json_content</span>
+</code></pre></div></div>
+
+<p>A quick skim of the content implies that the most of the contents are under the key <code class="language-plaintext highlighter-rouge">allPlays</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">allPlays_content</span> <span class="o">=</span> <span class="n">playbyplay_json_content</span><span class="p">[</span><span class="s">'allPlays'</span><span class="p">]</span>
+<span class="n">allPlays_content</span>
+</code></pre></div></div>
+
+<p>Again, this <code class="language-plaintext highlighter-rouge">allPlays</code> object is a list of <code class="language-plaintext highlighter-rouge">plays</code>. So we only dig into one for the exploratory work.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Play1</span> <span class="o">=</span> <span class="n">allPlays_content</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">Play1</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Play1</span><span class="p">.</span><span class="n">keys</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>Looking at the available keys of this endpoint, <code class="language-plaintext highlighter-rouge">result</code> key obviously contains the information we want: the outcome of each at bat.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Play1</span><span class="p">[</span><span class="s">'result'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'type': 'atBat',
+ 'event': 'Groundout',
+ 'eventType': 'field_out',
+ 'description': 'Marcus Semien grounds out, shortstop Gleyber Torres to first baseman Jay Bruce.',
+ 'rbi': 0,
+ 'awayScore': 0,
+ 'homeScore': 0}
+</code></pre></div></div>
+
+<p>Here we are. We need to cautious here. <code class="language-plaintext highlighter-rouge">type</code> attributes implies that there could be play type that is not <code class="language-plaintext highlighter-rouge">atBat</code>.</p>
+
+<p>So we loop through each play and filter out ones whose type is not <code class="language-plaintext highlighter-rouge">atBat</code>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">play_dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">play_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">play</span> <span class="ow">in</span> <span class="n">allPlays_content</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">play</span><span class="p">[</span><span class="s">'result'</span><span class="p">][</span><span class="s">'type'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'atBat'</span><span class="p">:</span>
+        <span class="k">pass</span>
+    
+    <span class="n">play_count</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">play_outcome</span> <span class="o">=</span> <span class="n">play</span><span class="p">[</span><span class="s">'result'</span><span class="p">][</span><span class="s">'eventType'</span><span class="p">]</span>
+    
+    <span class="n">play_dict</span><span class="p">.</span><span class="n">update</span><span class="p">({</span><span class="n">play_count</span><span class="p">:</span> <span class="n">play_outcome</span><span class="p">})</span>
+    
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">play_dict</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{1: 'field_out',
+ 2: 'strikeout',
+ 3: 'field_out',
+ 4: 'field_out',
+ 5: 'strikeout',
+ 6: 'strikeout',
+ 7: 'single',
+ 8: 'single',
+ 9: 'single',
+ 10: 'field_out',
+ 11: 'strikeout',
+ 12: 'strikeout',
+ 13: 'field_out',
+ 14: 'single',
+ 15: 'strikeout',
+ 16: 'home_run',
+ 17: 'field_out',
+ 18: 'field_out',
+ 19: 'strikeout',
+ 20: 'strikeout',
+ 21: 'field_out',
+ 22: 'field_out',
+ 23: 'field_out',
+ 24: 'strikeout',
+ 25: 'walk',
+ 26: 'strikeout',
+ 27: 'field_out',
+ 28: 'strikeout',
+ 29: 'field_out',
+ 30: 'strikeout',
+ 31: 'field_out',
+ 32: 'single',
+ 33: 'field_out',
+ 34: 'field_out',
+ 35: 'field_out',
+ 36: 'field_out',
+ 37: 'walk',
+ 38: 'single',
+ 39: 'field_out',
+ 40: 'strikeout',
+ 41: 'home_run',
+ 42: 'walk',
+ 43: 'grounded_into_double_play',
+ 44: 'single',
+ 45: 'force_out',
+ 46: 'strikeout',
+ 47: 'walk',
+ 48: 'field_out',
+ 49: 'field_out',
+ 50: 'single',
+ 51: 'field_out',
+ 52: 'caught_stealing_2b',
+ 53: 'single',
+ 54: 'field_out',
+ 55: 'single',
+ 56: 'walk',
+ 57: 'grounded_into_double_play',
+ 58: 'strikeout',
+ 59: 'field_out',
+ 60: 'field_out',
+ 61: 'walk',
+ 62: 'strikeout',
+ 63: 'field_out',
+ 64: 'strikeout',
+ 65: 'single',
+ 66: 'field_out',
+ 67: 'strikeout',
+ 68: 'field_out',
+ 69: 'walk',
+ 70: 'strikeout',
+ 71: 'walk',
+ 72: 'fielders_choice_out',
+ 73: 'strikeout',
+ 74: 'double',
+ 75: 'strikeout',
+ 76: 'strikeout',
+ 77: 'strikeout',
+ 78: 'strikeout',
+ 79: 'strikeout',
+ 80: 'strikeout'}
+</code></pre></div></div>
+
+<p>Finally, we achieved what we wanted. The outcome of each at-bat.</p>
+
+<h3 id="3-putting-it-altogether">3. Putting it altogether</h3>
+
+<p>First we build a helper function that can be used generally.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="c1">## get_json: str -&gt; json
+</span>    <span class="c1">## get_json() function takes 'url' and returns the response in json format from the MLB Stats API.
+</span>    
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">'status code: %s'</span> <span class="o">%</span> <span class="n">response</span><span class="p">.</span><span class="n">status_code</span><span class="p">)</span>
+        <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+        <span class="n">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">content</span>
+        <span class="n">json_content</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="n">loads</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">json_content</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">extract_game_id</span><span class="p">(</span><span class="n">schedule_json</span><span class="p">):</span>
+    <span class="c1">## extract_game_id: json -&gt; listof int
+</span>    <span class="c1">## extract_game_id() function takes a schedule response object and returns a list of game IDs.
+</span>    
+    <span class="k">if</span> <span class="n">schedule_json</span> <span class="o">==</span> <span class="p">{}:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="n">gameID_list</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="n">dates</span> <span class="o">=</span> <span class="n">schedule_json</span><span class="p">[</span><span class="s">'dates'</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
+        <span class="n">games</span> <span class="o">=</span> <span class="n">day</span><span class="p">[</span><span class="s">'games'</span><span class="p">]</span>
+        
+        <span class="k">for</span> <span class="n">game</span> <span class="ow">in</span> <span class="n">games</span><span class="p">:</span>
+            <span class="n">gameID</span> <span class="o">=</span> <span class="n">game</span><span class="p">[</span><span class="s">'gamePk'</span><span class="p">]</span>
+            <span class="n">gameID_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">gameID</span><span class="p">)</span>
+   
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">gameID_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_game_ids</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">endDate</span> <span class="o">=</span> <span class="bp">None</span><span class="p">,</span> <span class="n">teamId</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+    <span class="c1">## get_game_ids: str int str str -&gt; listof int
+</span>    <span class="c1">## get_game_ids() function returns the list of game IDs.
+</span>    <span class="c1">## date must be of format "YYYY-MM-DD". 
+</span>    <span class="c1">## If date is used without end_date, then it returns the list of game IDs on the input date.
+</span>    <span class="c1">## If end_date is inputted, then it returns the list of game IDs in the period of date and end_date.
+</span>    <span class="c1">## If teamID is inputted, then it will return game ID's that the corresponding team played; otherwise, all.
+</span>    
+    
+    <span class="n">base_schedule_url</span> <span class="o">=</span> <span class="s">"http://statsapi.mlb.com/api/v1/schedule?sportId=1"</span>
+    <span class="n">alt_base_url</span> <span class="o">=</span> <span class="s">"https://beta-statsapi.mlb.com:443/api/v1/schedule?sportId=1"</span>
+    <span class="n">suffix</span> <span class="o">=</span> <span class="s">""</span>
+
+    <span class="k">if</span> <span class="n">endDate</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">suffix</span> <span class="o">=</span> <span class="s">"&amp;startDate="</span> <span class="o">+</span> <span class="n">date</span> <span class="o">+</span> <span class="s">"&amp;endDate="</span> <span class="o">+</span> <span class="n">endDate</span>
+    
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">suffix</span> <span class="o">=</span> <span class="s">"&amp;date="</span> <span class="o">+</span> <span class="n">date</span>
+        
+    <span class="k">if</span> <span class="n">teamId</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">suffix</span> <span class="o">=</span> <span class="n">suffix</span> <span class="o">+</span> <span class="s">"&amp;teamId="</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">teamId</span><span class="p">)</span>
+        
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">base_schedule_url</span> <span class="o">+</span> <span class="n">suffix</span>
+        <span class="c1">#print(url)
+</span>        <span class="n">schedule_content</span> <span class="o">=</span> <span class="n">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="c1">#print('status code: %s' % response.status_code)
+</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="c1">#print('Trying alternate route...')
+</span>        <span class="n">url</span> <span class="o">=</span> <span class="n">alt_base_url</span> <span class="o">+</span> <span class="n">suffix</span>
+        <span class="c1">#print(url)
+</span>        <span class="n">schedule_content</span> <span class="o">=</span> <span class="n">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+   
+    <span class="n">gameIDs</span> <span class="o">=</span> <span class="n">extract_game_id</span><span class="p">(</span><span class="n">schedule_content</span><span class="p">)</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">gameIDs</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_atbat_outcome</span><span class="p">(</span><span class="n">listofgameIDs</span><span class="p">):</span>
+    
+    <span class="n">gameID_dict</span> <span class="o">=</span> <span class="p">{}</span>
+    
+    <span class="k">for</span> <span class="n">gameID</span> <span class="ow">in</span> <span class="n">listofgameIDs</span><span class="p">:</span>
+        
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span>  <span class="s">"http://statsapi.mlb.com/api/v1/game/"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">gameID</span><span class="p">)</span> <span class="o">+</span> <span class="s">"/playByPlay"</span>
+            <span class="n">playbyplay_content</span> <span class="o">=</span> <span class="n">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+            
+        <span class="k">except</span><span class="p">:</span>
+            <span class="c1">#print('Trying alternate route...')
+</span>            <span class="n">url</span> <span class="o">=</span> <span class="s">"https://beta-statsapi.mlb.com:443/api/v1/game"</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">gameID</span><span class="p">)</span> <span class="o">+</span> <span class="s">"/playByPlay"</span>
+            <span class="n">playbyplay_content</span> <span class="o">=</span> <span class="n">get_json</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+
+    
+        <span class="n">allPlays_content</span> <span class="o">=</span> <span class="n">playbyplay_content</span><span class="p">[</span><span class="s">'allPlays'</span><span class="p">]</span>
+    
+        <span class="n">play_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">play_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">play</span> <span class="ow">in</span> <span class="n">allPlays_content</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">play</span><span class="p">[</span><span class="s">'result'</span><span class="p">][</span><span class="s">'type'</span><span class="p">]</span> <span class="o">!=</span> <span class="s">'atBat'</span><span class="p">:</span>
+                <span class="k">pass</span>
+
+            <span class="n">play_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">play_outcome</span> <span class="o">=</span> <span class="n">play</span><span class="p">[</span><span class="s">'result'</span><span class="p">][</span><span class="s">'eventType'</span><span class="p">]</span>
+
+            <span class="n">play_dict</span><span class="p">.</span><span class="n">update</span><span class="p">({</span><span class="n">play_count</span><span class="p">:</span> <span class="n">play_outcome</span><span class="p">})</span>
+            
+        <span class="n">gameID_dict</span><span class="p">.</span><span class="n">update</span><span class="p">({</span><span class="n">gameID</span><span class="p">:</span><span class="n">play_dict</span><span class="p">})</span>
+        
+    <span class="k">return</span><span class="p">(</span><span class="n">gameID_dict</span><span class="p">)</span>
+</code></pre></div></div>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#api" class="page__taxonomy-item" rel="tag">API</a><span class="sep">, </span>
+    
+      <a href="/tags/#baseball" class="page__taxonomy-item" rel="tag">Baseball</a><span class="sep">, </span>
+    
+      <a href="/tags/#data" class="page__taxonomy-item" rel="tag">Data</a><span class="sep">, </span>
+    
+      <a href="/tags/#mlb" class="page__taxonomy-item" rel="tag">MLB</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">Python</a><span class="sep">, </span>
+    
+      <a href="/tags/#wrapper" class="page__taxonomy-item" rel="tag">Wrapper</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-06-02T00:00:00+09:00">June 2, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=PyMLB%3A+Exploring+MLB+Data+using+Python%20https%3A%2F%2Fmichaelhur.github.io%2FPyMLB%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmichaelhur.github.io%2FPyMLB%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmichaelhur.github.io%2FPyMLB%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/Exploring-MLB-API/" class="pagination--pager" title="PyMLB: Exploring MLB Data using Python
+">Previous</a>
+    
+    
+      <a href="/Exploring-MLB-API/" class="pagination--pager" title="Exploring Mlb Api
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/Exploring-MLB-API/" rel="permalink">Exploring Mlb Api
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          5 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">This notebook explores and attempts to systemically extract data from the MLB Stats API. The approach aligns with this blog post
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/Exploring-MLB-API/" rel="permalink">PyMLB: Exploring MLB Data using Python
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          2 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sabermetrics: Analysis of Baseball
+As Bill James said “sabermetrics is the search for objective knowledge about baseball.” Unlike the classical baseball stat...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/Blogging-with-github/" rel="permalink">Github, Jekyll과 Minimal Mistakes를 이용하여 블로그 만들기
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">선택 장애: 플랫폼 선택하기
+블로그를 시작하기로 하면서 플랫폼을 결정하는 것이 가장 힘들었다. 큰 수정 없이 out-of-box로 블로깅을 시작할 수 있는 Wordpress와 Tistory 등의 플랫폼이 존재하였지만 개발을 하면서 익숙해져있던 Github에 더 눈이 갔기때문이다. ...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:jhhur716@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/michaelhur" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Michael Hur. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
