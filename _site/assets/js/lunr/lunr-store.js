@@ -8,18 +8,18 @@ var store = [{
         "title": "PyMLB: Exploring MLB Data using Python",
         "excerpt":"Sabermetrics: Analysis of Baseball As Bill James said “sabermetrics is the search for objective knowledge about baseball.” Unlike the classical baseball statistics such as win or home run, it aims to derive statistic that can objectively quantify the players’ performance. For example, in 2018 New York Mets’ rookie pitcher Jacob...","categories": [],
         "tags": ["Python","API","Wrapper","Baseball","MLB","Data"],
-        "url": "/Exploring-MLB-API/",
-        "teaser": null
-      },{
-        "title": "PyMLB: Exploring MLB Data using Python",
-        "excerpt":"Sabermetrics: Analysis of Baseball As Bill James said “sabermetrics is the search for objective knowledge about baseball.” Unlike the classical baseball statistics such as win or home run, it aims to derive statistic that can objectively quantify the players’ performance. For example, in 2018 New York Mets’ rookie pitcher Jacob...","categories": [],
-        "tags": ["Python","API","Wrapper","Baseball","MLB","Data"],
         "url": "/PyMLB/",
         "teaser": null
       },{
-        "title": "Exploring Mlb Api",
-        "excerpt":"This notebook explores and attempts to systemically extract data from the MLB Stats API. The approach aligns with this blog post This post has three goals: From the schedule key, we extract the game_pk of the opening game of 2021 season. Using this game_pk, we extract the play-By-Play data of...","categories": [],
-        "tags": [],
-        "url": "/Exploring-MLB-API/",
+        "title": "NoSQL and MongoDB",
+        "excerpt":"Why NoSQL?  It is not always the case that perfectly cleaned and prepared data is available for data scientitsts to work on. In many times, data manipulation is needed to feed the data into the later processes such as analysis and visualization.  ","categories": [],
+        "tags": ["MongoDB","NoSQL","SQL","Data"],
+        "url": "/MongoDB/",
+        "teaser": null
+      },{
+        "title": "PyMLB: Python Wrapper for the MLB API",
+        "excerpt":" ","categories": [],
+        "tags": ["Python","API","Wrapper","Baseball","MLB","Data"],
+        "url": "/PyMLB2/",
         "teaser": null
       }]
