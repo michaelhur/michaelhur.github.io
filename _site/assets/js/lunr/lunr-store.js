@@ -16,10 +16,4 @@ var store = [{
         "tags": ["MongoDB","NoSQL","SQL","Data"],
         "url": "/MongoDB/",
         "teaser": null
-      },{
-        "title": "PyMLB: Python Wrapper for the MLB API",
-        "excerpt":" ","categories": [],
-        "tags": ["Python","API","Wrapper","Baseball","MLB","Data"],
-        "url": "/PyMLB2/",
-        "teaser": null
       }]
