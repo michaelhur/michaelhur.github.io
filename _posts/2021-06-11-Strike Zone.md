@@ -250,7 +250,7 @@ fig.update_traces(marker=dict(size=12,
 fig.show()
 ```
 
-![]("https://michaelhur.github.io/images/20210611/1.png")
+![](https://michaelhur.github.io/images/20210611/1.png)
 
 In this game, we see quite a number of strikes that were placed well outside the strike zone. On the contrary, we see relatively fewer `ball` called even if it passed through the strike zone.
 
@@ -289,7 +289,7 @@ fig.update_traces(marker=dict(size=12,
 fig.show()
 ```
 
-![]("https://michaelhur.github.io/images/20210611/2.png")
+![](https://michaelhur.github.io/images/20210611/2.png)
 
 
 
@@ -356,7 +356,7 @@ fig.update_traces(marker=dict(size=12,
 fig.show()
 ```
 
-![]("https://michaelhur.github.io/images/20210611/3.png")
+![](https://michaelhur.github.io/images/20210611/3.png)
 
 
 - Looking at the home team pitcher's strike zone, we see only 3 strike calls that are labelled "incorrectly called" that lie in the strike zone. This is due to the process of fixing the strike zone for all batters. 
@@ -435,7 +435,7 @@ fig.show()
 ```
 
 
-![]("https://michaelhur.github.io/images/20210611/4.png")
+![](https://michaelhur.github.io/images/20210611/4.png)
 
 
 Looking at only the `strike` calls:
@@ -461,7 +461,7 @@ fig.update_traces(marker=dict(size=12,
 fig.show()
 ```
 
-![]("https://michaelhur.github.io/images/20210611/5.png")
+![](https://michaelhur.github.io/images/20210611/5.png)
 
 
 Visual inspection implies that Ryu's strike zone is wider to both sides. However, when we also look at all the `ball` calls, we see:
@@ -499,7 +499,7 @@ fig.update_traces(marker=dict(size=12,
 fig.show()
 ```
 
-![]("https://michaelhur.github.io/images/20210611/6.png")
+![](https://michaelhur.github.io/images/20210611/6.png)
 
 
 Almost all `ball` calls are called correctly, and there are so many `ball` calls landed at the same region as those `strike` calls to the sides of the strike zone. This implies that he has pitches they moves horizontally, leading to `swinging strikes`.

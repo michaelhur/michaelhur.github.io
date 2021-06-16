@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://michaelhur.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://michaelhur.github.io/" rel="alternate" type="text/html" /><updated>2021-06-17T00:35:28+09:00</updated><id>https://michaelhur.github.io/feed.xml</id><title type="html">Michael’s Data Story</title><subtitle>Michael's Data Story</subtitle><author><name>Michael Hur</name></author><entry><title type="html">PyMLB to plot Pitch f/x data</title><link href="https://michaelhur.github.io/Strike-Zone/" rel="alternate" type="text/html" title="PyMLB to plot Pitch f/x data" /><published>2021-06-11T00:00:00+09:00</published><updated>2021-06-11T00:00:00+09:00</updated><id>https://michaelhur.github.io/Strike%20Zone</id><content type="html" xml:base="https://michaelhur.github.io/Strike-Zone/">&lt;p&gt;This time we will look at what the strike zone looks like for a Korean Pitcher “Ryu Hyun-Jin.”&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="https://michaelhur.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://michaelhur.github.io/" rel="alternate" type="text/html" /><updated>2021-06-17T00:42:41+09:00</updated><id>https://michaelhur.github.io/feed.xml</id><title type="html">Michael’s Data Story</title><subtitle>Michael's Data Story</subtitle><author><name>Michael Hur</name></author><entry><title type="html">PyMLB to plot Pitch f/x data</title><link href="https://michaelhur.github.io/Strike-Zone/" rel="alternate" type="text/html" title="PyMLB to plot Pitch f/x data" /><published>2021-06-11T00:00:00+09:00</published><updated>2021-06-11T00:00:00+09:00</updated><id>https://michaelhur.github.io/Strike%20Zone</id><content type="html" xml:base="https://michaelhur.github.io/Strike-Zone/">&lt;p&gt;This time we will look at what the strike zone looks like for a Korean Pitcher “Ryu Hyun-Jin.”&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PyMLB&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
@@ -214,7 +214,7 @@
 &lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;&amp;quot;https://michaelhur.github.io/images/20210611/1.png&amp;quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://michaelhur.github.io/images/20210611/1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In this game, we see quite a number of strikes that were placed well outside the strike zone. On the contrary, we see relatively fewer &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ball&lt;/code&gt; called even if it passed through the strike zone.&lt;/p&gt;
 
@@ -251,7 +251,7 @@
 &lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;&amp;quot;https://michaelhur.github.io/images/20210611/2.png&amp;quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://michaelhur.github.io/images/20210611/2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Interestingly, of all pitches placed in the lower right corner of the strike zone, there were more pitches called &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ball&lt;/code&gt; for the away team’s pitcher than the home team’s pitcher.&lt;/p&gt;
 
@@ -312,7 +312,7 @@ Name: calledRight, dtype: float64
 &lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;&amp;quot;https://michaelhur.github.io/images/20210611/3.png&amp;quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://michaelhur.github.io/images/20210611/3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -386,7 +386,7 @@ Name: calledRight, dtype: float64
 &lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;&amp;quot;https://michaelhur.github.io/images/20210611/4.png&amp;quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://michaelhur.github.io/images/20210611/4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Looking at only the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;strike&lt;/code&gt; calls:&lt;/p&gt;
 
@@ -409,7 +409,7 @@ Name: calledRight, dtype: float64
 &lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;&amp;quot;https://michaelhur.github.io/images/20210611/5.png&amp;quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://michaelhur.github.io/images/20210611/5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Visual inspection implies that Ryu’s strike zone is wider to both sides. However, when we also look at all the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ball&lt;/code&gt; calls, we see:&lt;/p&gt;
 
@@ -444,7 +444,7 @@ Name: calledRight, dtype: float64
 &lt;span class=&quot;n&quot;&gt;fig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;show&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img src=&quot;&amp;quot;https://michaelhur.github.io/images/20210611/6.png&amp;quot;&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://michaelhur.github.io/images/20210611/6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Almost all &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ball&lt;/code&gt; calls are called correctly, and there are so many &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ball&lt;/code&gt; calls landed at the same region as those &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;strike&lt;/code&gt; calls to the sides of the strike zone. This implies that he has pitches they moves horizontally, leading to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;swinging strikes&lt;/code&gt;.&lt;/p&gt;
 
@@ -633,11 +633,11 @@ git push origin master
 &lt;h3 id=&quot;where-do-we-get-raw-data&quot;&gt;Where do we get raw data?&lt;/h3&gt;
 &lt;p&gt;Now that we know how important statistics is in baseball and want to be able to compute these more meaningful metrics, we first ened to figure out how to extract raw data. Fortunately, &lt;a href=&quot;https://statsapi.mlb.com/api/&quot;&gt;Major League Baseball (MLB) has long made its data public&lt;/a&gt; and this post will show you the guid on “how to extract data” from the MLB’s stats API, by extracting each batter’s at-bat outcome in the opening game of the 2021 season.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;&amp;quot;https://michaelhur.github.io/images/20210602/screenshot1.png&amp;quot;&quot; alt=&quot;Excerpt from the MLB's Stats API&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://michaelhur.github.io/images/20210602/screenshot1.png&quot; alt=&quot;Excerpt from the MLB's Stats API&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;understanding-the-api-schema&quot;&gt;Understanding the API Schema&lt;/h3&gt;
 &lt;p&gt;Although we can “brute-force” search every node in the tree until we obtain the desired fruit, the &lt;a href=&quot;https://beta-statsapi.mlb.com/docs/&quot;&gt;API document&lt;/a&gt; actually explains what the available keys are and what parameters the query takes at each level. Since we are interested in finding out the result of each “at-bat” in a specific game, we need to where these “play-by-play” data lies in. A thorough read tells us that such information is stroed under the “game” endpoints which stores all the data pertaining to the “game-level.”
-&lt;img src=&quot;&amp;quot;https://michaelhur.github.io/images/20210602/screenshot2.png&amp;quot;&quot; alt=&quot;The &amp;quot;Game&amp;quot; endpoints of the MLB's Stats API&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;https://michaelhur.github.io/images/20210602/screenshot2.png&quot; alt=&quot;The &amp;quot;Game&amp;quot; endpoints of the MLB's Stats API&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;This &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;game&lt;/code&gt; key requires a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;game_pk&lt;/code&gt; parameter. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;game_pk&lt;/code&gt; is a unique identifier assigned to each game. In order to obtain this &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;game_pk&lt;/code&gt;, we will have to look into the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;schedule&lt;/code&gt; operation, which will return all the game on a given date. In short, in order to get the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;play-by-play&lt;/code&gt; data we will have to:&lt;/p&gt;
 

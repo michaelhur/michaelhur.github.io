@@ -316,11 +316,11 @@
 <h3 id="where-do-we-get-raw-data">Where do we get raw data?</h3>
 <p>Now that we know how important statistics is in baseball and want to be able to compute these more meaningful metrics, we first ened to figure out how to extract raw data. Fortunately, <a href="https://statsapi.mlb.com/api/">Major League Baseball (MLB) has long made its data public</a> and this post will show you the guid on “how to extract data” from the MLB’s stats API, by extracting each batter’s at-bat outcome in the opening game of the 2021 season.</p>
 
-<p><img src="&quot;https://michaelhur.github.io/images/20210602/screenshot1.png&quot;" alt="Excerpt from the MLB's Stats API" /></p>
+<p><img src="https://michaelhur.github.io/images/20210602/screenshot1.png" alt="Excerpt from the MLB's Stats API" /></p>
 
 <h3 id="understanding-the-api-schema">Understanding the API Schema</h3>
 <p>Although we can “brute-force” search every node in the tree until we obtain the desired fruit, the <a href="https://beta-statsapi.mlb.com/docs/">API document</a> actually explains what the available keys are and what parameters the query takes at each level. Since we are interested in finding out the result of each “at-bat” in a specific game, we need to where these “play-by-play” data lies in. A thorough read tells us that such information is stroed under the “game” endpoints which stores all the data pertaining to the “game-level.”
-<img src="&quot;https://michaelhur.github.io/images/20210602/screenshot2.png&quot;" alt="The &quot;Game&quot; endpoints of the MLB's Stats API" /></p>
+<img src="https://michaelhur.github.io/images/20210602/screenshot2.png" alt="The &quot;Game&quot; endpoints of the MLB's Stats API" /></p>
 
 <p>This <code class="language-plaintext highlighter-rouge">game</code> key requires a <code class="language-plaintext highlighter-rouge">game_pk</code> parameter. <code class="language-plaintext highlighter-rouge">game_pk</code> is a unique identifier assigned to each game. In order to obtain this <code class="language-plaintext highlighter-rouge">game_pk</code>, we will have to look into the <code class="language-plaintext highlighter-rouge">schedule</code> operation, which will return all the game on a given date. In short, in order to get the <code class="language-plaintext highlighter-rouge">play-by-play</code> data we will have to:</p>
 
