@@ -12,8 +12,14 @@ var store = [{
         "teaser": null
       },{
         "title": "NoSQL and MongoDB",
-        "excerpt":"Why NoSQL?  It is not always the case that perfectly cleaned and prepared data is available for data scientitsts to work on. In many times, data manipulation is needed to feed the data into the later processes such as analysis and visualization.  ","categories": [],
+        "excerpt":"Why NoSQL?  It is not always the case that perfectly cleaned and prepared data is available for data scientitsts to work on. In many times, data manipulation is needed to feed the data into the later processes such as analysis and visualization. g  ","categories": [],
         "tags": ["MongoDB","NoSQL","SQL","Data"],
         "url": "/MongoDB/",
+        "teaser": null
+      },{
+        "title": "PyMLB to plot Pitch f/x data",
+        "excerpt":"This time we will look at what the strike zone looks like for a Korean Pitcher “Ryu Hyun-Jin.” from PyMLB import * 1. Pull schedule data First we need to pull all the game ID for this particular pitcher for this season. Using get_schedule() function we coded last time, we...","categories": [],
+        "tags": ["Python","API","Wrapper","Baseball","MLB","Data","Plotly"],
+        "url": "/Strike-Zone/",
         "teaser": null
       }]

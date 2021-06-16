@@ -1,0 +1,504 @@
+I"^<p>This time we will look at what the strike zone looks like for a Korean Pitcher “Ryu Hyun-Jin.”</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PyMLB</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre></div></div>
+
+<h4 id="1-pull-schedule-data">1. Pull schedule data</h4>
+
+<p>First we need to pull all the game ID for this particular pitcher for this season. Using <a href="https://michaelhur.github.io/PyMLB/">get_schedule() function we coded last time</a>, we will extract schedule data.</p>
+
+<p>Unfortunately, we can only pull the schedule data at the team level. So we will extract all the game his team “Toronto Blue Jays” has played this season, then filter the games he has played.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">bluejays_schedule</span> <span class="o">=</span> <span class="n">get_schedule</span><span class="p">(</span><span class="n">teamId</span> <span class="o">=</span> <span class="mi">141</span><span class="p">,</span> <span class="n">startDate</span> <span class="o">=</span> <span class="s">"2021-04-01"</span><span class="p">,</span> <span class="n">endDate</span> <span class="o">=</span> <span class="n">yesterday</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The output looks like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">bluejays_schedule</span><span class="p">.</span><span class="n">values</span><span class="p">()))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[{'gamePk': 634642,
+  'home': {'ID': 147, 'name': 'New York Yankees'},
+  'away': {'ID': 141, 'name': 'Toronto Blue Jays'}}]
+</code></pre></div></div>
+
+<p>From this schedule dictionary, we will extract only the <code class="language-plaintext highlighter-rouge">gamePk</code> which will be used to pull pitch f/x data for that particular game.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gamePks</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s">'gamePk'</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">bluejays_schedule</span><span class="p">.</span><span class="n">items</span><span class="p">()]</span>
+</code></pre></div></div>
+
+<p>And the first 10 gamePk’s look like:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gamePks</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[634642,
+ 634644,
+ 634607,
+ 634612,
+ 634635,
+ 634583,
+ 634545,
+ 634512,
+ 632227,
+ 632208]
+</code></pre></div></div>
+
+<h4 id="2-pitch-fx-data">2. Pitch fx data</h4>
+
+<p>Next step is to extract pitch fx data for each game. We will loop through each of gamePks we obtains above. Again, using get_pitchfx() function we coded last time:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pitchfx</span> <span class="o">=</span> <span class="n">get_pitchfx</span><span class="p">(</span><span class="mi">634642</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>As a reminder, get_pitchfx() returns pitch f/x data as a dictionary object, where each key on the top level corresponds to each “at bat”. The second tier dictionary stores the pitch fx data we want, so we will extact them systematically.</p>
+
+<p>In order to make analysis easier (or coding for the analysis easier), we will convert this dictionary object to a dataframe object. We remove the non-pitchfx data from the dictionary:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pitches</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pitchfx</span><span class="p">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s">"home_umpire"</span><span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">pitches</span><span class="p">.</span><span class="n">values</span><span class="p">()))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{'inning': 1,
+ 'home': 'home',
+ 'pitcher': {'id': 543037,
+  'fullName': 'Gerrit Cole',
+  'link': '/api/v1/people/543037'},
+ 'batter': {'id': 543760,
+  'fullName': 'Marcus Semien',
+  'link': '/api/v1/people/543760'},
+ 'pitchHand': 'R',
+ 'batSide': 'R',
+ 'pitchData': [{'call': 'ball',
+   'sz_top': 3.25,
+   'sz_bottom': 1.53,
+   'x': -0.5,
+   'z': 3.54}]}
+</code></pre></div></div>
+
+<p>We will carry (almost) all the data in the dictionary into the dataframe object.</p>
+
+<ol>
+  <li>Define an empty dataframe</li>
+  <li>Loop through each at bat</li>
+  <li>Loop through each pitch</li>
+  <li>Concatenate one row in each loop</li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1">## Since we are carrying all the information to the dataframe object,
+## we will label all the columns as is.
+</span><span class="n">pd_index</span> <span class="o">=</span> <span class="p">[</span><span class="s">"atbat"</span><span class="p">,</span> <span class="s">"pitchCount"</span><span class="p">,</span> <span class="s">"inning"</span><span class="p">,</span> <span class="s">"home"</span><span class="p">,</span> <span class="s">"pitcher"</span><span class="p">,</span> <span class="s">"pitcherId"</span><span class="p">,</span> <span class="s">"pitchHand"</span><span class="p">,</span>
+             <span class="s">"batter"</span><span class="p">,</span> <span class="s">"batterId"</span><span class="p">,</span> <span class="s">"batSide"</span><span class="p">,</span> <span class="s">"sz_top"</span><span class="p">,</span> <span class="s">"sz_bottom"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">"z"</span><span class="p">,</span> <span class="s">"call"</span><span class="p">,</span> <span class="s">"actual"</span><span class="p">]</span>
+
+<span class="c1">## Create an empty dataframe with only the column names defined.
+</span><span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd_index</span><span class="p">).</span><span class="n">T</span>
+
+<span class="c1">## For loop through each at bat
+</span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pitches</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">atbat</span> <span class="o">=</span> <span class="n">k</span>
+    <span class="n">inning</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'inning'</span><span class="p">]</span>
+    <span class="n">home</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'home'</span><span class="p">]</span>
+    <span class="n">pitcher</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitcher'</span><span class="p">][</span><span class="s">'fullName'</span><span class="p">]</span>
+    <span class="n">pitcherId</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitcher'</span><span class="p">][</span><span class="s">'id'</span><span class="p">]</span>
+    <span class="n">pitchHand</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitchHand'</span><span class="p">]</span>
+    <span class="n">batter</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'batter'</span><span class="p">][</span><span class="s">'fullName'</span><span class="p">]</span>
+    <span class="n">batterId</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'batter'</span><span class="p">][</span><span class="s">'id'</span><span class="p">]</span>
+    <span class="n">batSide</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'batSide'</span><span class="p">]</span>
+
+    <span class="n">pitchCount</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="c1">## For loop through each pitch
+</span>    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitchData'</span><span class="p">]:</span>
+        <span class="n">pitchCount</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">sz_top</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'sz_top'</span><span class="p">]</span>
+        <span class="n">sz_bottom</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'sz_bottom'</span><span class="p">]</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'z'</span><span class="p">]</span>
+        <span class="n">call</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'call'</span><span class="p">]</span>
+        
+        <span class="c1">## Given the actual strike zone, determine whether the call made was strike or not
+</span>        <span class="n">actual</span> <span class="o">=</span> <span class="s">"strike"</span> <span class="k">if</span> <span class="p">(</span><span class="n">sz_bottom</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">sz_top</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.71</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.71</span><span class="p">)</span> <span class="k">else</span> <span class="s">"ball"</span>
+        
+        <span class="c1">## Each pitch will be turned into a single-row dataframe
+</span>        <span class="n">new_row</span> <span class="o">=</span> <span class="p">[</span><span class="n">atbat</span><span class="p">,</span> <span class="n">pitchCount</span><span class="p">,</span> <span class="n">inning</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">pitcher</span><span class="p">,</span> <span class="n">pitcherId</span><span class="p">,</span> <span class="n">pitchHand</span><span class="p">,</span>
+                   <span class="n">batter</span><span class="p">,</span> <span class="n">batterId</span><span class="p">,</span> <span class="n">batSide</span><span class="p">,</span> <span class="n">sz_top</span><span class="p">,</span> <span class="n">sz_bottom</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">call</span><span class="p">,</span> <span class="n">actual</span><span class="p">]</span>
+
+        <span class="n">new_df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">new_row</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pd_index</span><span class="p">).</span><span class="n">T</span>
+        
+        <span class="c1">## This newly defined data frame will be concatenated to the already existing dataframe.
+</span>        <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">new_df</span><span class="p">,</span><span class="n">new_df1</span><span class="p">])</span>
+
+<span class="c1">## New column definitions:
+## 'calledRight': Each entry is a boolean, whether the call made is correct or not
+</span><span class="n">new_df</span><span class="p">[</span><span class="s">'calledRight'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_df</span><span class="p">[</span><span class="s">'call'</span><span class="p">]</span> <span class="o">==</span> <span class="n">new_df</span><span class="p">[</span><span class="s">'actual'</span><span class="p">])</span>
+<span class="n">new_df</span><span class="p">[</span><span class="s">'umpire'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pitchfx</span><span class="p">[</span><span class="s">'home_umpire'</span><span class="p">]</span>
+<span class="n">new_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We will put this into the function so that we can apply it to any other pitch fx data.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">to_df</span><span class="p">(</span><span class="n">pitchfx</span><span class="p">):</span>
+    
+    <span class="n">pitches</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pitchfx</span><span class="p">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s">"home_umpire"</span><span class="p">}</span>    
+
+    <span class="n">pd_index</span> <span class="o">=</span> <span class="p">[</span><span class="s">"atbat"</span><span class="p">,</span> <span class="s">"pitchCount"</span><span class="p">,</span> <span class="s">"inning"</span><span class="p">,</span> <span class="s">"home"</span><span class="p">,</span> <span class="s">"pitcher"</span><span class="p">,</span> <span class="s">"pitcherId"</span><span class="p">,</span> <span class="s">"pitchHand"</span><span class="p">,</span>
+                 <span class="s">"batter"</span><span class="p">,</span> <span class="s">"batterId"</span><span class="p">,</span> <span class="s">"batSide"</span><span class="p">,</span> <span class="s">"sz_top"</span><span class="p">,</span> <span class="s">"sz_bottom"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">"z"</span><span class="p">,</span> <span class="s">"call"</span><span class="p">,</span> <span class="s">"actual"</span><span class="p">]</span>
+
+    <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd_index</span><span class="p">).</span><span class="n">T</span>
+
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pitches</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">atbat</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="n">inning</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'inning'</span><span class="p">]</span>
+        <span class="n">home</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'home'</span><span class="p">]</span>
+        <span class="n">pitcher</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitcher'</span><span class="p">][</span><span class="s">'fullName'</span><span class="p">]</span>
+        <span class="n">pitcherId</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitcher'</span><span class="p">][</span><span class="s">'id'</span><span class="p">]</span>
+        <span class="n">pitchHand</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitchHand'</span><span class="p">]</span>
+        <span class="n">batter</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'batter'</span><span class="p">][</span><span class="s">'fullName'</span><span class="p">]</span>
+        <span class="n">batterId</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'batter'</span><span class="p">][</span><span class="s">'id'</span><span class="p">]</span>
+        <span class="n">batSide</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'batSide'</span><span class="p">]</span>
+
+        <span class="n">pitchCount</span> <span class="o">=</span> <span class="mi">0</span>   
+
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitchData'</span><span class="p">]:</span>
+            <span class="n">pitchCount</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">sz_top</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'sz_top'</span><span class="p">]</span>
+            <span class="n">sz_bottom</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'sz_bottom'</span><span class="p">]</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'z'</span><span class="p">]</span>
+            <span class="n">call</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'call'</span><span class="p">]</span>
+
+            <span class="n">actual</span> <span class="o">=</span> <span class="s">"strike"</span> <span class="k">if</span> <span class="p">(</span><span class="n">sz_bottom</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">sz_top</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.71</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.71</span><span class="p">)</span> <span class="k">else</span> <span class="s">"ball"</span>
+
+            <span class="n">new_row</span> <span class="o">=</span> <span class="p">[</span><span class="n">atbat</span><span class="p">,</span> <span class="n">pitchCount</span><span class="p">,</span> <span class="n">inning</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">pitcher</span><span class="p">,</span> <span class="n">pitcherId</span><span class="p">,</span> <span class="n">pitchHand</span><span class="p">,</span>
+                       <span class="n">batter</span><span class="p">,</span> <span class="n">batterId</span><span class="p">,</span> <span class="n">batSide</span><span class="p">,</span> <span class="n">sz_top</span><span class="p">,</span> <span class="n">sz_bottom</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">call</span><span class="p">,</span> <span class="n">actual</span><span class="p">]</span>
+
+            <span class="n">new_df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">new_row</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pd_index</span><span class="p">).</span><span class="n">T</span>
+            <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">new_df</span><span class="p">,</span><span class="n">new_df1</span><span class="p">])</span>
+
+    <span class="n">new_df</span><span class="p">[</span><span class="s">'calledRight'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_df</span><span class="p">[</span><span class="s">'call'</span><span class="p">]</span> <span class="o">==</span> <span class="n">new_df</span><span class="p">[</span><span class="s">'actual'</span><span class="p">])</span>
+    <span class="n">new_df</span><span class="p">[</span><span class="s">'umpire'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pitchfx</span><span class="p">[</span><span class="s">'home_umpire'</span><span class="p">]</span>
+    <span class="n">new_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">new_df</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Using one of the gamePk, we will try plot pitch fx data. Once succeed, we will apply to all gamePks.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">df_634642</span> <span class="o">=</span> <span class="n">to_df</span><span class="p">(</span><span class="n">pitchfx</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">plotly.express</span> <span class="k">as</span> <span class="n">px</span>
+
+<span class="c1">## Plot scatter plot, grouped by strike and ball calls
+</span><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_634642</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"z"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"call"</span><span class="p">)</span>
+
+<span class="c1">## Draw a rectangle that represents the strike zone
+</span><span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s">"rect"</span><span class="p">,</span>
+    <span class="n">xref</span> <span class="o">=</span> <span class="s">"x"</span><span class="p">,</span> <span class="n">yref</span> <span class="o">=</span> <span class="s">"y"</span><span class="p">,</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.71</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="mf">0.71</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s">"RoyalBlue"</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                              <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                        <span class="n">color</span><span class="o">=</span><span class="s">'DarkSlateGrey'</span><span class="p">)),</span>
+                  <span class="n">selector</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s">'markers'</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="&quot;https://michaelhur.github.io/images/20210611/1.png&quot;" alt="" /></p>
+
+<p>In this game, we see quite a number of strikes that were placed well outside the strike zone. On the contrary, we see relatively fewer <code class="language-plaintext highlighter-rouge">ball</code> called even if it passed through the strike zone.</p>
+
+<p>We want to see how they differ depending on home/away.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_634642</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"z"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"call"</span><span class="p">,</span> <span class="n">facet_col</span><span class="o">=</span><span class="s">"home"</span><span class="p">,</span>
+          <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">"call"</span><span class="p">:</span> <span class="s">"Call"</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s">"rect"</span><span class="p">,</span>
+    <span class="n">xref</span> <span class="o">=</span> <span class="s">"x"</span><span class="p">,</span> <span class="n">yref</span> <span class="o">=</span> <span class="s">"y"</span><span class="p">,</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.71</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="mf">0.71</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s">"RoyalBlue"</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s">"rect"</span><span class="p">,</span>
+    <span class="n">xref</span> <span class="o">=</span> <span class="s">"x2"</span><span class="p">,</span> <span class="n">yref</span> <span class="o">=</span> <span class="s">"y"</span><span class="p">,</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.71</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="mf">0.71</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s">"RoyalBlue"</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                              <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                        <span class="n">color</span><span class="o">=</span><span class="s">'DarkSlateGrey'</span><span class="p">)),</span>
+                  <span class="n">selector</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s">'markers'</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="&quot;https://michaelhur.github.io/images/20210611/2.png&quot;" alt="" /></p>
+
+<p>Interestingly, of all pitches placed in the lower right corner of the strike zone, there were more pitches called <code class="language-plaintext highlighter-rouge">ball</code> for the away team’s pitcher than the home team’s pitcher.</p>
+
+<p>Now we look at all the strike calls and see where they landed at.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">df_634642</span><span class="p">[</span><span class="n">df_634642</span><span class="p">.</span><span class="n">call</span> <span class="o">==</span> <span class="s">"strike"</span><span class="p">][</span><span class="s">'calledRight'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df_634642</span><span class="p">[</span><span class="n">df_634642</span><span class="p">.</span><span class="n">call</span> <span class="o">==</span> <span class="s">"strike"</span><span class="p">].</span><span class="n">groupby</span><span class="p">([</span><span class="s">'home'</span><span class="p">])[</span><span class="s">'calledRight'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True     52.941176
+False    47.058824
+Name: calledRight, dtype: float64
+
+
+home  calledRight
+away  True           53.703704
+      False          46.296296
+home  True           52.083333
+      False          47.916667
+Name: calledRight, dtype: float64
+</code></pre></div></div>
+
+<p>Interestingly of all <code class="language-plaintext highlighter-rouge">strike</code> calls in this game, only 52.9% of the calls were called correctly. In other words, 47.1% of all strike calls should have been called <code class="language-plaintext highlighter-rouge">ball</code>.</p>
+
+<p>On the bright side, the proportion of correctly called strikes to incorrectly called strikes are almost the same at the home/away level. So the umpire was not biased againt the away team.</p>
+
+<p>Visual inspection shows:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df_634642</span><span class="p">[</span><span class="n">df_634642</span><span class="p">.</span><span class="n">call</span> <span class="o">==</span> <span class="s">"strike"</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"z"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"calledRight"</span><span class="p">,</span> <span class="n">facet_col</span><span class="o">=</span><span class="s">"home"</span><span class="p">,</span>
+          <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">"call"</span><span class="p">:</span> <span class="s">"Call"</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s">"rect"</span><span class="p">,</span>
+    <span class="n">xref</span> <span class="o">=</span> <span class="s">"x"</span><span class="p">,</span> <span class="n">yref</span> <span class="o">=</span> <span class="s">"y"</span><span class="p">,</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.71</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="mf">0.71</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s">"RoyalBlue"</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s">"rect"</span><span class="p">,</span>
+    <span class="n">xref</span> <span class="o">=</span> <span class="s">"x2"</span><span class="p">,</span> <span class="n">yref</span> <span class="o">=</span> <span class="s">"y"</span><span class="p">,</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.71</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="mf">0.71</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s">"RoyalBlue"</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                              <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                        <span class="n">color</span><span class="o">=</span><span class="s">'DarkSlateGrey'</span><span class="p">)),</span>
+                  <span class="n">selector</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s">'markers'</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="&quot;https://michaelhur.github.io/images/20210611/3.png&quot;" alt="" /></p>
+
+<ul>
+  <li>
+    <p>Looking at the home team pitcher’s strike zone, we see only 3 strike calls that are labelled “incorrectly called” that lie in the strike zone. This is due to the process of fixing the strike zone for all batters.</p>
+  </li>
+  <li>
+    <p>For the home pitchers, most of the incorrectly called strikes are placed on the bottom right corner of the plot. On the other hand, for the away pitchers, it were mostly <code class="language-plaintext highlighter-rouge">wide pitches</code> that were called strike incorrectly.</p>
+  </li>
+</ul>
+
+<p>Now look at all the <code class="language-plaintext highlighter-rouge">ball</code> calls.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">print</span><span class="p">(</span><span class="n">df_634642</span><span class="p">[</span><span class="n">df_634642</span><span class="p">.</span><span class="n">call</span> <span class="o">==</span> <span class="s">"ball"</span><span class="p">][</span><span class="s">'calledRight'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">df_634642</span><span class="p">[</span><span class="n">df_634642</span><span class="p">.</span><span class="n">call</span> <span class="o">==</span> <span class="s">"ball"</span><span class="p">].</span><span class="n">groupby</span><span class="p">([</span><span class="s">'home'</span><span class="p">])[</span><span class="s">'calledRight'</span><span class="p">].</span><span class="n">value_counts</span><span class="p">(</span><span class="n">normalize</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True     97.744361
+False     2.255639
+Name: calledRight, dtype: float64
+
+
+home  calledRight
+away  True           98.717949
+      False           1.282051
+home  True           96.363636
+      False           3.636364
+Name: calledRight, dtype: float64
+</code></pre></div></div>
+
+<p>Umpires are doing better job on this side of the call. 97% of all <code class="language-plaintext highlighter-rouge">balls</code> are called correctly. My guess is that umpires are more conservative on calling <code class="language-plaintext highlighter-rouge">balls</code> than <code class="language-plaintext highlighter-rouge">strikes</code>.</p>
+
+<p>Enough with the opening game of the season, let’s get back in the game. Follow the same process for all of Ryu’s game.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pd_index</span> <span class="o">=</span> <span class="p">[</span><span class="s">"atbat"</span><span class="p">,</span> <span class="s">"pitchCount"</span><span class="p">,</span> <span class="s">"inning"</span><span class="p">,</span> <span class="s">"home"</span><span class="p">,</span> <span class="s">"pitcher"</span><span class="p">,</span> <span class="s">"pitcherId"</span><span class="p">,</span> <span class="s">"pitchHand"</span><span class="p">,</span>
+                 <span class="s">"batter"</span><span class="p">,</span> <span class="s">"batterId"</span><span class="p">,</span> <span class="s">"batSide"</span><span class="p">,</span> <span class="s">"sz_top"</span><span class="p">,</span> <span class="s">"sz_bottom"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">"z"</span><span class="p">,</span> <span class="s">"call"</span><span class="p">,</span> <span class="s">"actual"</span><span class="p">]</span>
+
+<span class="n">ryu_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd_index</span><span class="p">).</span><span class="n">T</span>
+
+<span class="k">for</span> <span class="n">gamePk</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">gamePks</span><span class="p">):</span>
+    <span class="c1">#print(gamePk)
+</span>    <span class="n">df_new</span> <span class="o">=</span> <span class="n">to_df</span><span class="p">(</span><span class="n">get_pitchfx</span><span class="p">(</span><span class="n">gamePk</span><span class="p">))</span>
+    <span class="n">ryu_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ryu_df</span><span class="p">,</span><span class="n">df_new</span><span class="p">])</span>
+
+<span class="n">ryu_df</span> <span class="o">=</span> <span class="n">ryu_df</span><span class="p">[</span><span class="n">ryu_df</span><span class="p">.</span><span class="n">pitcherId</span> <span class="o">==</span> <span class="mi">547943</span><span class="p">]</span>
+<span class="n">ryu_df</span> <span class="o">=</span> <span class="n">ryu_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>100%|██████████| 66/66 [01:14&lt;00:00,  1.13s/it]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ryu_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"z"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"call"</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s">"rect"</span><span class="p">,</span>
+    <span class="n">xref</span> <span class="o">=</span> <span class="s">"x"</span><span class="p">,</span> <span class="n">yref</span> <span class="o">=</span> <span class="s">"y"</span><span class="p">,</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.71</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="mf">0.71</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s">"RoyalBlue"</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                              <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                        <span class="n">color</span><span class="o">=</span><span class="s">'DarkSlateGrey'</span><span class="p">)),</span>
+                  <span class="n">selector</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s">'markers'</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="&quot;https://michaelhur.github.io/images/20210611/4.png&quot;" alt="" /></p>
+
+<p>Looking at only the <code class="language-plaintext highlighter-rouge">strike</code> calls:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ryu_df</span><span class="p">[</span><span class="n">ryu_df</span><span class="p">[</span><span class="s">'call'</span><span class="p">]</span> <span class="o">==</span> <span class="s">'strike'</span><span class="p">],</span> <span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"z"</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s">"rect"</span><span class="p">,</span>
+    <span class="n">xref</span> <span class="o">=</span> <span class="s">"x"</span><span class="p">,</span> <span class="n">yref</span> <span class="o">=</span> <span class="s">"y"</span><span class="p">,</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.71</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="mf">0.71</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s">"RoyalBlue"</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                              <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                        <span class="n">color</span><span class="o">=</span><span class="s">'DarkSlateGrey'</span><span class="p">)),</span>
+                  <span class="n">selector</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s">'markers'</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="&quot;https://michaelhur.github.io/images/20210611/5.png&quot;" alt="" /></p>
+
+<p>Visual inspection implies that Ryu’s strike zone is wider to both sides. However, when we also look at all the <code class="language-plaintext highlighter-rouge">ball</code> calls, we see:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="p">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">ryu_df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s">"x"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s">"z"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s">"calledRight"</span><span class="p">,</span> <span class="n">facet_col</span><span class="o">=</span><span class="s">"call"</span><span class="p">,</span>
+          <span class="n">labels</span><span class="o">=</span><span class="p">{</span><span class="s">"calledRight"</span><span class="p">:</span> <span class="s">"called Right"</span><span class="p">})</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s">"rect"</span><span class="p">,</span>
+    <span class="n">xref</span> <span class="o">=</span> <span class="s">"x"</span><span class="p">,</span> <span class="n">yref</span> <span class="o">=</span> <span class="s">"y"</span><span class="p">,</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.71</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="mf">0.71</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s">"RoyalBlue"</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">add_shape</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s">"rect"</span><span class="p">,</span>
+    <span class="n">xref</span> <span class="o">=</span> <span class="s">"x2"</span><span class="p">,</span> <span class="n">yref</span> <span class="o">=</span> <span class="s">"y"</span><span class="p">,</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.71</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">,</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="mf">0.71</span><span class="p">,</span> <span class="n">y1</span> <span class="o">=</span> <span class="mf">3.5</span><span class="p">,</span>
+    <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+        <span class="n">color</span><span class="o">=</span><span class="s">"RoyalBlue"</span><span class="p">,</span>
+        <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">update_traces</span><span class="p">(</span><span class="n">marker</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span>
+                              <span class="n">line</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                                        <span class="n">color</span><span class="o">=</span><span class="s">'DarkSlateGrey'</span><span class="p">)),</span>
+                  <span class="n">selector</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="s">'markers'</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="&quot;https://michaelhur.github.io/images/20210611/6.png&quot;" alt="" /></p>
+
+<p>Almost all <code class="language-plaintext highlighter-rouge">ball</code> calls are called correctly, and there are so many <code class="language-plaintext highlighter-rouge">ball</code> calls landed at the same region as those <code class="language-plaintext highlighter-rouge">strike</code> calls to the sides of the strike zone. This implies that he has pitches they moves horizontally, leading to <code class="language-plaintext highlighter-rouge">swinging strikes</code>.</p>
+
+<p>These are some of the very few insights one can derive from the visualization of pitch fx data. One can inspect this at the umpire level and see how they perform.</p>
+
+<h4 id="try-it-yourself">Try it yourself!</h4>
+
+<p>Using the following code, you can try plotting them yourself.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PyMLB</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="k">def</span> <span class="nf">to_df</span><span class="p">(</span><span class="n">pitchfx</span><span class="p">):</span>
+    
+    <span class="n">pitches</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pitchfx</span><span class="p">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="o">!=</span> <span class="s">"home_umpire"</span><span class="p">}</span>    
+
+    <span class="n">pd_index</span> <span class="o">=</span> <span class="p">[</span><span class="s">"atbat"</span><span class="p">,</span> <span class="s">"pitchCount"</span><span class="p">,</span> <span class="s">"inning"</span><span class="p">,</span> <span class="s">"home"</span><span class="p">,</span> <span class="s">"pitcher"</span><span class="p">,</span> <span class="s">"pitcherId"</span><span class="p">,</span> <span class="s">"pitchHand"</span><span class="p">,</span>
+                 <span class="s">"batter"</span><span class="p">,</span> <span class="s">"batterId"</span><span class="p">,</span> <span class="s">"batSide"</span><span class="p">,</span> <span class="s">"sz_top"</span><span class="p">,</span> <span class="s">"sz_bottom"</span><span class="p">,</span> <span class="s">"x"</span><span class="p">,</span> <span class="s">"z"</span><span class="p">,</span> <span class="s">"call"</span><span class="p">,</span> <span class="s">"actual"</span><span class="p">]</span>
+
+    <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">pd_index</span><span class="p">).</span><span class="n">T</span>
+
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pitches</span><span class="p">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">atbat</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="n">inning</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'inning'</span><span class="p">]</span>
+        <span class="n">home</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'home'</span><span class="p">]</span>
+        <span class="n">pitcher</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitcher'</span><span class="p">][</span><span class="s">'fullName'</span><span class="p">]</span>
+        <span class="n">pitcherId</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitcher'</span><span class="p">][</span><span class="s">'id'</span><span class="p">]</span>
+        <span class="n">pitchHand</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitchHand'</span><span class="p">]</span>
+        <span class="n">batter</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'batter'</span><span class="p">][</span><span class="s">'fullName'</span><span class="p">]</span>
+        <span class="n">batterId</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'batter'</span><span class="p">][</span><span class="s">'id'</span><span class="p">]</span>
+        <span class="n">batSide</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s">'batSide'</span><span class="p">]</span>
+
+        <span class="n">pitchCount</span> <span class="o">=</span> <span class="mi">0</span>   
+
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">v</span><span class="p">[</span><span class="s">'pitchData'</span><span class="p">]:</span>
+            <span class="n">pitchCount</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">sz_top</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'sz_top'</span><span class="p">]</span>
+            <span class="n">sz_bottom</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'sz_bottom'</span><span class="p">]</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'x'</span><span class="p">]</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'z'</span><span class="p">]</span>
+            <span class="n">call</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="s">'call'</span><span class="p">]</span>
+
+            <span class="n">actual</span> <span class="o">=</span> <span class="s">"strike"</span> <span class="k">if</span> <span class="p">(</span><span class="n">sz_bottom</span> <span class="o">&lt;=</span> <span class="n">z</span> <span class="o">&lt;=</span> <span class="n">sz_top</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.71</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.71</span><span class="p">)</span> <span class="k">else</span> <span class="s">"ball"</span>
+
+            <span class="n">new_row</span> <span class="o">=</span> <span class="p">[</span><span class="n">atbat</span><span class="p">,</span> <span class="n">pitchCount</span><span class="p">,</span> <span class="n">inning</span><span class="p">,</span> <span class="n">home</span><span class="p">,</span> <span class="n">pitcher</span><span class="p">,</span> <span class="n">pitcherId</span><span class="p">,</span> <span class="n">pitchHand</span><span class="p">,</span>
+                       <span class="n">batter</span><span class="p">,</span> <span class="n">batterId</span><span class="p">,</span> <span class="n">batSide</span><span class="p">,</span> <span class="n">sz_top</span><span class="p">,</span> <span class="n">sz_bottom</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">call</span><span class="p">,</span> <span class="n">actual</span><span class="p">]</span>
+
+            <span class="n">new_df1</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">new_row</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">pd_index</span><span class="p">).</span><span class="n">T</span>
+            <span class="n">new_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">new_df</span><span class="p">,</span><span class="n">new_df1</span><span class="p">])</span>
+
+    <span class="n">new_df</span><span class="p">[</span><span class="s">'calledRight'</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">new_df</span><span class="p">[</span><span class="s">'call'</span><span class="p">]</span> <span class="o">==</span> <span class="n">new_df</span><span class="p">[</span><span class="s">'actual'</span><span class="p">])</span>
+    <span class="n">new_df</span><span class="p">[</span><span class="s">'umpire'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pitchfx</span><span class="p">[</span><span class="s">'home_umpire'</span><span class="p">]</span>
+    <span class="n">new_df</span><span class="p">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">new_df</span><span class="p">)</span>
+</code></pre></div></div>
+:ET
