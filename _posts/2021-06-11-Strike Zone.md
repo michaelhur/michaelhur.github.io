@@ -252,7 +252,6 @@ fig.show()
 
 ![]("https://michaelhur.github.io/images/20210611/1.png")
 
-
 In this game, we see quite a number of strikes that were placed well outside the strike zone. On the contrary, we see relatively fewer `ball` called even if it passed through the strike zone.
 
 We want to see how they differ depending on home/away.
