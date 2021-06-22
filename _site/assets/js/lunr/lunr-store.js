@@ -11,8 +11,8 @@ var store = [{
         "url": "/PyMLB/",
         "teaser": null
       },{
-        "title": "NoSQL and MongoDB",
-        "excerpt":"Why NoSQL?  It is not always the case that perfectly cleaned and prepared data is available for data scientitsts to work on. In many times, data manipulation is needed to feed the data into the later processes such as analysis and visualization. g  ","categories": [],
+        "title": "NoSQL and SQL - Part 1",
+        "excerpt":"Introduction It is not always the case that perfectly cleaned and prepared data is available for data scientitsts to work with. In many times, data preprocessing is needed to feed the data into the later prcoesses such as analysis and visualization. This preprocessing step can be minimized, if not eliminated,...","categories": [],
         "tags": ["MongoDB","NoSQL","SQL","Data"],
         "url": "/MongoDB/",
         "teaser": null
@@ -21,5 +21,11 @@ var store = [{
         "excerpt":"This time we will look at what the strike zone looks like for a Korean Pitcher “Ryu Hyun-Jin.” from PyMLB import * 1. Pull schedule data First we need to pull all the game ID for this particular pitcher for this season. Using get_schedule() function we coded last time, we...","categories": [],
         "tags": ["Python","API","Wrapper","Baseball","MLB","Data","Plotly"],
         "url": "/Strike-Zone/",
+        "teaser": null
+      },{
+        "title": "Sudoku: A systemic approach to Sudoku - Part 1",
+        "excerpt":"Rule of Sudoku Every square has to contain a single number Only the numbers between 1 and 9 (inclusive) can be used Each 3×3 subgrid can only contain each number from 1 to 9 once Each column can only contain each number from 1 to 9 once Each row can...","categories": [],
+        "tags": ["Python","Sudoku","Bruteforce","Backtracking"],
+        "url": "/Sudoku-Part-1/",
         "teaser": null
       }]
