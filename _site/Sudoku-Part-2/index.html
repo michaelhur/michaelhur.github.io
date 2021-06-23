@@ -1,0 +1,1362 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Sudoku: A systemic approach to Sudoku - Part 1 - Michael’s Data Story</title>
+<meta name="description" content="Rule of Sudoku">
+
+
+  <meta name="author" content="Michael Hur">
+  
+  <meta property="article:author" content="Michael Hur">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Michael's Data Story">
+<meta property="og:title" content="Sudoku: A systemic approach to Sudoku - Part 1">
+<meta property="og:url" content="https://michaelhur.github.io/Sudoku-Part-2/">
+
+
+  <meta property="og:description" content="Rule of Sudoku">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-06-23T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://michaelhur.github.io/Sudoku-Part-2/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Michael Hur",
+      "url": "https://michaelhur.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Michael's Data Story Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Michael's Data Story
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://michaelhur.github.io/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://github.com/michaelhur">Project Code</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Michael Hur</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>University of Waterloo Alumnus</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:jhhur716@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/michaelhur" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Sudoku: A systemic approach to Sudoku - Part 1">
+    <meta itemprop="description" content="Rule of Sudoku">
+    <meta itemprop="datePublished" content="2021-06-23T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Sudoku: A systemic approach to Sudoku - Part 1
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          15 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <h2 id="rule-of-sudoku">Rule of Sudoku</h2>
+
+<ul>
+  <li>
+    <p>Every square has to contain a single number</p>
+  </li>
+  <li>
+    <p>Only the numbers between 1 and 9 (inclusive) can be used</p>
+  </li>
+  <li>
+    <p>Each 3×3 subgrid can only contain each number from 1 to 9 once</p>
+  </li>
+  <li>
+    <p>Each column can only contain each number from 1 to 9 once</p>
+  </li>
+  <li>
+    <p>Each row can only contain each number from 1 to 9 once</p>
+  </li>
+</ul>
+
+<h2 id="approaches">Approaches</h2>
+
+<p>Given an unsolved sudoku puzzle, our approach is to</p>
+
+<h3 id="2-crooks-algorithm">2. <a href="https://www.ams.org/notices/200904/rtx090400460p.pdf">Crook’s algorithm</a></h3>
+
+<p>Crook’s algorithm is basically is how a human being would solve the problem. There are a few terms that we need to define in order to put them together</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Mark-up</code>: a <code class="language-plaintext highlighter-rouge">mark-up</code> of a cell is a list of all the possible given the numbers that are already in the grid. For example, the <code class="language-plaintext highlighter-rouge">mark-up</code> of the very first cell of the grid below is <code class="language-plaintext highlighter-rouge">5</code> and <code class="language-plaintext highlighter-rouge">7</code>. We can use mark-up instead of trying each number between 1 and 9. This means a fewer cheks to do and shorter computing time.</li>
+</ol>
+
+<p><img src="http://pi.math.cornell.edu/~mec/Summer2009/meerkamp/Site/Solving_any_Sudoku_II_files/markup.png" alt="An example of mark-up" /></p>
+
+<ol>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Preemptive set</code> is a list of <code class="language-plaintext highlighter-rouge">k</code> numbers (2 &lt;= k &lt;= 8), each between 1 and 9, with the property that only those k numbers can fill k cells. For example, <code class="language-plaintext highlighter-rouge">mark-ups</code> in cell (1,1) and (2,1) for a preemptive set of (5, 7). Those <code class="language-plaintext highlighter-rouge">2</code> cells can be filled in by only (5, 7) which is a set of <code class="language-plaintext highlighter-rouge">2</code> numbers.</p>
+
+    <p>This might sound ambiguous, but is very useful when eliminating candidates from the mark-up of a cell in the same column (or row or 3x3 subgrid). Since numbers 5 and 7 must each occupy one of cells (1, 1) and (2, 1), 5 cannot be in the cell (8,1) in the same column. 5 is then eliminated from the <code class="language-plaintext highlighter-rouge">mark-up</code> of the cell (8,1), leaving it with the only one candidate 4. i.e. the cell (8,1) must be filled with 4.</p>
+  </li>
+</ol>
+
+<p><img src="http://pi.math.cornell.edu/~mec/Summer2009/meerkamp/Site/Solving_any_Sudoku_II_files/preemptive_odd.png" alt="An example of preemptive set" /></p>
+
+<h4 id="crooks-algorithm">Crook’s Algorithm</h4>
+
+<ol>
+  <li>
+    <p>Mark up all the empty cells.</p>
+
+    <p>a) If the mark-up consists of only one number, fill in the cell with the number.</p>
+
+    <p>b) Remove such number from the mark-up of the cells in the same row, column and subgrid.</p>
+  </li>
+  <li>
+    <p>Find preemptive sets.</p>
+
+    <p>a) Whenever a preemptive set is found, cross out the numbers in the preemptive set from the <code class="language-plaintext highlighter-rouge">mark-up</code> of the cells in the same row, column or subgrid.</p>
+
+    <p>b) Repeat until you find no more preemtive set or rule of Sudoku is violated.</p>
+  </li>
+  <li>
+    <p>If the sudoku is not solved by then, or rule of sudoku has not been violated, apply backtracking method from here, but only using the numbers the mark-up instead of all the numbers from 1 to 9.</p>
+  </li>
+</ol>
+
+<h4 id="helper-functions">Helper Functions</h4>
+
+<p>We will build helper functions that check rules of sudoku.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## This puts above two rule checkers together into one function.
+</span>
+<span class="k">def</span> <span class="nf">check_conditions</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>   
+    <span class="c1">## check_conditions: list of lists, int, int, int -&gt; boolean
+</span>    
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">[</span><span class="n">row</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">r</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">==</span> <span class="n">n</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="n">r_start</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
+    <span class="n">c_start</span> <span class="o">=</span> <span class="p">(</span><span class="n">col</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
+    
+    <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">r_start</span> <span class="o">+</span> <span class="n">r</span><span class="p">][</span><span class="n">c_start</span> <span class="o">+</span> <span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        
+    <span class="k">return</span> <span class="bp">True</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">next_empty</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+    <span class="c1">## next_empty(): listof lists -&gt; int, int
+</span>    <span class="c1">## next_empty() is a helper function that searches for the next empty cell in the given sudoku puzzle
+</span>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">:</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">grid</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">row</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+        
+    <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">validateSolution</span><span class="p">(</span><span class="n">sudoku</span><span class="p">):</span>
+    <span class="c1">## To check if it is a valid solution:
+</span>    
+    <span class="c1">## If any cell is empty:
+</span>    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="mi">0</span> <span class="ow">in</span> <span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sudoku</span><span class="p">]):</span>
+        <span class="k">return</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sudoku</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+                <span class="k">return</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+            
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">sudoku</span><span class="p">]:</span>
+                    <span class="k">return</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+                
+    
+        <span class="c1">## In fact, if row and column-wise conditions are met, then subgrid condition is automatically met. 
+</span>        <span class="c1">## But we want to check it explicitly.
+</span>        <span class="k">for</span> <span class="n">r_start</span><span class="p">,</span> <span class="n">c_start</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">([</span><span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="n">c_start</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="n">c_start</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">[</span><span class="n">r_start</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="n">r_start</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]]):</span>
+                <span class="k">return</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+            
+    <span class="k">return</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="crooks-algorithm-1">Crook’s Algorithm</h2>
+
+<ol>
+  <li>
+    <p>Mark up all the empty cells.</p>
+
+    <p>a) If the mark-up consists of only one number, fill in the cell with the number.</p>
+
+    <p>b) Remove such number from the mark-up of the cells in the same row, column and subgrid.</p>
+  </li>
+  <li>
+    <p>Find preemptive sets.</p>
+
+    <p>a) Whenever a preemptive set is found, cross out the numbers in the preemptive set from the <code class="language-plaintext highlighter-rouge">mark-up</code> of the cells in the same row, column or subgrid.</p>
+
+    <p>b) Repeat until you find no more preemtive set or rule of Sudoku is violated.</p>
+  </li>
+  <li>
+    <p>If the sudoku is not solved by then, or rule of sudoku has not been violated, pick any empty cell. Make a guess (i.e. pick a number from the markups), then repeat steps 1 and 2 until you can reduce it as much as possible. Repeat step 3 until the rule is violated or the puzzle is solved.</p>
+  </li>
+</ol>
+
+<h4 id="breakdowns">Breakdowns:</h4>
+
+<h4 id="mark-up">Mark up</h4>
+
+<ol>
+  <li>Define a function that finds the mark-up of an empty cell.</li>
+</ol>
+
+<ul>
+  <li>
+    <p>check_conditions() function come in handy.</p>
+  </li>
+  <li>
+    <p>Hunch is that we find the row and column index of an empty cell using the next_empty() function, then use check_conditions() function to find mark-ups.</p>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<p>Or more easier to read:</p>
+
+<p><img src="http://pi.math.cornell.edu/~mec/Summer2009/meerkamp/Site/Solving_any_Sudoku_II_files/mepham_imcomp_real.png" alt="An example of mark-up" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## Working with one empty cell. The last cell in the first row.
+</span><span class="n">r1</span><span class="p">,</span> <span class="n">c1</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">8</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">itertools</span> 
+
+<span class="n">markup</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">check_conditions</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">r1</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">candidate</span><span class="p">):</span>
+        <span class="n">markup</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+    
+<span class="n">markup</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1, 3, 4]
+</code></pre></div></div>
+
+<p>In order to apply this We cannot use next_empty() without making some manipulation to the function, since there is no insertion at this point. So we will simply loop through each and every cell for the time being</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">markup_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="p">[[]]</span><span class="o">*</span><span class="mi">9</span>
+    
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+        <span class="n">markup</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">check_conditions</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">candidate</span><span class="p">):</span>
+                <span class="n">markup</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+
+        <span class="n">r</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span>
+
+    <span class="n">markup_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">markup_list</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[[], [], [], [], [3, 4], [1, 3, 4], [], [], [1, 3, 4]],
+ [[4, 7], [], [], [], [], [], [4, 9], [], [4, 7]],
+ [[],
+  [4, 7],
+  [],
+  [1, 2, 4, 9],
+  [2, 3, 4, 9],
+  [1, 2, 3, 4, 9],
+  [4, 5, 9],
+  [1, 3, 4, 9],
+  [1, 3, 4, 5, 7]],
+ [[1, 3, 4, 9],
+  [1, 4, 8],
+  [],
+  [2, 4, 9],
+  [],
+  [2, 4, 9],
+  [2, 4, 9],
+  [1, 3, 4, 8, 9],
+  []],
+ [[1, 4, 6, 9],
+  [1, 4, 6],
+  [2, 9],
+  [],
+  [],
+  [],
+  [2, 4, 5, 9],
+  [1, 4, 9],
+  [1, 4, 5]],
+ [[], [4, 8], [2, 3, 8, 9], [2, 4, 9], [], [], [], [3, 4, 8, 9], [3, 4, 8]],
+ [[3, 6, 7], [6, 7, 8], [3, 8], [], [2, 3, 4, 7], [2, 3, 4], [], [4, 8], []],
+ [[1, 7, 9], [], [8, 9], [], [4, 7, 9], [1, 4, 9], [], [], [4, 8]],
+ [[1, 3, 9], [], [], [1, 9], [3, 9], [], [], [], []]]
+</code></pre></div></div>
+
+<p><img src="http://pi.math.cornell.edu/~mec/Summer2009/meerkamp/Site/Solving_any_Sudoku_II_files/mepham_markup.png" alt="" /></p>
+
+<p>Putting it into a function so that we can use it repeatedly.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+    <span class="c1">## get_markup(): listof listof int -&gt; listof listof int
+</span>    <span class="c1">## This helper function returns a list of list of integers
+</span>    <span class="c1">## where each list of integer is a markup of a corresponding cell 
+</span>    <span class="n">markup_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="p">[[]]</span><span class="o">*</span><span class="mi">9</span>
+
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">check_conditions</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">candidate</span><span class="p">):</span>
+                    <span class="n">markup</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+
+            <span class="n">r</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span>
+
+        <span class="n">markup_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        
+    <span class="k">return</span><span class="p">(</span><span class="n">markup_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">markups</span> <span class="o">=</span> <span class="n">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+<span class="n">markups</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[[], [], [], [], [3, 4], [1, 3, 4], [], [], [1, 3, 4]],
+ [[4, 7], [], [], [], [], [], [4, 9], [], [4, 7]],
+ [[],
+  [4, 7],
+  [],
+  [1, 2, 4, 9],
+  [2, 3, 4, 9],
+  [1, 2, 3, 4, 9],
+  [4, 5, 9],
+  [1, 3, 4, 9],
+  [1, 3, 4, 5, 7]],
+ [[1, 3, 4, 9],
+  [1, 4, 8],
+  [],
+  [2, 4, 9],
+  [],
+  [2, 4, 9],
+  [2, 4, 9],
+  [1, 3, 4, 8, 9],
+  []],
+ [[1, 4, 6, 9],
+  [1, 4, 6],
+  [2, 9],
+  [],
+  [],
+  [],
+  [2, 4, 5, 9],
+  [1, 4, 9],
+  [1, 4, 5]],
+ [[], [4, 8], [2, 3, 8, 9], [2, 4, 9], [], [], [], [3, 4, 8, 9], [3, 4, 8]],
+ [[3, 6, 7], [6, 7, 8], [3, 8], [], [2, 3, 4, 7], [2, 3, 4], [], [4, 8], []],
+ [[1, 7, 9], [], [8, 9], [], [4, 7, 9], [1, 4, 9], [], [], [4, 8]],
+ [[1, 3, 9], [], [], [1, 9], [3, 9], [], [], [], []]]
+</code></pre></div></div>
+
+<h4 id="preemptive-set">Preemptive set</h4>
+
+<p>Here, we will work with the markups to find the preemptive set. First we will try to find the preemptive set then find a way to find smaller set by eliminating.</p>
+
+<p>For a list of m numbers to be preemptive, it must have m different cells with the same m markups.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## r2 is the second row of the grid
+</span><span class="n">r2</span> <span class="o">=</span>   <span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]</span>
+<span class="n">r2</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[4, 7], [], [], [], [], [], [4, 9], [], [4, 7]]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">preemptive_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">r2</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">==</span> <span class="n">r2</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">m</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">preemptive_list</span><span class="p">:</span>
+                <span class="n">preemptive_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+                
+<span class="n">preemptive_list</span>            
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[4, 7]]
+</code></pre></div></div>
+
+<p>Now we want to eliminate these numbers from other cell’s markups.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">preemptive_list</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">([[</span><span class="n">y</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">x</span> <span class="k">if</span> <span class="p">(</span><span class="n">y</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">p</span><span class="p">)]</span> <span class="k">if</span> <span class="n">x</span> <span class="o">!=</span> <span class="n">p</span> <span class="k">else</span> <span class="n">p</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">r2</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[4, 7], [], [], [], [], [], [9], [], [4, 7]]
+</code></pre></div></div>
+
+<p>This can be easily manipulated to be applied to column-wise and subgrid-wise operation.</p>
+
+<p>Putting it altogether so that we find preemptive sets for each column, row and subgrid, then eliminate markups using those preemptive sets.</p>
+
+<p>We will first define functions to do so:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">get_preemptive</span><span class="p">(</span><span class="n">listofMarkup</span><span class="p">):</span>
+    
+    <span class="n">preemptive_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">listofMarkup</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">==</span> <span class="n">listofMarkup</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">m</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">preemptive_list</span><span class="p">:</span>
+                    <span class="n">preemptive_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">preemptive_list</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">get_preemptive</span><span class="p">(</span><span class="n">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[4, 7]]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">reduce_markup</span><span class="p">(</span><span class="n">listofMarkup</span><span class="p">,</span> <span class="n">preemptive_list</span><span class="p">):</span>
+    <span class="c1"># compute row-, col- or subgrid-wise
+</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">preemptive_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">listofMarkup</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">preemptive_list</span><span class="p">:</span>
+        <span class="k">return</span><span class="p">([[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">l</span> <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">p</span><span class="p">)]</span> <span class="k">if</span> <span class="n">l</span> <span class="o">!=</span> <span class="n">p</span> <span class="k">else</span> <span class="n">p</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">listofMarkup</span><span class="p">])</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reduce_markup</span><span class="p">(</span><span class="n">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">)[</span><span class="mi">1</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[4, 7], [], [], [], [], [], [9], [], [4, 7]]
+</code></pre></div></div>
+
+<h4 id="now-putting-it-all-together">Now putting it all together…</h4>
+
+<ol>
+  <li>
+    <p>We will find markups for all empty cells in the grid</p>
+  </li>
+  <li>
+    <p>Find preemptive sets for all rows, columns and subgrids, then eliminate candidates from markups</p>
+  </li>
+  <li>
+    <p>If only the markup consists of only one candidate, fill in the cell with such number, then remove this number from all markups in the same row, column and subgrid.</p>
+  </li>
+  <li>
+    <p>Repeat until we cannot reduce the markups</p>
+  </li>
+</ol>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+    <span class="n">markup</span> <span class="o">=</span> <span class="n">markups</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
+    <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+    <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>This line will eliminate markups using preemptive sets in each row. Column can be done in the same manner. We will use <code class="language-plaintext highlighter-rouge">list(map(list, zip(*l)))</code>, where <code class="language-plaintext highlighter-rouge">l</code> is a list of our interest, to transpose the list. Will do the same as we do with the row-wise operation, then transpose back.</p>
+
+<p>For the subgrid, we will use list index to extract the 3x3 subgrid, find preemptive sets and reduce markups, row by row but with only 3 markups per row.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="n">r_s</span><span class="p">,</span> <span class="n">c_s</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)):</span>
+    <span class="n">markup</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">markups</span><span class="p">[</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]]</span>
+    <span class="n">markup</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">markup</span><span class="p">))</span>
+    <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+    <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+    <span class="c1">#print(markup)
+</span>    <span class="c1">#markup_subgrid = [markup[k*3:k*3+3] for k in range(3)]
+</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">markups</span><span class="p">[</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">i</span><span class="p">][</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Putting it all together. This block of codes will keep reducing until we cannot reduce markups. Note that we will enter the markup into the grid if there is only one candidate for the cell. We will define a function that will find a cell with only one candidate, in the similar manner as the next_empty() function in the previous part.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">markups</span> <span class="o">=</span> <span class="n">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+<span class="p">[[</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">listofm</span><span class="p">]</span> <span class="k">for</span> <span class="n">listofm</span> <span class="ow">in</span> <span class="n">markups</span><span class="p">]</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[0, 0, 0, 0, 2, 3, 0, 0, 3],
+ [3, 0, 0, 0, 0, 0, 2, 0, 3],
+ [0, 4, 0, 4, 4, 5, 3, 4, 5],
+ [5, 4, 0, 3, 0, 3, 3, 5, 0],
+ [4, 3, 2, 0, 0, 0, 4, 3, 3],
+ [0, 3, 4, 3, 0, 0, 0, 4, 3],
+ [4, 4, 2, 0, 4, 3, 0, 2, 0],
+ [4, 0, 2, 0, 3, 3, 0, 0, 2],
+ [3, 0, 0, 2, 2, 0, 0, 0, 0]]
+</code></pre></div></div>
+
+<p>This line gives the length (or the number of) of markups in each cell. 0 implies the cell that is already filled in.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+
+<span class="n">markups</span> <span class="o">=</span> <span class="n">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+<span class="n">previous_markups</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span> <span class="nf">next_definite</span><span class="p">(</span><span class="n">markups</span><span class="p">):</span>
+    <span class="n">markup_len</span> <span class="o">=</span> <span class="p">[[</span><span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">listofm</span><span class="p">]</span> <span class="k">for</span> <span class="n">listofm</span> <span class="ow">in</span> <span class="n">markups</span><span class="p">]</span>
+    
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">markup_len</span><span class="p">:</span>
+        <span class="k">if</span> <span class="mi">1</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">markup_len</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">row</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        
+    <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+
+
+<span class="k">while</span> <span class="n">markups</span> <span class="o">!=</span> <span class="n">previous_markups</span><span class="p">:</span>
+    
+    <span class="n">previous_markups</span> <span class="o">=</span> <span class="n">markups</span>
+    
+    <span class="n">def_row</span><span class="p">,</span> <span class="n">def_col</span> <span class="o">=</span> <span class="n">next_definite</span><span class="p">(</span><span class="n">markups</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">def_row</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">grid</span><span class="p">[</span><span class="n">def_row</span><span class="p">][</span><span class="n">def_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">markups</span><span class="p">[</span><span class="n">def_row</span><span class="p">][</span><span class="n">def_col</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">markups</span> <span class="o">=</span> <span class="n">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+        
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+        <span class="n">markup</span> <span class="o">=</span> <span class="n">markups</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
+        <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+        <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+        <span class="n">markups</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span>
+    
+    <span class="n">markups</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">markups</span><span class="p">)))</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+        <span class="n">markup</span> <span class="o">=</span> <span class="n">markups</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+        <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+        <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+        <span class="n">markups</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span>
+    <span class="n">markups</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">markups</span><span class="p">)))</span> 
+    
+    <span class="k">for</span> <span class="n">r_s</span><span class="p">,</span> <span class="n">c_s</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)):</span>
+        <span class="n">markup</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">markups</span><span class="p">[</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]]</span>
+        <span class="n">markup</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">markup</span><span class="p">))</span>
+        <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+        <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+            <span class="n">markups</span><span class="p">[</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">i</span><span class="p">][</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Now we have reached the step where the markup can no longer be reduced and we do not have solution yet. We will make a guess on the first empty cell available, then repeat the above step. To make this easier, we will make the above block of codes function.</p>
+
+<p><img src="http://pi.math.cornell.edu/~mec/Summer2009/meerkamp/Site/Solving_any_Sudoku_II_files/mepham_markup.png" alt="" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">crook</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+    
+    <span class="n">markups</span> <span class="o">=</span> <span class="n">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+    <span class="n">previous_markups</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">while</span> <span class="n">markups</span> <span class="o">!=</span> <span class="n">previous_markups</span><span class="p">:</span>
+
+        <span class="n">previous_markups</span> <span class="o">=</span> <span class="n">markups</span>
+
+<span class="c1">#         def_row, def_col = next_definite(markups)
+</span>
+<span class="c1">#         if def_row is not None:
+#             grid[def_row][def_col] = markups[def_row][def_col][0]
+#             markups = get_markup(grid)
+</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="n">markups</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
+            <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+            <span class="n">markups</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span>
+
+        <span class="n">markups</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">markups</span><span class="p">)))</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="n">markups</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+            <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+            <span class="n">markups</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span>
+        <span class="n">markups</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">markups</span><span class="p">)))</span> 
+
+        <span class="k">for</span> <span class="n">r_s</span><span class="p">,</span> <span class="n">c_s</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)):</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">markups</span><span class="p">[</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]]</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">markup</span><span class="p">))</span>
+            <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                <span class="n">markups</span><span class="p">[</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">i</span><span class="p">][</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span>
+    
+    <span class="n">empty_row</span><span class="p">,</span> <span class="n">empty_col</span> <span class="o">=</span> <span class="n">next_empty</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">empty_row</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">guess</span> <span class="ow">in</span> <span class="n">markups</span><span class="p">[</span><span class="n">empty_row</span><span class="p">][</span><span class="n">empty_col</span><span class="p">]:</span>
+        <span class="c1">#print("Guess in ({r},{c}):{n}".format(r=empty_row, c=empty_col, n=guess))
+</span>        
+        <span class="k">if</span> <span class="n">check_conditions</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">empty_row</span><span class="p">,</span> <span class="n">empty_col</span><span class="p">,</span> <span class="n">guess</span><span class="p">):</span>
+            <span class="n">grid</span><span class="p">[</span><span class="n">empty_row</span><span class="p">][</span><span class="n">empty_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">guess</span>
+
+            <span class="k">if</span> <span class="n">crook</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+                <span class="k">return</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+        
+        <span class="n">grid</span><span class="p">[</span><span class="n">empty_row</span><span class="p">][</span><span class="n">empty_col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        
+    <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">8</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">2</span><span class="p">]]</span>
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">grid_sol</span> <span class="o">=</span> <span class="n">crook</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+<span class="n">grid_sol</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[[2, 9, 5, 7, 4, 3, 8, 6, 1],
+ [4, 3, 1, 8, 6, 5, 9, 2, 7],
+ [8, 7, 6, 1, 9, 2, 5, 4, 3],
+ [3, 8, 7, 4, 5, 9, 2, 1, 6],
+ [6, 1, 2, 3, 8, 7, 4, 9, 5],
+ [5, 4, 9, 2, 1, 6, 7, 3, 8],
+ [7, 6, 3, 5, 2, 4, 1, 8, 9],
+ [9, 2, 8, 6, 7, 1, 3, 5, 4],
+ [1, 5, 4, 9, 3, 8, 6, 7, 2]]
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">validateSolution</span><span class="p">(</span><span class="n">grid_sol</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>True
+</code></pre></div></div>
+
+<p>Voila! We solved the sudoku puzzle with the Crook’s algorithm.</p>
+
+<p>Below is the code put together so that you can try it yourselves!</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">check_conditions</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>   
+    <span class="c1">## check_conditions: list of lists, int, int, int -&gt; boolean
+</span>    
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">[</span><span class="n">row</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="n">r</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">==</span> <span class="n">n</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">]):</span>
+        <span class="k">return</span> <span class="bp">False</span>
+    
+    <span class="n">r_start</span> <span class="o">=</span> <span class="p">(</span><span class="n">row</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
+    <span class="n">c_start</span> <span class="o">=</span> <span class="p">(</span><span class="n">col</span> <span class="o">//</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">3</span>
+    
+    <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">r_start</span> <span class="o">+</span> <span class="n">r</span><span class="p">][</span><span class="n">c_start</span> <span class="o">+</span> <span class="n">c</span><span class="p">]</span> <span class="o">==</span> <span class="n">n</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">False</span>
+        
+    <span class="k">return</span> <span class="bp">True</span>
+
+<span class="k">def</span> <span class="nf">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+    <span class="c1">## get_markup(): listof listof int -&gt; listof listof int
+</span>    <span class="c1">## This helper function returns a list of list of integers
+</span>    <span class="c1">## where each list of integer is a markup of a corresponding cell 
+</span>    <span class="n">markup_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="p">[[]]</span><span class="o">*</span><span class="mi">9</span>
+
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="n">grid</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="n">col</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="k">for</span> <span class="n">candidate</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">check_conditions</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">candidate</span><span class="p">):</span>
+                    <span class="n">markup</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">candidate</span><span class="p">)</span>
+
+            <span class="n">r</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span>
+
+        <span class="n">markup_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+        
+    <span class="k">return</span><span class="p">(</span><span class="n">markup_list</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_preemptive</span><span class="p">(</span><span class="n">listofMarkup</span><span class="p">):</span>
+    
+    <span class="n">preemptive_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">listofMarkup</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">==</span> <span class="n">listofMarkup</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">m</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">preemptive_list</span><span class="p">:</span>
+                    <span class="n">preemptive_list</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">preemptive_list</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">reduce_markup</span><span class="p">(</span><span class="n">listofMarkup</span><span class="p">,</span> <span class="n">preemptive_list</span><span class="p">):</span>
+    <span class="c1"># compute row-, col- or subgrid-wise
+</span>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">preemptive_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">listofMarkup</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">preemptive_list</span><span class="p">:</span>
+        <span class="k">return</span><span class="p">([[</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">l</span> <span class="k">if</span> <span class="p">(</span><span class="n">m</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">p</span><span class="p">)]</span> <span class="k">if</span> <span class="n">l</span> <span class="o">!=</span> <span class="n">p</span> <span class="k">else</span> <span class="n">p</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">listofMarkup</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">next_empty</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+    <span class="c1">## next_empty(): listof lists -&gt; int, int
+</span>    <span class="c1">## next_empty() is a helper function that searches for the next empty cell in the given sudoku puzzle
+</span>    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">:</span>
+        <span class="k">if</span> <span class="mi">0</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">grid</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">row</span><span class="p">.</span><span class="n">index</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+        
+    <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+
+<span class="k">def</span> <span class="nf">crook</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+    
+    <span class="n">markups</span> <span class="o">=</span> <span class="n">get_markup</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+    <span class="n">previous_markups</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">while</span> <span class="n">markups</span> <span class="o">!=</span> <span class="n">previous_markups</span><span class="p">:</span>
+
+        <span class="n">previous_markups</span> <span class="o">=</span> <span class="n">markups</span>
+
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="n">markups</span><span class="p">[</span><span class="n">row</span><span class="p">]</span>
+            <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+            <span class="n">markups</span><span class="p">[</span><span class="n">row</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span>
+
+        <span class="n">markups</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">markups</span><span class="p">)))</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="n">markups</span><span class="p">[</span><span class="n">col</span><span class="p">]</span>
+            <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+            <span class="n">markups</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span>
+        <span class="n">markups</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">markups</span><span class="p">)))</span> 
+
+        <span class="k">for</span> <span class="n">r_s</span><span class="p">,</span> <span class="n">c_s</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)):</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">markups</span><span class="p">[</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]]</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">itertools</span><span class="p">.</span><span class="n">chain</span><span class="p">(</span><span class="o">*</span><span class="n">markup</span><span class="p">))</span>
+            <span class="n">preemptives</span> <span class="o">=</span> <span class="n">get_preemptive</span><span class="p">(</span><span class="n">markup</span><span class="p">)</span>
+            <span class="n">markup</span> <span class="o">=</span> <span class="n">reduce_markup</span><span class="p">(</span><span class="n">markup</span><span class="p">,</span> <span class="n">preemptives</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+                <span class="n">markups</span><span class="p">[</span><span class="n">r_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="n">i</span><span class="p">][</span><span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="n">c_s</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">markup</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span><span class="n">i</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span>
+    
+    <span class="n">empty_row</span><span class="p">,</span> <span class="n">empty_col</span> <span class="o">=</span> <span class="n">next_empty</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">empty_row</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">guess</span> <span class="ow">in</span> <span class="n">markups</span><span class="p">[</span><span class="n">empty_row</span><span class="p">][</span><span class="n">empty_col</span><span class="p">]:</span>
+        
+        <span class="k">if</span> <span class="n">check_conditions</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">empty_row</span><span class="p">,</span> <span class="n">empty_col</span><span class="p">,</span> <span class="n">guess</span><span class="p">):</span>
+            <span class="n">grid</span><span class="p">[</span><span class="n">empty_row</span><span class="p">][</span><span class="n">empty_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">guess</span>
+
+            <span class="k">if</span> <span class="n">crook</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+                <span class="k">return</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+        
+        <span class="n">grid</span><span class="p">[</span><span class="n">empty_row</span><span class="p">][</span><span class="n">empty_col</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        
+    <span class="k">return</span> <span class="bp">False</span>
+
+
+<span class="k">def</span> <span class="nf">validateSolution</span><span class="p">(</span><span class="n">sudoku</span><span class="p">):</span>
+    <span class="c1">## To check if it is a valid solution:
+</span>    
+    <span class="c1">## If any cell is empty:
+</span>    <span class="k">if</span> <span class="nb">any</span><span class="p">([</span><span class="mi">0</span> <span class="ow">in</span> <span class="n">row</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sudoku</span><span class="p">]):</span>
+        <span class="k">return</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sudoku</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+                <span class="k">return</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+            
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">9</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="n">r</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">sudoku</span><span class="p">]:</span>
+                    <span class="k">return</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+                
+    
+        <span class="c1">## In fact, if row and column-wise conditions are met, then subgrid condition is automatically met. 
+</span>        <span class="c1">## But we want to check it explicitly.
+</span>        <span class="k">for</span> <span class="n">r_start</span><span class="p">,</span> <span class="n">c_start</span> <span class="ow">in</span> <span class="n">itertools</span><span class="p">.</span><span class="n">product</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">([</span><span class="n">n</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">row</span><span class="p">[</span><span class="n">c_start</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="n">c_start</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">[</span><span class="n">r_start</span> <span class="o">*</span> <span class="mi">3</span><span class="p">:</span> <span class="n">r_start</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="p">]]):</span>
+                <span class="k">return</span><span class="p">(</span><span class="bp">False</span><span class="p">)</span>
+            
+    <span class="k">return</span><span class="p">(</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#backtracking" class="page__taxonomy-item" rel="tag">Backtracking</a><span class="sep">, </span>
+    
+      <a href="/tags/#bruteforce" class="page__taxonomy-item" rel="tag">Bruteforce</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">Python</a><span class="sep">, </span>
+    
+      <a href="/tags/#sudoku" class="page__taxonomy-item" rel="tag">Sudoku</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-06-23T00:00:00+09:00">June 23, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Sudoku%3A+A+systemic+approach+to+Sudoku+-+Part+1%20https%3A%2F%2Fmichaelhur.github.io%2FSudoku-Part-2%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmichaelhur.github.io%2FSudoku-Part-2%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmichaelhur.github.io%2FSudoku-Part-2%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/Sudoku-Part-1/" class="pagination--pager" title="Sudoku: A systemic approach to Sudoku - Part 1
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/Sudoku-Part-1/" rel="permalink">Sudoku: A systemic approach to Sudoku - Part 1
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          7 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Rule of Sudoku
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/Strike-Zone/" rel="permalink">PyMLB to plot Pitch f/x data
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">This time we will look at what the strike zone looks like for a Korean Pitcher “Ryu Hyun-Jin.”
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/MongoDB/" rel="permalink">NoSQL and SQL - Part 1
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Introduction
+It is not always the case that perfectly cleaned and prepared data is available for data scientitsts to work with. In many times, data preproces...</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/PyMLB/" rel="permalink">PyMLB: Exploring MLB Data using Python
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          7 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">Sabermetrics: Analysis of Baseball
+As Bill James said “sabermetrics is the search for objective knowledge about baseball.” Unlike the classical baseball stat...</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:jhhur716@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/michaelhur" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Michael Hur. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
