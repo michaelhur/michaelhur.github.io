@@ -29,9 +29,9 @@ var store = [{
         "url": "/Sudoku-Part-1/",
         "teaser": null
       },{
-        "title": "Sudoku: A systemic approach to Sudoku - Part 1",
+        "title": "Sudoku: A systemic approach to Sudoku - Part 2",
         "excerpt":"Rule of Sudoku Every square has to contain a single number Only the numbers between 1 and 9 (inclusive) can be used Each 3×3 subgrid can only contain each number from 1 to 9 once Each column can only contain each number from 1 to 9 once Each row can...","categories": [],
-        "tags": ["Python","Sudoku","Bruteforce","Backtracking"],
+        "tags": ["Python","Sudoku","Crook","Algorithm"],
         "url": "/Sudoku-Part-2/",
         "teaser": null
       }]

@@ -1,10 +1,10 @@
 ---
-title: "Sudoku: A systemic approach to Sudoku - Part 1"
+title: "Sudoku: A systemic approach to Sudoku - Part 2"
 tags:
   - Python
   - Sudoku
-  - Bruteforce
-  - Backtracking
+  - Crook
+  - Algorithm
 toc: false
 ---
 
