@@ -34,4 +34,10 @@ var store = [{
         "tags": ["Python","Sudoku","Crook","Algorithm"],
         "url": "/Sudoku-Part-2/",
         "teaser": null
+      },{
+        "title": "코드스테이츠 AI 부트캠프 참가",
+        "excerpt":"Background 2018년 10월까지 회사에서 Data Analyst로 일하였다. 비록 데이터 “분석가”로 취직하였지만 색달랐던 팀 운영 방식은 나를 Data Scientist로 성장시켰다. 이 곳에서 일하는 것은 너무나도 즐거웠다. 분석에서 끝나는 것이 아니라 분석에서 시작하고 새로운 것을 내 스스로 만들어낸다는 것이 말이다. Business 관련 인력과 UI/UX 관련 인력을 제외하면 모두가 Data Scientist로서 “이 데이터로...","categories": [],
+        "tags": ["Python","AI","Machine Learning","Data"],
+        "url": "/%EC%BD%94%EB%93%9C%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%B8%A0/",
+        "teaser": null
       }]
