@@ -58,4 +58,10 @@ var store = [{
         "tags": [],
         "url": "/2.4-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%98-%EC%97%94%EC%A7%84-%EA%B7%B8%EB%9E%98%EB%94%94%EC%96%B8%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%B5%9C%EC%A0%81%ED%99%94/",
         "teaser": null
+      },{
+        "title": "신경망의 구조",
+        "excerpt":"신경망 훈련에는 다음 요소들이 관련되어있다. 네트워크 (모델)을 구성하는 층 (Layer) 입력 데이터와 상응하는 타깃 학습에 사용할 피드백 신호를 정의하는 손실 함수 (Loss Function) 학습 진행 방식을 결정하는 Optimizer 연속된 층으로 구성된 네트워크가 입력 데이터를 예측으로 매핑 $x$ -&gt; $\\hat{y}$ 손실 함수는 예측과 타깃을 비교하여 네트워크의 예측이 기댓값에 얼마나 잘 맞는지...","categories": [],
+        "tags": [],
+        "url": "/%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%98-%EA%B5%AC%EC%A1%B0/",
+        "teaser": null
       }]
