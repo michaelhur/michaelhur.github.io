@@ -1,0 +1,989 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.23.0 by Michael Rose
+  Copyright 2013-2020 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Reuter 데이터셋을 이용한 다중 분류 - Michael’s Data Story</title>
+<meta name="description" content="이번 포스트에서는 Reuter News Dataset을 사용하여 46개의 토픽으로 분류하는 신경망을 만들어 본다. 클래스가 많은 다중 분류 multiclass classification의 예시이다.">
+
+
+  <meta name="author" content="Michael Hur">
+  
+  <meta property="article:author" content="Michael Hur">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Michael's Data Story">
+<meta property="og:title" content="Reuter 데이터셋을 이용한 다중 분류">
+<meta property="og:url" content="https://michaelhur.github.io/Reuters-News-Classification/">
+
+
+  <meta property="og:description" content="이번 포스트에서는 Reuter News Dataset을 사용하여 46개의 토픽으로 분류하는 신경망을 만들어 본다. 클래스가 많은 다중 분류 multiclass classification의 예시이다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2021-07-16T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="https://michaelhur.github.io/Reuters-News-Classification/">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Michael Hur",
+      "url": "https://michaelhur.github.io/"
+    
+  }
+</script>
+
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Michael's Data Story Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Michael's Data Story
+          
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="https://michaelhur.github.io/">Home</a>
+            </li><li class="masthead__menu-item">
+              <a href="/year-archive/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="https://github.com/michaelhur">Project Code</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Michael Hur</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>University of Waterloo Alumnus</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li itemprop="homeLocation" itemscope itemtype="https://schema.org/Place">
+          <i class="fas fa-fw fa-map-marker-alt" aria-hidden="true"></i> <span itemprop="name">Seoul, Korea</span>
+        </li>
+      
+
+      
+        
+          
+            <li><a href="mailto:jhhur716@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i><span class="label">Email</span></a></li>
+          
+        
+          
+            <li><a href="https://github.com/michaelhur" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Reuter 데이터셋을 이용한 다중 분류">
+    <meta itemprop="description" content="이번 포스트에서는 Reuter News Dataset을 사용하여 46개의 토픽으로 분류하는 신경망을 만들어 본다. 클래스가 많은 다중 분류 multiclass classification의 예시이다.">
+    <meta itemprop="datePublished" content="2021-07-16T00:00:00+09:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Reuter 데이터셋을 이용한 다중 분류
+</h1>
+          
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          9 minute read
+        
+      </span>
+    
+  </p>
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On this page</h4></header>
+              <ul class="toc__menu"><li><a href="#로이터-데이터셋">로이터 데이터셋</a><ul><li><a href="#데이터셋-로드하기">데이터셋 로드하기</a></li><li><a href="#로이터-데이터셋을-텍스트로-디코딩하기">로이터 데이터셋을 텍스트로 디코딩하기</a></li></ul></li></ul></li><li><a href="#데이터-준비">데이터 준비</a><ul><li><a href="#데이터-인코딩하기">데이터 인코딩하기</a></li></ul></li></ul></li><li><a href="#모델-구성">모델 구성</a><ul><li><a href="#모델-정의하기">모델 정의하기</a></li><li><a href="#모델-컴파일">모델 컴파일</a></li></ul></li></ul></li><li><a href="#훈련-검증">훈련 검증</a><ul><li><a href="#검증-세트-준비하기">검증 세트 준비하기</a></li><li><a href="#모델-훈련하기">모델 훈련하기</a></li><li><a href="#훈련과-검증-손실-그리기">훈련과 검증 손실 그리기</a></li><li><a href="#처음부터-다시-훈련하기">처음부터 다시 훈련하기</a></li></ul></li></ul></li><li><a href="#새로운-데이터로-예측하기">새로운 데이터로 예측하기</a></li><li><a href="#충분히-큰-중간-층을-두어야-하는-이유">충분히 큰 중간 층을 두어야 하는 이유</a></li></ul>
+
+            </nav>
+          </aside>
+        
+        <p>이번 포스트에서는 Reuter News Dataset을 사용하여 46개의 토픽으로 분류하는 신경망을 만들어 본다. 클래스가 많은 다중 분류 <strong>multiclass classification</strong>의 예시이다.</p>
+
+<ul>
+  <li>더 정확히 하자면 단일 레이블 다중 분류 <strong>single-label, multiclass classification</strong> 문제이다.</li>
+  <li>각 데이터 포인트가 여러개 범주에 속할 수 있다면 다중 레이블 다중 분류 <strong>multi-label, multiclass classification</strong> 문제가 된다.</li>
+</ul>
+
+<h3 id="로이터-데이터셋">로이터 데이터셋</h3>
+
+<p>1986년에 로이터가 공개한 이 데이터셋은 텍스트 분류를 위해 널리 사용된다. 46개의 토픽이 있으며 어떤 토픽은 다른 것에 비해 데이터가 많다. (불균형한 데이터). 각 토픽은 훈련 세트에 최소한 10개의 샘플을 가지고 있다.</p>
+
+<h5 id="데이터셋-로드하기">데이터셋 로드하기</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.datasets</span> <span class="kn">import</span> <span class="n">reuters</span>
+
+<span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">),</span> <span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">test_labels</span><span class="p">)</span> <span class="o">=</span> <span class="n">reuters</span><span class="p">.</span><span class="n">load_data</span><span class="p">(</span><span class="n">num_words</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/home/jhhur/anaconda3/envs/TIL/lib/python3.8/site-packages/tensorflow/python/keras/datasets/reuters.py:148: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  x_train, y_train = np.array(xs[:idx]), np.array(labels[:idx])
+/home/jhhur/anaconda3/envs/TIL/lib/python3.8/site-packages/tensorflow/python/keras/datasets/reuters.py:149: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray.
+  x_test, y_test = np.array(xs[idx:]), np.array(labels[idx:])
+</code></pre></div></div>
+
+<p>이전 포스트인 IMDB 이진 분류 문제처럼 <code class="language-plaintext highlighter-rouge">num_words = 10000</code>를 사용하여  가장 자주 등장하는 단어 1만개로 제한한다.</p>
+
+<p>이 데이터 셋에는 8982개의 훈련 샘플과 2246개의 테스트 샘플이 있다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
+<span class="mi">8982</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+<span class="mi">2246</span>
+</code></pre></div></div>
+
+<p>또한 각 샘플은 정수 리스트이다. (단어 인덱스)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">train_data</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">245</span><span class="p">,</span> <span class="mi">273</span><span class="p">,</span> <span class="p">...</span> <span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>샘플에 연결된 레이블은 토픽의 인덱스로 0과 45 사이의 정수이다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">train_label</span><span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+<span class="mi">3</span>
+</code></pre></div></div>
+
+<h5 id="로이터-데이터셋을-텍스트로-디코딩하기">로이터 데이터셋을 텍스트로 디코딩하기</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">word_index</span> <span class="o">=</span> <span class="n">reuters</span><span class="p">.</span><span class="n">get_word_index</span><span class="p">()</span>
+<span class="n">reverse_word_index</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">([(</span><span class="n">value</span><span class="p">,</span> <span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">word_index</span><span class="p">.</span><span class="n">items</span><span class="p">()])</span>
+<span class="n">decoded_newswire</span> <span class="o">=</span> <span class="s">" "</span><span class="p">.</span><span class="n">join</span><span class="p">([</span><span class="n">reverse_word_index</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="mi">3</span><span class="p">,</span> <span class="s">"?"</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">train_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">decoded_newswire</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'? ? ? said as a result of its december acquisition of space co it expects earnings per share in 1987 of 1 15 to 1 30 dlrs per share up from 70 cts in 1986 the company said pretax net should rise to nine to 10 mln dlrs from six mln dlrs in 1986 and rental operation revenues to 19 to 22 mln dlrs from 12 5 mln dlrs it said cash flow per share this year should be 2 50 to three dlrs reuter 3'
+</code></pre></div></div>
+
+<h3 id="데이터-준비">데이터 준비</h3>
+
+<h5 id="데이터-인코딩하기">데이터 인코딩하기</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+
+<span class="k">def</span> <span class="nf">vectorize_sequences</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="n">dimension</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">sequences</span><span class="p">),</span> <span class="n">dimension</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sequence</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sequences</span><span class="p">):</span>
+        <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">sequence</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+    <span class="k">return</span> <span class="n">results</span>
+
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">vectorize_sequences</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">vectorize_sequences</span><span class="p">(</span><span class="n">test_data</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>두가지 방법으로 레이블을 벡터로 바꿀 수 있다.</p>
+<ol>
+  <li>레이블의 리스트를 정수 텐서로 변환하기</li>
+  <li>One-hot encoding 사용하기</li>
+</ol>
+
+<p>원핫 인코딩이 범주형 데이터에 널리 사용되기 때문에 <strong>범주형 인코딩 (categorical encoding)</strong>이라고 불린다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">to_one_hot</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">dimension</span> <span class="o">=</span> <span class="mi">46</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">),</span> <span class="n">dimension</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">labels</span><span class="p">):</span>
+        <span class="n">results</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+    <span class="k">return</span> <span class="n">results</span>
+
+<span class="n">one_hot_train_labels</span> <span class="o">=</span> <span class="n">to_one_hot</span><span class="p">(</span><span class="n">train_labels</span><span class="p">)</span>
+<span class="n">one_hot_test_labels</span> <span class="o">=</span> <span class="n">to_one_hot</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>또는 Keras에 내장되어 있는 함수를 사용하여도 된다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras.utils.np_utils</span> <span class="kn">import</span> <span class="n">to_categorical</span>
+
+<span class="n">one_hot_train_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">train_labels</span><span class="p">)</span>
+<span class="n">one_hot_test_labels</span> <span class="o">=</span> <span class="n">to_categorical</span><span class="p">(</span><span class="n">test_labels</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="모델-구성">모델 구성</h3>
+
+<p>IMDB 이진 분류 문제와 다르게 새로운 <em>제약</em>이 추가되었다. 출력 클래스의 개수가 2개에서 46개로 늘어났다. 출력 공간의 차원이 훨씬 커졌다는 뜻이다.</p>
+
+<p>Dense 층을 쌓으면 각 층은 이전 층의 출력에서 제공한 정보만 사용할 수 있다. 한 층이 분류 문제에 필요한 일부 정보를 누락하면 그 다음 층에서 이를 복원할 방법이 없다. 각 층은 잠재적으로 <strong>정보의 병목(information bottleneck)</strong>이 될 수 있다. IMDB에서 16차원을 가진 중간 층을 사용하였지만, 16차원은 46개의 클래스를 구분하기에 너무 제약이 많다.</p>
+
+<p>이번 예제에서는 더 규모가 큰 층인 64개의 히든 유닛을 사용할 것이다.</p>
+
+<h5 id="모델-정의하기">모델 정의하기</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">models</span><span class="p">,</span> <span class="n">layers</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,)))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'softmax'</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>이 구조에서 주목해야 할 점이 2가지 있다.</p>
+
+<ol>
+  <li>마지막 Dense 층의 크기가 46이다. 각 입력 샘플에 대해서 46차원의 벡터를 출력한다는 뜻. 각 원소는 각기 다른 출력 클래스이다.</li>
+  <li>마지막 층에 <code class="language-plaintext highlighter-rouge">softmax</code> 활성화 함수가 사용되었다. 각 입력 샘플마다 46개의 출력 클래스에 대한 확률 분포를 출력한다.</li>
+</ol>
+
+<p>이런 문제에 사용할 최선의 손실 함수는 <code class="language-plaintext highlighter-rouge">categorical_crossentropy</code>이다.</p>
+<ul>
+  <li>이 함수는 두 확률 분포 사이의 거리를 측정</li>
+  <li>네트워크가 출력한 확률 분포와 진짜 레이블의 분포 사이의 거리 측정</li>
+  <li>두 분포 사이의 거리를 최소화 하면 진짜 레이블에 가까운 출력이 가능</li>
+</ul>
+
+<h5 id="모델-컴파일">모델 컴파일</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span> <span class="o">=</span> <span class="s">'rmsprop'</span><span class="p">,</span>
+              <span class="n">loss</span> <span class="o">=</span> <span class="s">'categorical_crossentropy'</span><span class="p">,</span>
+              <span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="훈련-검증">훈련 검증</h3>
+
+<h5 id="검증-세트-준비하기">검증 세트 준비하기</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x_val</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span>
+<span class="n">partial_x_train</span> <span class="o">=</span> <span class="n">x_train</span><span class="p">[</span><span class="mi">1000</span><span class="p">:]</span>
+
+<span class="n">y_val</span> <span class="o">=</span> <span class="n">one_hot_train_labels</span><span class="p">[:</span><span class="mi">1000</span><span class="p">]</span>
+<span class="n">partial_y_train</span> <span class="o">=</span> <span class="n">one_hot_train_labels</span><span class="p">[</span><span class="mi">1000</span><span class="p">:]</span>
+</code></pre></div></div>
+
+<h5 id="모델-훈련하기">모델 훈련하기</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">partial_x_train</span><span class="p">,</span>
+                    <span class="n">partial_y_train</span><span class="p">,</span>
+                    <span class="n">epochs</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+                    <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span>
+                    <span class="n">validation_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch 1/20
+16/16 [==============================] - 1s 20ms/step - loss: 3.2085 - accuracy: 0.4064 - val_loss: 1.8043 - val_accuracy: 0.6340
+Epoch 2/20
+16/16 [==============================] - 0s 7ms/step - loss: 1.5719 - accuracy: 0.6851 - val_loss: 1.3592 - val_accuracy: 0.7080
+Epoch 3/20
+16/16 [==============================] - 0s 8ms/step - loss: 1.1214 - accuracy: 0.7611 - val_loss: 1.1631 - val_accuracy: 0.7550
+Epoch 4/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.8840 - accuracy: 0.8144 - val_loss: 1.0542 - val_accuracy: 0.7880
+Epoch 5/20
+16/16 [==============================] - 0s 8ms/step - loss: 0.6872 - accuracy: 0.8547 - val_loss: 0.9843 - val_accuracy: 0.8100
+Epoch 6/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.5552 - accuracy: 0.8898 - val_loss: 0.9774 - val_accuracy: 0.7960
+Epoch 7/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.4544 - accuracy: 0.9095 - val_loss: 0.9175 - val_accuracy: 0.8190
+Epoch 8/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.3542 - accuracy: 0.9318 - val_loss: 0.9309 - val_accuracy: 0.8060
+Epoch 9/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.2880 - accuracy: 0.9371 - val_loss: 0.9235 - val_accuracy: 0.8120
+Epoch 10/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.2351 - accuracy: 0.9489 - val_loss: 0.9145 - val_accuracy: 0.8200
+Epoch 11/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.1942 - accuracy: 0.9551 - val_loss: 0.9180 - val_accuracy: 0.8210
+Epoch 12/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.1800 - accuracy: 0.9529 - val_loss: 0.9487 - val_accuracy: 0.8160
+Epoch 13/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.1470 - accuracy: 0.9612 - val_loss: 0.9416 - val_accuracy: 0.8140
+Epoch 14/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.1391 - accuracy: 0.9599 - val_loss: 1.0056 - val_accuracy: 0.8050
+Epoch 15/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.1270 - accuracy: 0.9618 - val_loss: 1.0359 - val_accuracy: 0.8060
+Epoch 16/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.1257 - accuracy: 0.9600 - val_loss: 1.0527 - val_accuracy: 0.7980
+Epoch 17/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.1211 - accuracy: 0.9596 - val_loss: 1.0071 - val_accuracy: 0.8090
+Epoch 18/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.1030 - accuracy: 0.9631 - val_loss: 1.0524 - val_accuracy: 0.8060
+Epoch 19/20
+16/16 [==============================] - 0s 7ms/step - loss: 0.1084 - accuracy: 0.9617 - val_loss: 1.0974 - val_accuracy: 0.7990
+Epoch 20/20
+16/16 [==============================] - 0s 5ms/step - loss: 0.1061 - accuracy: 0.9616 - val_loss: 1.0775 - val_accuracy: 0.7990
+</code></pre></div></div>
+
+<h5 id="훈련과-검증-손실-그리기">훈련과 검증 손실 그리기</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">loss</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'loss'</span><span class="p">]</span>
+<span class="n">val_loss</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'val_loss'</span><span class="p">]</span>
+
+<span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">loss</span><span class="p">,</span> <span class="s">'bo'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">"Training Loss"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">"Validation Loss"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Training and Validation Loss"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Epochs"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"Loss"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="3.5%20%EB%8B%A4%EC%A4%91%20%EB%B6%84%EB%A5%98%20%EB%AC%B8%EC%A0%9C_files/3.5%20%EB%8B%A4%EC%A4%91%20%EB%B6%84%EB%A5%98%20%EB%AC%B8%EC%A0%9C_31_0.png" alt="png" /></p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">acc</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'accuracy'</span><span class="p">]</span>
+<span class="n">val_acc</span> <span class="o">=</span> <span class="n">history</span><span class="p">.</span><span class="n">history</span><span class="p">[</span><span class="s">'val_accuracy'</span><span class="p">]</span>
+
+<span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">acc</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">acc</span><span class="p">,</span> <span class="s">'bo'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">"Training acc"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">val_acc</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s">"Validation acc"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">title</span><span class="p">(</span><span class="s">"Training and Validation acc"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">"Epochs"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">"acc"</span><span class="p">)</span>
+<span class="n">plt</span><span class="p">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="3.5%20%EB%8B%A4%EC%A4%91%20%EB%B6%84%EB%A5%98%20%EB%AC%B8%EC%A0%9C_files/3.5%20%EB%8B%A4%EC%A4%91%20%EB%B6%84%EB%A5%98%20%EB%AC%B8%EC%A0%9C_32_0.png" alt="png" /></p>
+
+<h5 id="처음부터-다시-훈련하기">처음부터 다시 훈련하기</h5>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,)))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'softmax'</span><span class="p">))</span>
+
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span> <span class="o">=</span> <span class="s">'rmsprop'</span><span class="p">,</span>
+              <span class="n">loss</span> <span class="o">=</span> <span class="s">'categorical_crossentropy'</span><span class="p">,</span>
+              <span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">partial_x_train</span><span class="p">,</span>
+          <span class="n">partial_y_train</span><span class="p">,</span>
+          <span class="n">epochs</span> <span class="o">=</span> <span class="mi">9</span><span class="p">,</span>
+          <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span>
+          <span class="n">validation_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">))</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">one_hot_test_labels</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch 1/9
+16/16 [==============================] - 0s 13ms/step - loss: 3.1092 - accuracy: 0.3965 - val_loss: 1.7400 - val_accuracy: 0.6730
+Epoch 2/9
+16/16 [==============================] - 0s 7ms/step - loss: 1.5049 - accuracy: 0.7043 - val_loss: 1.3022 - val_accuracy: 0.7030
+Epoch 3/9
+16/16 [==============================] - 0s 7ms/step - loss: 1.0688 - accuracy: 0.7765 - val_loss: 1.1229 - val_accuracy: 0.7590
+Epoch 4/9
+16/16 [==============================] - 0s 7ms/step - loss: 0.8287 - accuracy: 0.8292 - val_loss: 1.0413 - val_accuracy: 0.7610
+Epoch 5/9
+16/16 [==============================] - 0s 7ms/step - loss: 0.6459 - accuracy: 0.8652 - val_loss: 0.9639 - val_accuracy: 0.8020
+Epoch 6/9
+16/16 [==============================] - 0s 7ms/step - loss: 0.5364 - accuracy: 0.8854 - val_loss: 0.9260 - val_accuracy: 0.8070
+Epoch 7/9
+16/16 [==============================] - 0s 7ms/step - loss: 0.4340 - accuracy: 0.9093 - val_loss: 0.8961 - val_accuracy: 0.8210
+Epoch 8/9
+16/16 [==============================] - 0s 7ms/step - loss: 0.3660 - accuracy: 0.9240 - val_loss: 0.9162 - val_accuracy: 0.8120
+Epoch 9/9
+16/16 [==============================] - 0s 5ms/step - loss: 0.2901 - accuracy: 0.9421 - val_loss: 0.9431 - val_accuracy: 0.8040
+71/71 [==============================] - 0s 1ms/step - loss: 1.0149 - accuracy: 0.7814
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">results</span>
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[1.0149332284927368, 0.7813891172409058]
+</code></pre></div></div>
+
+<p>대략 78%의 정확도를 달성했다. 균형 잡힌 이진 분류 문제에서 완전히 무작위로 분류하면 대략 50%의 정확도를 달성한다. 이 문제는 불균형한 데이터셋을 사용하므로 무작위로 분류하면 18% 정도를 달성한다. 78%는 매우 좋은 결과인다.</p>
+
+<h3 id="새로운-데이터로-예측하기">새로운 데이터로 예측하기</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>predictions의 각 항목은 길이가 46인 벡터</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">shape</span>
+<span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="p">)</span>
+</code></pre></div></div>
+
+<p>이 벡터 원소의 합은 1</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="nb">sum</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="mf">1.0</span>
+</code></pre></div></div>
+
+<p>가장 큰 값이 예측 클래스가 된다. 즉, 가장 확률이 높은 클래스이다.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;&gt;&gt;</span> <span class="n">np</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="mi">3</span>
+</code></pre></div></div>
+
+<h3 id="충분히-큰-중간-층을-두어야-하는-이유">충분히 큰 중간 층을 두어야 하는 이유</h3>
+
+<p>앞서 언급한 것처럼 마지막 출력이 46차원이기 때문에 중간 층의 히든 유닛이 46개보다 많이 적어서는 안된다. 46차원보다 훨씬 작은 중간층 (예를 들어 4차원)을 두면 정보의 병목이 어떻게 나오는지 알아보자</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">model</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">,</span> <span class="n">input_shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10000</span><span class="p">,)))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'relu'</span><span class="p">))</span>
+<span class="n">model</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">layers</span><span class="p">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">46</span><span class="p">,</span> <span class="n">activation</span> <span class="o">=</span> <span class="s">'softmax'</span><span class="p">))</span>
+
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span> <span class="o">=</span> <span class="s">'rmsprop'</span><span class="p">,</span>
+              <span class="n">loss</span> <span class="o">=</span> <span class="s">'categorical_crossentropy'</span><span class="p">,</span>
+              <span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s">'accuracy'</span><span class="p">])</span>
+
+<span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">partial_x_train</span><span class="p">,</span>
+          <span class="n">partial_y_train</span><span class="p">,</span>
+          <span class="n">epochs</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+          <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span><span class="p">,</span>
+          <span class="n">validation_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">))</span>
+
+</code></pre></div></div>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Epoch 1/20
+63/63 [==============================] - 0s 4ms/step - loss: 3.5416 - accuracy: 0.0766 - val_loss: 2.8293 - val_accuracy: 0.2530
+Epoch 2/20
+63/63 [==============================] - 0s 3ms/step - loss: 2.5228 - accuracy: 0.2638 - val_loss: 1.8646 - val_accuracy: 0.3940
+Epoch 3/20
+63/63 [==============================] - 0s 3ms/step - loss: 1.5543 - accuracy: 0.5971 - val_loss: 1.4314 - val_accuracy: 0.6580
+Epoch 4/20
+63/63 [==============================] - 0s 3ms/step - loss: 1.1322 - accuracy: 0.7164 - val_loss: 1.3038 - val_accuracy: 0.6980
+Epoch 5/20
+63/63 [==============================] - 0s 2ms/step - loss: 0.9800 - accuracy: 0.7491 - val_loss: 1.2486 - val_accuracy: 0.7160
+Epoch 6/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.8827 - accuracy: 0.7752 - val_loss: 1.2386 - val_accuracy: 0.7220
+Epoch 7/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.7927 - accuracy: 0.7927 - val_loss: 1.2492 - val_accuracy: 0.7270
+Epoch 8/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.7404 - accuracy: 0.8055 - val_loss: 1.3159 - val_accuracy: 0.7120
+Epoch 9/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.6900 - accuracy: 0.8128 - val_loss: 1.3179 - val_accuracy: 0.7150
+Epoch 10/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.6728 - accuracy: 0.8164 - val_loss: 1.3441 - val_accuracy: 0.7220
+Epoch 11/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.5893 - accuracy: 0.8339 - val_loss: 1.3639 - val_accuracy: 0.7200
+Epoch 12/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.5442 - accuracy: 0.8445 - val_loss: 1.3757 - val_accuracy: 0.7180
+Epoch 13/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.5342 - accuracy: 0.8352 - val_loss: 1.4329 - val_accuracy: 0.7140
+Epoch 14/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.5066 - accuracy: 0.8437 - val_loss: 1.4846 - val_accuracy: 0.7210
+Epoch 15/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.4779 - accuracy: 0.8517 - val_loss: 1.5542 - val_accuracy: 0.7080
+Epoch 16/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.4478 - accuracy: 0.8578 - val_loss: 1.5465 - val_accuracy: 0.7190
+Epoch 17/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.4284 - accuracy: 0.8690 - val_loss: 1.6232 - val_accuracy: 0.7140
+Epoch 18/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.3961 - accuracy: 0.8813 - val_loss: 1.7335 - val_accuracy: 0.7040
+Epoch 19/20
+63/63 [==============================] - 0s 3ms/step - loss: 0.3880 - accuracy: 0.8807 - val_loss: 1.8055 - val_accuracy: 0.7000
+Epoch 20/20
+63/63 [==============================] - 0s 2ms/step - loss: 0.3787 - accuracy: 0.8820 - val_loss: 1.8237 - val_accuracy: 0.7090
+
+
+
+
+
+&lt;tensorflow.python.keras.callbacks.History at 0x7fef1c8b41f0&gt;
+</code></pre></div></div>
+
+<p>검증 정확도는 71%로 약 7% 정도 감소했다. 이런 손실의 원인 대부분은 많은 정보를 중간층의 저차원 표현 공간으로 압축하려고 했기 때문. 이 네트워크는 필요한 정보 대부분을 4차원 표현 안에 구겨 넣었지만 전부를 넣지는 못하였다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#binary-classification" class="page__taxonomy-item" rel="tag">Binary Classification</a><span class="sep">, </span>
+    
+      <a href="/tags/#deep-learing" class="page__taxonomy-item" rel="tag">Deep Learing</a><span class="sep">, </span>
+    
+      <a href="/tags/#imdb" class="page__taxonomy-item" rel="tag">IMDB</a><span class="sep">, </span>
+    
+      <a href="/tags/#keras" class="page__taxonomy-item" rel="tag">Keras</a><span class="sep">, </span>
+    
+      <a href="/tags/#machine-learning" class="page__taxonomy-item" rel="tag">Machine Learning</a><span class="sep">, </span>
+    
+      <a href="/tags/#neural-network" class="page__taxonomy-item" rel="tag">Neural Network</a><span class="sep">, </span>
+    
+      <a href="/tags/#python" class="page__taxonomy-item" rel="tag">Python</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2021-07-16T00:00:00+09:00">July 16, 2021</time></p>
+
+
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Reuter+%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B%EC%9D%84+%EC%9D%B4%EC%9A%A9%ED%95%9C+%EB%8B%A4%EC%A4%91+%EB%B6%84%EB%A5%98%20https%3A%2F%2Fmichaelhur.github.io%2FReuters-News-Classification%2F" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmichaelhur.github.io%2FReuters-News-Classification%2F" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fmichaelhur.github.io%2FReuters-News-Classification%2F" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="Share on LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/IMDB-Binary-Classification/" class="pagination--pager" title="IMDM 데이터셋을 이용한 이진 분류
+">Previous</a>
+    
+    
+      <a href="#" class="pagination--pager disabled">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">You may also enjoy</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/IMDB-Binary-Classification/" rel="permalink">IMDM 데이터셋을 이용한 이진 분류
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          8 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">IMDB Dataset
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%98-%EA%B5%AC%EC%A1%B0/" rel="permalink">신경망의 구조
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          1 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">신경망 훈련에는 다음 요소들이 관련되어있다.
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/2.4-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%98-%EC%97%94%EC%A7%84-%EA%B7%B8%EB%9E%98%EB%94%94%EC%96%B8%ED%8A%B8-%EA%B8%B0%EB%B0%98-%EC%B5%9C%EC%A0%81%ED%99%94/" rel="permalink">Stochastic Gradient Descent
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          4 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">output = relu(dot(W, input) + b)
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title no_toc" itemprop="headline">
+      
+        <a href="/2.3-%EC%8B%A0%EA%B2%BD%EB%A7%9D%EC%9D%98-%ED%86%B1%EB%8B%88%EB%B0%94%ED%80%B4-%ED%85%90%EC%84%9C-%EC%97%B0%EC%82%B0/" rel="permalink">Tensor Operation
+</a>
+      
+    </h2>
+    
+
+  <p class="page__meta">
+    
+
+    
+
+    
+      
+      
+
+      <span class="page__meta-readtime">
+        <i class="far fa-clock" aria-hidden="true"></i>
+        
+          3 minute read
+        
+      </span>
+    
+  </p>
+
+
+    <p class="archive__item-excerpt" itemprop="description">심층 신경망이 학습한 모든 변환을 수치 데이터 텐서에 적용하는 Tensor Operation (텐서 연산)
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+
+    
+      
+        
+          <li><a href="mailto:jhhur716@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+        
+      
+        
+          <li><a href="https://github.com/michaelhur" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Michael Hur. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
