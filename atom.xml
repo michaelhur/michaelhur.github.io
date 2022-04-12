@@ -77,34 +77,6 @@
   </entry>
   
   <entry>
-    <title>NoSQL and SQL - Part 1</title>
-    <link href="http://michaelhur.github.io/2022/04/09/2021-06-04-MongoDB/"/>
-    <id>http://michaelhur.github.io/2022/04/09/2021-06-04-MongoDB/</id>
-    <published>2022-04-09T14:35:04.930Z</published>
-    <updated>2021-06-20T15:54:42.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>It is not always the case that perfectly cleaned and prepared data is available for data scientitsts to work with. In many times, data preprocessing is needed to feed the data into the later prcoesses such as analysis and visualization. This preprocessing step can be minimized, if not eliminated, at the data engineering step.</p><p>Whether it be a personal project, or team project at a start up or at a huge tech firm like FANG, at the earlier stage of the project one need to work out data schema. One of the dilemma I have faced when working out the data schema is what to include or not. Yes, it is one aspect that distinguishes a good data engineer from an average one. But it is not always perfectly clear whether we will be using certain parameter.</p><p>Include it? More feature means more overhead costs.</p><p>Exclude it? It is difficult and often impossible to add more features in the middle of the process.</p><p>This leads me to look into NoSQL.</p><h2 id="What-is-NoSQL-What’s-the-difference-between-SQL-and-NoSQL"><a href="#What-is-NoSQL-What’s-the-difference-between-SQL-and-NoSQL" class="headerlink" title="What is NoSQL? What’s the difference between SQL and NoSQL?"></a>What is NoSQL? What’s the difference between SQL and NoSQL?</h2><h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><p>Structured Query Language. As its name suggest it is not entirely about the database itself; rather, it is a programming language used to interact with a certain type of database: relational database.</p><p>Relational database has two aspects.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;Introduction&quot;&gt;&lt;a href=&quot;#Introduction&quot; class=&quot;headerlink&quot; title=&quot;Introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;&lt;p&gt;It is not always the case that</summary>
-      
-    
-    
-    
-    
-    <category term="Data" scheme="http://michaelhur.github.io/tags/Data/"/>
-    
-    <category term="MongoDB" scheme="http://michaelhur.github.io/tags/MongoDB/"/>
-    
-    <category term="NoSQL" scheme="http://michaelhur.github.io/tags/NoSQL/"/>
-    
-    <category term="SQL" scheme="http://michaelhur.github.io/tags/SQL/"/>
-    
-  </entry>
-  
-  <entry>
     <title>PyMLB to plot Pitch f/x data</title>
     <link href="http://michaelhur.github.io/2022/04/09/2021-06-11-Strike%20Zone/"/>
     <id>http://michaelhur.github.io/2022/04/09/2021-06-11-Strike%20Zone/</id>
