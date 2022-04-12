@@ -317,7 +317,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><h3 id="선택-장애-플랫폼-선택하기"><a href="#선택-장애-플랫폼-선택하기" class="headerlink" title="선택 장애: 플랫폼 선택하기"></a>선택 장애: 플랫폼 선택하기</h3><p>블로그를 시작하기로 하면서 플랫폼을 결정하는 것이 가장 힘들었다. 큰 수정 없이 out-of-box로 블로깅을 시작할 수 있는 Wordpress와 Tistory 등의 플랫폼이 존재하였지만 개발을 하면서 익숙해져있던 Github에 더 눈이 갔기때문이다. 개발자라면 누구나 한번쯤은 사용해봤을 Github는 version control, code review등 코딩 환경을 제공해줄뿐만 아니라 Github Pages를 통하여 개인 프로젝트 페이지를 “무료”로 호스팅해준다. 기존에 Github를 사용하고 있던 나로서는 Github Pages를 꾸미는데 필요한 Markdown이라는 기술에 이미 익숙해져 있었기에 Github Pages로 블로깅을 시작하기로 하였다.<br><br></p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -340,7 +340,7 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><h3 id="Sabermetrics-Analysis-of-Baseball"><a href="#Sabermetrics-Analysis-of-Baseball" class="headerlink" title="Sabermetrics: Analysis of Baseball"></a>Sabermetrics: Analysis of Baseball</h3><p>As Bill James said “sabermetrics is the search for objective knowledge about baseball.” Unlike the classical baseball statistics such as win or home run, it aims to derive statistic that can objectively quantify the players’ performance. For example, in 2018 New York Mets’ rookie pitcher Jacob deGrom has the record of 10 wins and 9 losses. Looking at win-loss ratio, it only implies that he is a mediocre pitcher, but he has received Cy Young Award (the Pitcher of the Year) and Rookie of the Year for his outstanding performance. <a target="_blank" rel="noopener" href="https://www.fangraphs.com/players/jacob-degrom/10954/stats?position=P">Over the span of four seasons, he has made 78 starts, in which he has only won 36 and lost 42.</a> During those 78 starts, <a target="_blank" rel="noopener" href="https://www.espn.com/mlb/story/_/id/31354867/new-york-mets-ace-jacob-degrom-lack-run-support-reaching-new-lows">deGrom only conceived one or less runs in 33 games; yet, he was not able to pick up a win.</a> As the example of Jacob deGrom shows, the classical statistic often fails to correctly reflect the player’s performance. As a result, Sabermetricians have derived statistics such as Wins Above Replacement (WAR), which measures a player’s value as to how many more wins the player contributes to the team in comparison with a replacement player in the same position. deGrom’s WAR was 9.0 in 2018, which in the transfer market translates to approximately $70 million making him one of the most expensive player in the league.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -363,7 +363,11 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><p>This time we will look at what the strike zone looks like for a Korean Pitcher “Ryu Hyun-Jin.” </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PyMLB <span class="keyword">import</span> *</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-Pull-schedule-data"><a href="#1-Pull-schedule-data" class="headerlink" title="1. Pull schedule data"></a>1. Pull schedule data</h4><p>First we need to pull all the game ID for this particular pitcher for this season. Using <a href="https://michaelhur.github.io/PyMLB/">get_schedule() function we coded last time</a>, we will extract schedule data. </p>
+<p>Unfortunately, we can only pull the schedule data at the team level. So we will extract all the game his team “Toronto Blue Jays” has played this season, then filter the games he has played.</p></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -386,7 +390,18 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><h2 id="Rule-of-Sudoku"><a href="#Rule-of-Sudoku" class="headerlink" title="Rule of Sudoku"></a>Rule of Sudoku</h2><ul>
+<li><p>Every square has to contain a single number</p>
+</li>
+<li><p>Only the numbers between 1 and 9 (inclusive) can be used</p>
+</li>
+<li><p>Each 3×3 subgrid can only contain each number from 1 to 9 once</p>
+</li>
+<li><p>Each column can only contain each number from 1 to 9 once</p>
+</li>
+<li><p>Each row can only contain each number from 1 to 9 once</p>
+</li>
+</ul></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
@@ -409,7 +424,18 @@
                                 
                             </span>
                         </span>
-                        <div class="media-content hide-xs font-merryweather"></div>
+                        <div class="media-content hide-xs font-merryweather"><h2 id="Rule-of-Sudoku"><a href="#Rule-of-Sudoku" class="headerlink" title="Rule of Sudoku"></a>Rule of Sudoku</h2><ul>
+<li><p>Every square has to contain a single number</p>
+</li>
+<li><p>Only the numbers between 1 and 9 (inclusive) can be used</p>
+</li>
+<li><p>Each 3×3 subgrid can only contain each number from 1 to 9 once</p>
+</li>
+<li><p>Each column can only contain each number from 1 to 9 once</p>
+</li>
+<li><p>Each row can only contain each number from 1 to 9 once</p>
+</li>
+</ul></div>
                     </div>
                     <div style="clear:both;"></div>
                     <hr>
