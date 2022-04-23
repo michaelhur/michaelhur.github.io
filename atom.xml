@@ -30,9 +30,7 @@
     
     
     
-    <category term="Python" scheme="http://michaelhur.github.io/categories/Python/"/>
-    
-    <category term="Crawling" scheme="http://michaelhur.github.io/categories/Python/Crawling/"/>
+    <category term="Python - Crawling" scheme="http://michaelhur.github.io/categories/Python-Crawling/"/>
     
     
     <category term="Python" scheme="http://michaelhur.github.io/tags/Python/"/>
@@ -122,6 +120,8 @@
     <summary type="html">&lt;p&gt;This time we will look at what the strike zone looks like for a Korean Pitcher “Ryu Hyun-Jin.” &lt;/p&gt;</summary>
     
     
+    
+    <category term="Python - Crawling" scheme="http://michaelhur.github.io/categories/Python-Crawling/"/>
     
     
     <category term="Python" scheme="http://michaelhur.github.io/tags/Python/"/>
