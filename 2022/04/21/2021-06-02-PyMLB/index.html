@@ -23,8 +23,8 @@
 <meta property="og:site_name" content="Michael&#39;s Dev Story">
 <meta property="og:description" content="Sabermetrics: Analysis of BaseballAs Bill James said “sabermetrics is the search for objective knowledge about baseball.”">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://michaelhur.github.io/2022/04/21/2021-06-02-PyMLB/source/_posts/2021-06-11-Strike-Zone/screenshot1.png">
-<meta property="og:image" content="http://michaelhur.github.io/2022/04/21/2021-06-02-PyMLB/source/_posts/2021-06-11-Strike-Zone/screenshot2.png">
+<meta property="og:image" content="http://michaelhur.github.io/2022/04/21/2021-06-02-PyMLB/screenshot1.png">
+<meta property="og:image" content="http://michaelhur.github.io/2022/04/21/2021-06-02-PyMLB/screenshot2.png">
 <meta property="article:published_time" content="2022-04-21T14:34:10.213Z">
 <meta property="article:modified_time" content="2022-04-21T14:34:10.213Z">
 <meta property="article:author" content="Michael Hur">
@@ -35,7 +35,7 @@
 <meta property="article:tag" content="MLB">
 <meta property="article:tag" content="Data">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://michaelhur.github.io/2022/04/21/2021-06-02-PyMLB/source/_posts/2021-06-11-Strike-Zone/screenshot1.png">
+<meta name="twitter:image" content="http://michaelhur.github.io/2022/04/21/2021-06-02-PyMLB/screenshot1.png">
     
     
         
@@ -282,10 +282,10 @@
         <div class="main-content-wrap">
             <h3 id="Sabermetrics-Analysis-of-Baseball"><a href="#Sabermetrics-Analysis-of-Baseball" class="headerlink" title="Sabermetrics: Analysis of Baseball"></a>Sabermetrics: Analysis of Baseball</h3><p>As Bill James said “sabermetrics is the search for objective knowledge about baseball.” <span id="more"></span> Unlike the classical baseball statistics such as win or home run, it aims to derive statistic that can objectively quantify the players’ performance. For example, in 2018 New York Mets’ rookie pitcher Jacob deGrom has the record of 10 wins and 9 losses. Looking at win-loss ratio, it only implies that he is a mediocre pitcher, but he has received Cy Young Award (the Pitcher of the Year) and Rookie of the Year for his outstanding performance. <a target="_blank" rel="noopener" href="https://www.fangraphs.com/players/jacob-degrom/10954/stats?position=P">Over the span of four seasons, he has made 78 starts, in which he has only won 36 and lost 42.</a> During those 78 starts, <a target="_blank" rel="noopener" href="https://www.espn.com/mlb/story/_/id/31354867/new-york-mets-ace-jacob-degrom-lack-run-support-reaching-new-lows">deGrom only conceived one or less runs in 33 games; yet, he was not able to pick up a win.</a> As the example of Jacob deGrom shows, the classical statistic often fails to correctly reflect the player’s performance. As a result, Sabermetricians have derived statistics such as Wins Above Replacement (WAR), which measures a player’s value as to how many more wins the player contributes to the team in comparison with a replacement player in the same position. deGrom’s WAR was 9.0 in 2018, which in the transfer market translates to approximately $70 million making him one of the most expensive player in the league.</p>
 <h3 id="Where-do-we-get-raw-data"><a href="#Where-do-we-get-raw-data" class="headerlink" title="Where do we get raw data?"></a>Where do we get raw data?</h3><p>Now that we know how important statistics is in baseball and want to be able to compute these more meaningful metrics, we first ened to figure out how to extract raw data. Fortunately, <a target="_blank" rel="noopener" href="https://statsapi.mlb.com/api/">Major League Baseball (MLB) has long made its data public</a> and this post will show you the guid on “how to extract data” from the MLB’s stats API, by extracting each batter’s at-bat outcome in the opening game of the 2021 season. </p>
-<div class="figure " style="width:;"><img class="fig-img" src="source/_posts/2021-06-11-Strike-Zone/screenshot1.png" alt=""></div>
+<div class="figure " style="width:;"><img class="fig-img" src="screenshot1.png" alt=""></div>
 
 <h3 id="Understanding-the-API-Schema"><a href="#Understanding-the-API-Schema" class="headerlink" title="Understanding the API Schema"></a>Understanding the API Schema</h3><p>Although we can “brute-force” search every node in the tree until we obtain the desired fruit, the <a target="_blank" rel="noopener" href="https://beta-statsapi.mlb.com/docs/">API document</a> actually explains what the available keys are and what parameters the query takes at each level. Since we are interested in finding out the result of each “at-bat” in a specific game, we need to where these “play-by-play” data lies in. A thorough read tells us that such information is stroed under the “game” endpoints which stores all the data pertaining to the “game-level.”</p>
-<div class="figure " style="width:;"><a class="fancybox" href="source/_posts/2021-06-11-Strike-Zone/screenshot2.png" title="" data-caption="" data-fancybox="default"><img class="fig-img" src="source/_posts/2021-06-11-Strike-Zone/screenshot2.png" alt=""></a></div>
+<div class="figure " style="width:;"><a class="fancybox" href="screenshot2.png" title="" data-caption="" data-fancybox="default"><img class="fig-img" src="screenshot2.png" alt=""></a></div>
 
 <p>This <code>game</code> key requires a <code>game_pk</code> parameter. <code>game_pk</code> is a unique identifier assigned to each game. In order to obtain this <code>game_pk</code>, we will have to look into the <code>schedule</code> operation, which will return all the game on a given date. In short, in order to get the <code>play-by-play</code> data we will have to:</p>
 <ol>
