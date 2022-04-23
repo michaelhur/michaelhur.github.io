@@ -30,7 +30,9 @@
     
     
     
-    <category term="Python - Crawling" scheme="http://michaelhur.github.io/categories/Python-Crawling/"/>
+    <category term="Python" scheme="http://michaelhur.github.io/categories/Python/"/>
+    
+    <category term="Crawling" scheme="http://michaelhur.github.io/categories/Python/Crawling/"/>
     
     
     <category term="Python" scheme="http://michaelhur.github.io/tags/Python/"/>
@@ -121,7 +123,9 @@
     
     
     
-    <category term="Python - Crawling" scheme="http://michaelhur.github.io/categories/Python-Crawling/"/>
+    <category term="Python" scheme="http://michaelhur.github.io/categories/Python/"/>
+    
+    <category term="Crawling" scheme="http://michaelhur.github.io/categories/Python/Crawling/"/>
     
     
     <category term="Python" scheme="http://michaelhur.github.io/tags/Python/"/>
