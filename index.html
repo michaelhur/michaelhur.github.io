@@ -293,7 +293,28 @@
 <ul>
 <li>블로킹이 발생하는 경우 나머지 작업은 모두 대기해야함 -&gt; 비효율</li>
 </ul>
-<h3 id="멀티-스레드-모델과의-비교"><a href="#멀티-스레드-모델과의-비교" class="headerlink" title="멀티 스레드 모델과의 비교"></a>멀티 스레드 모델과의 비교</h3>
+<p>대신 노드는 논블로킹 모델을 채택하여 일부 코드를 백그라운드 (다른 프로세스)에서 실행 가능하게 만듦</p>
+<ul>
+<li>요청을 먼저 받고, 완료될 때 응답함</li>
+<li>I&#x2F;O 관련 코드가 아닌 경우 싱글 스레드, 블로킹 모델과 같아짐</li>
+</ul>
+<h3 id="멀티-스레드-모델과의-비교"><a href="#멀티-스레드-모델과의-비교" class="headerlink" title="멀티 스레드 모델과의 비교"></a>멀티 스레드 모델과의 비교</h3><p>주방에 비교</p>
+<ul>
+<li>점원: 스레드</li>
+<li>주문: 요청</li>
+<li>서빙: 응답</li>
+</ul>
+<div class="figure " style="width:;"><img class="fig-img" src="single-blocking.png" alt=""></div>
+
+<p>싱글 스레드 블로킹 모델에서는 점원이 하나의 요청과 응답을 완료한 후, 다음 고객으로 넘어감</p>
+<div class="figure " style="width:;"><img class="fig-img" src="single-nonblocking.png" alt=""></div>
+
+<p>싱글 스레드 논블로킹 모델에서는 모든 주문을 받고, 완료될 때 응답함</p>
+<div class="figure " style="width:;"><img class="fig-img" src="multi-thread.png" alt=""></div>
+
+<p>싱글 스레드의 단점은 에러를 처리하지 못하는 경우에 멈추게 됨. 반대로 멀티 스레드 모델은 에러 발생시 새로운 스레드를 생성하여 극복</p>
+<p>하지만 멀티 스레드로 프로그래밍하기에 <strong>난이도가 높고</strong>, 그를 피해서 <em>싱글 스레드</em>로 처리하려고 <strong>노드로 개발함</strong></p>
+
                     
                         
 
