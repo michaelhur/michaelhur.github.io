@@ -15,26 +15,26 @@
             <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
         
     
-    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Michael Hur","sameAs":[],"image":"profile.jpg"},"articleBody":"\n\n노드의 특성2. 논블로킹논블로킹: 오래 걸리는 함수를 백그라운드로 보내서 다음 코드가 먼저 실행되게 하고, 나중에 오래 걸리는 함수를 실행\n\n논 블로킹 방식 하에 일부 코드는 백그라운드에서 병렬로 실행됨\n일부 코드: I&#x2F;O 작업, 압축, 암호화 등등\n\n\n나머지 코드는 블로킹 방식으로 실행됨\n그래서 I&#x2F;O 작업이 많을때 노드 활용성이 극대화됨\n\n3. 프로세스와 스레드\n프로세스: 운영체제에서 할당하는 작업의 단위, 프로세스간 자원 공유 X\n쓰레드: 프로세스 내에서 실행되는 작업의 단위, 부모 프로세스간 자원 공유 O\n\n노드 프로세스는 멀티 스레드이지만, 직접 다룰 수 있는 스레드는 하나이기 때문에 싱글 스레드라고 표현\n4. 싱글 쓰레드싱글 스레드라 주어진 일을 하나밖에 처리하지 못함\n\n블로킹이 발생하는 경우 나머지 작업은 모두 대기해야함 -&gt; 비효율\n\n대신 노드는 논블로킹 모델을 채택하여 일부 코드를 백그라운드 (다른 프로세스)에서 실행 가능하게 만듦\n\n요청을 먼저 받고, 완료될 때 응답함\nI&#x2F;O 관련 코드가 아닌 경우 싱글 스레드, 블로킹 모델과 같아짐\n\n5. 멀티 스레드 모델과의 비교주방에 비교\n\n점원: 스레드\n주문: 요청\n서빙: 응답\n\n\n\n싱글 스레드 블로킹 모델에서는 점원이 하나의 요청과 응답을 완료한 후, 다음 고객으로 넘어감\n\n\n싱글 스레드 논블로킹 모델에서는 모든 주문을 받고, 완료될 때 응답함\n\n\n싱글 스레드의 단점은 에러를 처리하지 못하는 경우에 멈추게 됨. 반대로 멀티 스레드 모델은 에러 발생시 새로운 스레드를 생성하여 극복\n하지만 멀티 스레드로 프로그래밍하기에 난이도가 높고, 그를 피해서 싱글 스레드로 처리하려고 노드로 개발함\n\n노드에서는 여러개의 프로세스를 만들어서 처리하는 방식으로 처리함\n\n서버로서의 노드","dateCreated":"2022-04-26T17:23:00+09:00","dateModified":"2022-04-26T17:23:00+09:00","datePublished":"2022-04-26T17:23:00+09:00","description":"","headline":"Node.js 시작하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/"},"publisher":{"@type":"Organization","name":"Michael Hur","sameAs":[],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/","keywords":"nodejs, node, process, thread"}</script>
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Michael Hur","sameAs":[],"image":"profile.jpg"},"articleBody":"\n\n노드의 특성2. 논블로킹논블로킹: 오래 걸리는 함수를 백그라운드로 보내서 다음 코드가 먼저 실행되게 하고, 나중에 오래 걸리는 함수를 실행\n\n논 블로킹 방식 하에 일부 코드는 백그라운드에서 병렬로 실행됨\n일부 코드: I&#x2F;O 작업, 압축, 암호화 등등\n\n\n나머지 코드는 블로킹 방식으로 실행됨\n그래서 I&#x2F;O 작업이 많을때 노드 활용성이 극대화됨\n\n3. 프로세스와 스레드\n프로세스: 운영체제에서 할당하는 작업의 단위, 프로세스간 자원 공유 X\n쓰레드: 프로세스 내에서 실행되는 작업의 단위, 부모 프로세스간 자원 공유 O\n\n노드 프로세스는 멀티 스레드이지만, 직접 다룰 수 있는 스레드는 하나이기 때문에 싱글 스레드라고 표현\n4. 싱글 쓰레드싱글 스레드라 주어진 일을 하나밖에 처리하지 못함\n\n블로킹이 발생하는 경우 나머지 작업은 모두 대기해야함 -&gt; 비효율\n\n대신 노드는 논블로킹 모델을 채택하여 일부 코드를 백그라운드 (다른 프로세스)에서 실행 가능하게 만듦\n\n요청을 먼저 받고, 완료될 때 응답함\nI&#x2F;O 관련 코드가 아닌 경우 싱글 스레드, 블로킹 모델과 같아짐\n\n5. 멀티 스레드 모델과의 비교주방에 비교\n\n점원: 스레드\n주문: 요청\n서빙: 응답\n\n\n\n싱글 스레드 블로킹 모델에서는 점원이 하나의 요청과 응답을 완료한 후, 다음 고객으로 넘어감\n\n\n싱글 스레드 논블로킹 모델에서는 모든 주문을 받고, 완료될 때 응답함\n\n\n싱글 스레드의 단점은 에러를 처리하지 못하는 경우에 멈추게 됨. 반대로 멀티 스레드 모델은 에러 발생시 새로운 스레드를 생성하여 극복\n하지만 멀티 스레드로 프로그래밍하기에 난이도가 높고, 그를 피해서 싱글 스레드로 처리하려고 노드로 개발함\n\n노드에서는 여러개의 프로세스를 만들어서 처리하는 방식으로 처리함\n\n서버로서의 노드","dateCreated":"2022-04-23T17:23:19+09:00","dateModified":"2022-04-23T17:23:19+09:00","datePublished":"2022-04-23T17:23:19+09:00","description":"","headline":"Node.js 시작하기","image":[],"mainEntityOfPage":{"@type":"WebPage","@id":"http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/"},"publisher":{"@type":"Organization","name":"Michael Hur","sameAs":[],"image":"profile.jpg","logo":{"@type":"ImageObject","url":"profile.jpg"}},"url":"http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/","keywords":"nodejs, node, process, thread"}</script>
     <meta name="description" content="노드의 특성2. 논블로킹논블로킹: 오래 걸리는 함수를 백그라운드로 보내서 다음 코드가 먼저 실행되게 하고, 나중에 오래 걸리는 함수를 실행  논 블로킹 방식 하에 일부 코드는 백그라운드에서 병렬로 실행됨 일부 코드: I&#x2F;O 작업, 압축, 암호화 등등   나머지 코드는 블로킹 방식으로 실행됨 그래서 I&#x2F;O 작업이 많을때 노드 활용성이 극">
 <meta property="og:type" content="blog">
 <meta property="og:title" content="Node.js 시작하기">
-<meta property="og:url" content="http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/index.html">
+<meta property="og:url" content="http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/index.html">
 <meta property="og:site_name" content="Michael&#39;s Dev Story">
 <meta property="og:description" content="노드의 특성2. 논블로킹논블로킹: 오래 걸리는 함수를 백그라운드로 보내서 다음 코드가 먼저 실행되게 하고, 나중에 오래 걸리는 함수를 실행  논 블로킹 방식 하에 일부 코드는 백그라운드에서 병렬로 실행됨 일부 코드: I&#x2F;O 작업, 압축, 암호화 등등   나머지 코드는 블로킹 방식으로 실행됨 그래서 I&#x2F;O 작업이 많을때 노드 활용성이 극">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/single-blocking.png">
-<meta property="og:image" content="http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/single-nonblocking.png">
-<meta property="og:image" content="http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/multi-thread.png">
-<meta property="article:published_time" content="2022-04-26T08:23:00.000Z">
-<meta property="article:modified_time" content="2022-04-26T08:23:00.000Z">
+<meta property="og:image" content="http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/single-blocking.png">
+<meta property="og:image" content="http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/single-nonblocking.png">
+<meta property="og:image" content="http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/multi-thread.png">
+<meta property="article:published_time" content="2022-04-23T08:23:19.658Z">
+<meta property="article:modified_time" content="2022-04-23T08:23:19.658Z">
 <meta property="article:author" content="Michael Hur">
 <meta property="article:tag" content="nodejs">
 <meta property="article:tag" content="node">
 <meta property="article:tag" content="process">
 <meta property="article:tag" content="thread">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/single-blocking.png">
+<meta name="twitter:image" content="http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/single-blocking.png">
     
     
         
@@ -265,9 +265,9 @@
     
     
         <div class="post-meta">
-    <time datetime="2022-04-26T17:23:00+09:00">
+    <time datetime="2022-04-23T17:23:19+09:00">
 	
-		    Apr 26, 2022
+		    Apr 23, 2022
     	
     </time>
     
@@ -391,7 +391,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/"
                     title="Share on Facebook"
                     aria-label="Share on Facebook"
                 >
@@ -404,7 +404,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/"
                     title="Share on Twitter"
                     aria-label="Share on Twitter"
                 >
@@ -490,7 +490,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/"
+                    target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/"
                     title="Share on Facebook"
                     aria-label="Share on Facebook"
                 >
@@ -503,7 +503,7 @@
             <li class="post-action hide-xs">
                 <a
                     class="post-action-btn btn btn--default"
-                    target="new" href="https://twitter.com/intent/tweet?text=http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/"
+                    target="new" href="https://twitter.com/intent/tweet?text=http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/"
                     title="Share on Twitter"
                     aria-label="Share on Twitter"
                 >
@@ -537,7 +537,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://www.facebook.com/sharer/sharer.php?u=http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/"
+                        href="https://www.facebook.com/sharer/sharer.php?u=http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/"
                         aria-label="Share on Facebook"
                     >
                         <i class="fab fa-facebook" aria-hidden="true"></i><span>Share on Facebook</span>
@@ -550,7 +550,7 @@
                     <a
                         class="share-option-btn"
                         target="new"
-                        href="https://twitter.com/intent/tweet?text=http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/"
+                        href="https://twitter.com/intent/tweet?text=http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/"
                         aria-label="Share on Twitter"
                     >
                         <i class="fab fa-twitter" aria-hidden="true"></i><span>Share on Twitter</span>
@@ -751,7 +751,7 @@
                     <div class="media-body">
                         <a
                             class="link-unstyled"
-                            href="http://michaelhur.github.io/2022/04/26/2022-04-23-TIL/"
+                            href="http://michaelhur.github.io/2022/04/23/2022-04-23-TIL/"
                             aria-label=": Node.js 시작하기"
                         >
                             <h3 class="media-heading">Node.js 시작하기</h3>
@@ -759,7 +759,7 @@
                         <span class="media-meta">
                             <span class="media-date text-small">
                                 
-                                    Apr 26, 2022
+                                    Apr 23, 2022
                                 
                             </span>
                         </span>
