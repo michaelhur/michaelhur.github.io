@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MichaelHur.dev]]></title><description><![CDATA[일상이 우리가 가진 인생의 전부다]]></description><link>https://github.com/michaelhur</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 16 May 2023 04:45:14 GMT</lastBuildDate><item><title><![CDATA[블로그 필터링 기능 구현 고민 후기]]></title><link>https://github.com/michaelhur/react/블로그-필터링-기능-구현-고민-후기/</link><guid isPermaLink="false">https://github.com/michaelhur/react/블로그-필터링-기능-구현-고민-후기/</guid><pubDate>Thu, 11 May 2023 02:06:19 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[about]]></title><description><![CDATA[허준혁 (Michael Hur) 저는  하는 엔지니어입니다. 사용자 경험을 중요시하는 새로운 것에 대한 호기심과 도전의식을 가진 제품에 대한 오너십을 가진   GitHub https://github.com/michaelhur Blog https…]]></description><link>https://github.com/michaelhur/resume-ko/</link><guid isPermaLink="false">https://github.com/michaelhur/resume-ko/</guid><pubDate>Wed, 03 May 2023 13:21:13 GMT</pubDate><content:encoded>&lt;h1 id=&quot;허준혁-michael-hur&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%97%88%EC%A4%80%ED%98%81-michael-hur&quot; aria-label=&quot;허준혁 michael hur permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;허준혁 (Michael Hur)&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[MichaelHur.dev]]></title><description><![CDATA[일상이 우리가 가진 인생의 전부다]]></description><link>https://github.com/michaelhur</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 26 May 2023 06:04:44 GMT</lastBuildDate><item><title><![CDATA[블로그 필터링 기능 구현 고민 후기]]></title><link>https://github.com/michaelhur/react/블로그-필터링-기능-구현-고민-후기/</link><guid isPermaLink="false">https://github.com/michaelhur/react/블로그-필터링-기능-구현-고민-후기/</guid><pubDate>Thu, 11 May 2023 02:06:19 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[about]]></title><description><![CDATA[허준혁 (Michael Hur) 저는  하는 엔지니어입니다. 사용자 경험을 중요시하는 새로운 것에 대한 호기심과 도전의식을 가진 제품에 대한 오너십을 가진   GitHub https://github.com/michaelhur Blog https…]]></description><link>https://github.com/michaelhur/resume-ko/</link><guid isPermaLink="false">https://github.com/michaelhur/resume-ko/</guid><pubDate>Wed, 03 May 2023 13:21:13 GMT</pubDate><content:encoded>&lt;h1 id=&quot;허준혁-michael-hur&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%97%88%EC%A4%80%ED%98%81-michael-hur&quot; aria-label=&quot;허준혁 michael hur permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;허준혁 (Michael Hur)&lt;/h1&gt;
 &lt;div align=&quot;right&quot;&gt;&lt;sub&gt;&lt;i&gt;Last updated: 2023.05.03&lt;/i&gt;&lt;/sub&gt;&lt;/div&gt;
 &lt;p&gt;&lt;strong&gt;저는 &lt;code class=&quot;language-text&quot;&gt;______&lt;/code&gt; 하는 엔지니어입니다.&lt;/strong&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -207,11 +207,252 @@
 &lt;p&gt;2023년이 되고 다시 공부를 시작하였다. 현업에서 경험하면서 배우는 것이 더 빠르게 배운다고 생각하지만, 업무를 하면서 직무 전환한 케이스여서 기초가 부족함을 뼈저리게 느꼈다. 요즘은 자바스크립트와 리액트 공부를 하고있다. 프로젝트를 만들면서 자연스럽게 사용하던 개념들을 왜 이렇게 써야하는건지, 다른 방법은 없는 것인지 고민하고 정리하고 있다.&lt;/p&gt;
 &lt;p&gt;앞서 서술하였지만 시드~시리즈A 단계 스타트업의 프론트엔드 개발자로 취직하려고 준비중이다. 내가 빨대 꽂고 뽑아먹을 수 있는 시니어 개발자가 있었으면 좋겠다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[서비스 리액트 전환기]]></title><description><![CDATA[이번 포스팅에서는 기존 링크스타터 서비스를 React로 전환하게 된 이유, 전환 과정에서 어려웠던 점과 이를 해결해나간 과정들을 소개하고자 합니다. 서비스 리라이팅 계기 2022년…]]></description><link>https://github.com/michaelhur/react/서비스-리액트-전환기/</link><guid isPermaLink="false">https://github.com/michaelhur/react/서비스-리액트-전환기/</guid><pubDate>Tue, 04 Oct 2022 13:14:07 GMT</pubDate><content:encoded>&lt;p&gt;이번 포스팅에서는 기존 링크스타터 서비스를 React로 전환하게 된 이유, 전환 과정에서 어려웠던 점과 이를 해결해나간 과정들을 소개하고자 합니다.&lt;/p&gt;
 &lt;h2 id=&quot;서비스-리라이팅-계기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%9C%EB%B9%84%EC%8A%A4-%EB%A6%AC%EB%9D%BC%EC%9D%B4%ED%8C%85-%EA%B3%84%EA%B8%B0&quot; aria-label=&quot;서비스 리라이팅 계기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;서비스 리라이팅 계기&lt;/h2&gt;
-&lt;p&gt;2022년 7월. 링크스타터 서비스를 다시 개발하기로 결정하였습니다. 디자인 리뉴얼뿐만 아니라 시스템 전체를 갈아엎는 작업이었습니다. 개발팀이 서비스를 다시 만들기로 결정하게 된 가장 큰 계기는 비효율적인 기존 서비스 구조와 채용의 어려움이었습니다. 잦은 기획 변경으로 인하여 스파게티 코드가 많은 비중을 차지하고 있을뿐만 아니라 주석처리 &lt;/p&gt;
-&lt;h3 id=&quot;서비스-개선&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%9C%EB%B9%84%EC%8A%A4-%EA%B0%9C%EC%84%A0&quot; aria-label=&quot;서비스 개선 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;서비스 개선&lt;/h3&gt;
-&lt;h3 id=&quot;기존-개발-프로세스의-문제&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B8%B0%EC%A1%B4-%EA%B0%9C%EB%B0%9C-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EC%9D%98-%EB%AC%B8%EC%A0%9C&quot; aria-label=&quot;기존 개발 프로세스의 문제 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;기존 개발 프로세스의 문제&lt;/h3&gt;
+&lt;p&gt;2022년 7월. 링크스타터 개발팀은 서비스를 다시 구현하기로 하였습니다. 비즈니스 모델 변경으로 인한 서비스 리뉴얼과 더불어 UI/UX 디자인 개편이 예정되어 있었고, 이에 맞춰서 DB 설계와 서버 및 클라이언트 개발까지 새롭게 진행하기로 하였습니다. 기존의 시스템을 버리고 모든 것을 처음부터 새로 만드는 일이었습니다.&lt;/p&gt;
+&lt;h2 id=&quot;리라이팅-계기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A6%AC%EB%9D%BC%EC%9D%B4%ED%8C%85-%EA%B3%84%EA%B8%B0&quot; aria-label=&quot;리라이팅 계기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;리라이팅 계기&lt;/h2&gt;
+&lt;h3 id=&quot;이게-무엇을-하는-코드인가요&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%9D%B4%EA%B2%8C-%EB%AC%B4%EC%97%87%EC%9D%84-%ED%95%98%EB%8A%94-%EC%BD%94%EB%93%9C%EC%9D%B8%EA%B0%80%EC%9A%94&quot; aria-label=&quot;이게 무엇을 하는 코드인가요 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;이게 무엇을 하는 코드인가요?&lt;/h3&gt;
+&lt;p&gt;웹 개발자로서 일한 6개월 동안 홈페이지의 여러 가지 기능을 추가하고 개선하면서 변화가 필요하다고 생각했습니다. 단순히 ‘다른 사람이 작성한 코드가 별로다.’에서 파생된 결정은 아니었습니다. 알파 서비스를 런칭했던 2020년 9월부터 리뉴얼이 결정된 2022년 7월까지 약 30번가량 비즈니스 모델이 변경되었고 이에 &lt;code class=&quot;language-text&quot;&gt;지금은 사용되고 있지 않지만, 미래에 사용할지도 모르는&lt;/code&gt;코드가 많았고, 많은 외주업체의 손을 거쳐 간 서비스이니만큼 여러 가지 스타일이 뒤섞여져 있는 상황에 문서화 또한 되어있지 않은 상황이었습니다. 새로 합류한 개발자가 코드를 보고 이해하는 데 오랜 시간이 걸렸습니다. 정식 서비스를 론칭하기전 이러한 불필요한 코드를 과감하게 쳐내야 했습니다.&lt;/p&gt;
+&lt;h3 id=&quot;허울뿐인-프레임워크&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%97%88%EC%9A%B8%EB%BF%90%EC%9D%B8-%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC&quot; aria-label=&quot;허울뿐인 프레임워크 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;허울뿐인 프레임워크&lt;/h3&gt;
+&lt;p&gt;서비스의 백엔드는 Flask를 이용하여 구현되어 있었고, 프론트엔드는 Flask의 템플릿 언어인 Jinja2가 사용되고 있었습니다. 하지만 서비스는 이러한 프레임워크를 사용하는데서 오는 이점을 전혀 살리지 못하고 있었습니다.&lt;/p&gt;
+&lt;p&gt;Flask의 라우팅 기능을 제외한 다른 기능은 사용되고 있지 않았으며, 관심사가 분리되어 있지 않고 모든 코드를 한 곳에 작성하여 가독성뿐만 아니라 유지보수에도 어려움을 주고 있었습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;python&quot;&gt;&lt;pre class=&quot;language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;## 기업이 공고 상세페이지 열람할때&lt;/span&gt;
+&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;route&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/companies/jobs/&amp;lt;job_id&gt;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;company_job_detail_view&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;job_id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+		sql1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;공고 상세페이지 데이터를 불러오는 SQL쿼리&quot;&quot;&quot;&lt;/span&gt;
+		sql2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;기업 정보를 불러오는 SQL쿼리&quot;&quot;&quot;&lt;/span&gt;
+    sql3 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;해당 공고 북마크 내역을 불러오는 SQL쿼리&quot;&quot;&quot;&lt;/span&gt;
+    sql4 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;해당 공고 지원 내역을 불러오는 SQL쿼리&quot;&quot;&quot;&lt;/span&gt;
+
+		data1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pysql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;execute&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sql1&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+		data2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pysql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;execute&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sql2&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+		data3 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pysql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;execute&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sql3&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+		data4 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pysql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;execute&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sql4&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+		
+		&lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;
+		데이터 가공하는 코드
+    &quot;&quot;&quot;&lt;/span&gt;
+	
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; render_template&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;company_job_detail.html&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; manipulated_data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;## 개인이 공고 상세페이지 열람할때&lt;/span&gt;
+&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;route&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/people/jobs/&amp;lt;job_id&gt;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;company_job_detail_view&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;job_id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+		sql1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;공고 상세페이지 데이터를 불러오는 SQL쿼리&quot;&quot;&quot;&lt;/span&gt;
+		sql2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;기업 정보를 불러오는 SQL쿼리&quot;&quot;&quot;&lt;/span&gt;
+    sql3 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;해당 공고 북마크 내역을 불러오는 SQL쿼리&quot;&quot;&quot;&lt;/span&gt;
+    sql4 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;해당 공고 지원 내역을 불러오는 SQL쿼리&quot;&quot;&quot;&lt;/span&gt;
+
+		data1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pysql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;execute&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sql1&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+		data2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pysql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;execute&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sql2&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+		data3 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pysql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;execute&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sql3&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+		data4 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pysql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;execute&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sql4&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+		
+		&lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;
+		데이터 가공하는 코드
+    &quot;&quot;&quot;&lt;/span&gt;
+	
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; render_template&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;person_job_detail.html&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; manipulated_data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;## 구직자 상세페이지&lt;/span&gt;
+&lt;span class=&quot;token decorator annotation punctuation&quot;&gt;@app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;route&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/people/&amp;lt;person_id&gt;&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;person_detail_view&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;person_id&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+		sql &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;구직자 상세페이지 데이터를 불러오는 SQL쿼리&quot;&quot;&quot;&lt;/span&gt;
+		data &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; pysql&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;execute&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;sql&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+		
+		&lt;span class=&quot;token triple-quoted-string string&quot;&gt;&quot;&quot;&quot;
+		데이터 가공하는 코드
+    &quot;&quot;&quot;&lt;/span&gt;
+	
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; render_template&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;person_person_detail.html&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; manipulated_data&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;위에 예시 코드와 같이 링크스타터 시스템이 가지고 있던 문제점은 아래와 같습니다.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;한개의 페이지에서 실행되는 모든 작업을 하나의 함수에서 처리하고 있었습니다.&lt;/li&gt;
+&lt;li&gt;SQL 쿼리는 JOIN문을 사용하지 않고 불러온 후 메모리에 올려놓고 가공하여 사용하고 있었습니다.&lt;/li&gt;
+&lt;li&gt;주제별로 구분하지 않고 모든 코드를 하나의 파일에 저장하여 사용하고 있었습니다.&lt;/li&gt;
+&lt;li&gt;코드의 재사용 없이 같은 작업을 하는 코드를 반복하여 작성하고 있었습니다.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;이런 ‘하드코딩’은 프론트엔드에서 역시 마찬가지였습니다. 기업이 자신의 공고를 열람할 때 보이는 화면과 구직자가 기업의 공고를 열람할 때 보이는 화면은 다른 점이 존재합니다. 링크스타터는 각각 &lt;code class=&quot;language-text&quot;&gt;self_job_detail.html&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;person_job_detail.html&lt;/code&gt;과 같이 직관적이지 않은 네이밍 컨벤션을 적용하여 관리하고 있었고, 공통된 부분을 재사용하기보다는 하드 코딩하여 사용하고 있었습니다. 만약 ‘공고 상세 페이지’의 디자인이 변경된다면 여러개의 파일을 수정해야 했습니다. 이렇게 관리되고 있는 html파일은 약 400개가 넘어갔고 더 이상 효과적인 유지보수가 불가능할 지경에 이르렀습니다.&lt;/p&gt;
+&lt;h3 id=&quot;배포의-어려움&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%B0%B0%ED%8F%AC%EC%9D%98-%EC%96%B4%EB%A0%A4%EC%9B%80&quot; aria-label=&quot;배포의 어려움 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;배포의 어려움&lt;/h3&gt;
+&lt;p&gt;프론트엔드와 백엔드가 분리되어 있지 않은 서비스의 단점은 배포입니다. 사내 프론트엔드 개발자가 UI를 수정하면 시스템 전체를 다시 배포하는 과정을 거쳐야합니다. 너무 비대해진 서비스를 배포하는 데 15분가량 소요되었기에 ‘버튼을 오른쪽으로 1px만 옮겨주세요’라는 요청도 매우 부담스러운 상황이 되었습니다.&lt;/p&gt;
+&lt;h3 id=&quot;과도하게-느린-속도와-서버-비용&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B3%BC%EB%8F%84%ED%95%98%EA%B2%8C-%EB%8A%90%EB%A6%B0-%EC%86%8D%EB%8F%84%EC%99%80-%EC%84%9C%EB%B2%84-%EB%B9%84%EC%9A%A9&quot; aria-label=&quot;과도하게 느린 속도와 서버 비용 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;과도하게 느린 속도와 서버 비용&lt;/h3&gt;
+&lt;p&gt;동시 접속 사용자가 50명 미만, &lt;code class=&quot;language-text&quot;&gt;MAU가 3,000명&lt;/code&gt; 정도인 서비스의 서버 비용은 약 150만 원이 청구되고 있었습니다. 페이지별 로딩 속도는 평균 9초에 육박하였습니다. 페이지가 리프레시되거나 클라이언트 상에서 데이터를 업데이트하였을 때 변경된 데이터가 적용된 화면을 보기 위해서 모든 static 파일을 다시 다운로드하는 과정을 거쳤습니다. 이에 페이지별로 평균 20mb의 데이터를 다운로드 받기 시작하였고, 한 사람이 몇 번의 클릭만으로 엄청난 서버 비용을 청구하는 상황이 되었습니다.&lt;/p&gt;
+&lt;h3 id=&quot;채용의-어려움&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%B1%84%EC%9A%A9%EC%9D%98-%EC%96%B4%EB%A0%A4%EC%9B%80&quot; aria-label=&quot;채용의 어려움 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;채용의 어려움&lt;/h3&gt;
+&lt;p&gt;Jinja2와 같은 비주류 스킬 스택의 단점은 채용이 어렵다는 점에 있습니다. 대부분의 개발자는 Jinja2라는 템플릿 언어가 존재한다는 것을 모르고 있었고, 팀에 합류하여 작업을 하다가 단기간에 퇴사하기도 하였습니다. Vue나 Angular와 같은 프레임워크였다면 프레임워크 사용법이 다를 뿐 큰 그림에서 접근법은 비슷하였지만, Jinja2와 같은 템플릿언어는 HTML을 직접 하드 코딩한다는 점에서 거부감이 심했던 것으로 판단됩니다.&lt;/p&gt;
 &lt;h2 id=&quot;리액트를-선택한-이유&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A6%AC%EC%95%A1%ED%8A%B8%EB%A5%BC-%EC%84%A0%ED%83%9D%ED%95%9C-%EC%9D%B4%EC%9C%A0&quot; aria-label=&quot;리액트를 선택한 이유 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;리액트를 선택한 이유&lt;/h2&gt;
-&lt;h3 id=&quot;next&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#next&quot; aria-label=&quot;next permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Next?&lt;/h3&gt;
-&lt;h2 id=&quot;개발-과정&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B0%9C%EB%B0%9C-%EA%B3%BC%EC%A0%95&quot; aria-label=&quot;개발 과정 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;개발 과정&lt;/h2&gt;
-&lt;h2 id=&quot;어려웠던-점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%96%B4%EB%A0%A4%EC%9B%A0%EB%8D%98-%EC%A0%90&quot; aria-label=&quot;어려웠던 점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;어려웠던 점&lt;/h2&gt;
-&lt;h2 id=&quot;계획&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B3%84%ED%9A%8D&quot; aria-label=&quot;계획 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;계획&lt;/h2&gt;</content:encoded></item><item><title><![CDATA[SVG 다루기 삽질 후기]]></title><link>https://github.com/michaelhur/react/svg-다루기-삽질-후기/</link><guid isPermaLink="false">https://github.com/michaelhur/react/svg-다루기-삽질-후기/</guid><pubDate>Thu, 01 Sep 2022 23:00:28 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[재사용 가능한 Draggable List 만들기]]></title><link>https://github.com/michaelhur/react/재사용-가능한-draggable-list-만들기/</link><guid isPermaLink="false">https://github.com/michaelhur/react/재사용-가능한-draggable-list-만들기/</guid><pubDate>Tue, 09 Aug 2022 20:00:18 GMT</pubDate><content:encoded></content:encoded></item></channel></rss>
+&lt;p&gt;리액트는 프론트엔드 영역에서 가장 인기 있는 프레임워크입니다. 가장 많은 수요가 있는 프레임워크로서 채용이 비교적 수월할 뿐만 아니라 가장 많은 레퍼런스가 존재한다는 점에서 작업 시 이점이 가장 크다고 생각했습니다. 또한 기존 프론트엔드 개발자들 역시 모두 리액트를 사용할 수 있었다는 점에서 가장 좋은 선택이라고 생각했습니다.&lt;/p&gt;
+&lt;h3 id=&quot;nextjs를-사용하지-않은-이유&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#nextjs%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%80-%EC%9D%B4%EC%9C%A0&quot; aria-label=&quot;nextjs를 사용하지 않은 이유 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Next.js를 사용하지 않은 이유&lt;/h3&gt;
+&lt;p&gt;Next.js 역시 인기 있는 프레임워크입니다. 리액트를 기반으로 만들어진 프레임워크로서 리액트를 알고 있다면 러닝 커브도 높지 않고 빠르게 적용할 수 있다는 장점이 있습니다. 리액트와 Next.js 사이에서 많이 고민하였습니다.&lt;/p&gt;
+&lt;p&gt;비즈니스 모델의 구조상 &lt;strong&gt;&lt;em&gt;SEO가 중요하지 않았습니다.&lt;/em&gt;&lt;/strong&gt; 링크스타터는 폐쇄형으로서 양방향 &lt;code class=&quot;language-text&quot;&gt;헤드헌팅&lt;/code&gt; 모델입니다. 구직자는 이력서를, 기업은 공고를 등록하면 링크스타터의 운영팀이 확인 후 추천해 주는 모델입니다. 그렇기에 ‘구직자 이력서’ 또는 ‘기업 공고’ 링크가 존재해야지만 접속할 수 있었기에 외부에 노출이 되지 않는 사이트의 특성상  SEO를 신경 쓸 이유가 없었습니다.&lt;/p&gt;
+&lt;p&gt;또한 모든 프론트엔드 개발자가 Next.js로 실무 경험이 없었다는 점에서 리라이팅 기간이 1달밖에 주어지지 않았던 프론트엔드 개발자들은 리액트로 개발하기로 하였습니다.&lt;/p&gt;
+&lt;h2 id=&quot;개발-과정에서의-고민&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EA%B0%9C%EB%B0%9C-%EA%B3%BC%EC%A0%95%EC%97%90%EC%84%9C%EC%9D%98-%EA%B3%A0%EB%AF%BC&quot; aria-label=&quot;개발 과정에서의 고민 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;개발 과정에서의 고민&lt;/h2&gt;
+&lt;p&gt;기존의 서비스를 점진적으로 변경하는 작업이었다면 매우 어려운 일이 되었을 것입니다. 다행히도 비즈니스 모델의 변경에 따른 서비스 리뉴얼과 UI/UX 디자인 변경이 겹치면서 백지에 새로운 그림을 그리는 작업을 하게 되었습니다.&lt;/p&gt;
+&lt;p&gt;리라이팅에 착수하기 전 이미 새로운 디자인 시안을 전달받았기에 좀 더 큰 그림을 그려가며 작업할 수 있었습니다.  순차적으로 전달받았다면 만들었던 컴포넌트를 새로운 디자인에 맞게 수정하는 작업을 했을 수도 있지만 모든 디자인을 한 번에 전달받았기에 컴포넌트 단위로 UI 작업을 한 후 페이지별 작업을 하는 Bottom-Up 방식으로 접근하였습니다.&lt;/p&gt;
+&lt;h3 id=&quot;테스트-코드&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BD%94%EB%93%9C&quot; aria-label=&quot;테스트 코드 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;테스트 코드&lt;/h3&gt;
+&lt;p&gt;프론트엔드를 리라이팅하면서 테스트 코드에 대한 고민을 많이 하였습니다. 테스트 코드가 꼼꼼하게 작성된 경우 새로운 기능을 추가하거나 수정할 때 이에 대한 검증을 빠르게 할 수 있다는 장점이 있습니다. 하지만 UI 변경이 잦은 프론트엔드의 경우 테스트 코드는 말 그대로 ‘테스트를 위한 코드’로 변질될 수 있다는 단점도 존재합니다.&lt;/p&gt;
+&lt;p&gt;또한 링크스타터와 같이 비즈니스 모델이 자주 변경된다면 그에 따라 비즈니스 로직이 자주 변경되게 되고 결국 코드뿐만 아니라 테스트 코드를 수정하는 작업을 하여야 합니다. 이는 배보다 배꼽이 크게 되어버리는 상황이 됩니다. 실제로 서비스 리뉴얼이 결정되고 새로운 디자인 작업이 끝나고 코드 리라이팅 작업이 착수된 이후에도 몇 번의 기획 변경이 있었습니다. 결국 이와 같은 이유로 애플리케이션의 동작을 확인해 볼 수 있는 E2E 테스트를 포기하였습니다.&lt;/p&gt;
+&lt;p&gt;최종적으로 컴포넌트의 UI 검증을 위하여 &lt;strong&gt;Storybook&lt;/strong&gt;을 사용하기로 하였습니다. 각각의 공통 컴포넌트들과 페이지별 Storybook 코드를 작성하였습니다. 페이지 단위 스토리를 작성한 이유는 프로덕션 또는 개발 환경에서 특정 화면을 지속적으로 확인해 보아야 하는데 그때마다 해당 페이지에 접속하는 로직을 수행하여야 하기 때문입니다.&lt;/p&gt;
+&lt;h2 id=&quot;리라이팅-후&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EB%A6%AC%EB%9D%BC%EC%9D%B4%ED%8C%85-%ED%9B%84&quot; aria-label=&quot;리라이팅 후 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;리라이팅 후&lt;/h2&gt;
+&lt;h3 id=&quot;서비스-성능&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%B1%EB%8A%A5&quot; aria-label=&quot;서비스 성능 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;서비스 성능&lt;/h3&gt;
+&lt;p&gt;전환 전&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 693px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 22.333333333333336%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAECAYAAACOXx+WAAAACXBIWXMAAAsSAAALEgHS3X78AAAAvklEQVQY03WPywrCMBBF/f9fEly4cCG4KYptXfRhFWts0qZNmlSTaxJBRHFgmMM8DszMWgufPgxjMFX1Yi1geQVjDS6qQTnWMK5v7wqPrnTwwCAEKKXve19nn0K9jaCjyI+g8zVMsUJ/b7G4rrG8bdA6tnWMMZ4Djk/nCw5piklPf4Qdx6RUEEqSQNE89FNWIHEZdmjmZgf/A/phACHkLfsRcrcgpQzcMI6uF4HZjYKSJnCWH7HbJ4GFe/lb+AQpkTRpIzXeZgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;레거시 라이트하우스 점수&quot;
+        title=&quot;레거시 라이트하우스 점수&quot;
+        src=&quot;/static/1d8c0635c11d9354f87b7ce9afb6c9c9/61c63/lighthouse-before.png&quot;
+        srcset=&quot;/static/1d8c0635c11d9354f87b7ce9afb6c9c9/5a46d/lighthouse-before.png 300w,
+/static/1d8c0635c11d9354f87b7ce9afb6c9c9/0a47e/lighthouse-before.png 600w,
+/static/1d8c0635c11d9354f87b7ce9afb6c9c9/61c63/lighthouse-before.png 693w&quot;
+        sizes=&quot;(max-width: 693px) 100vw, 693px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 192px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 53.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAABOUlEQVQoz6VS20rDQBDN//+FT1JfRCxUaAxtsJIYmgRCCn3SR6m5YO6XzR531iaNElFs4CST2dnZc86OgomHc/5vKI7jwHVdGIYBz/PQNM1ZTZU4jhGFIYIgQJIkYIyd13BKctd1Q1OK++I+19f062MoMklFAlVVIcsydIJlWZbynxi3woamqWWOLEnTVG6u63qaYTu7Ap5f8Crk6+s1TNOE7/uwtls8bDZQVRWapkHXddi2DcuyZI58H6uRDUkAPxzA8xwUM5EsiwK1YJeKPMWFALEtBehLG0nJieG4IQVH71ia4H21RHQ9Qxu8IVndg4UB4vkN4rt5P1P0Gs/YV8kyIINpTfiVPD3icHmBfOeh2O/QtS2ixS3i5eKz5u+3fDpVHiDM50d/xgP/26N8v/YBw0gw/FgzgQ/ERlWiO/9UawAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;레거시 라이트하우스 점수&quot;
+        title=&quot;레거시 라이트하우스 점수&quot;
+        src=&quot;/static/eaa9ad69ea01dd98079632081c62f4fb/8514f/lighthouse-before2.png&quot;
+        srcset=&quot;/static/eaa9ad69ea01dd98079632081c62f4fb/8514f/lighthouse-before2.png 192w&quot;
+        sizes=&quot;(max-width: 192px) 100vw, 192px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;전환 후&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 585px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 24.333333333333332%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsSAAALEgHS3X78AAABEElEQVQY02WQwVLCMBRF+QkHCm2TNGkoULACRaVVKqOiIwPqwg0rdy79/80xRURnXLx5N3mT+85NQynFTwkpGSUR5VgjQokYWYJigLQaqSP8xZAw66LqWRoTnPeRJkK5d/Lg0ZDuUIu6a9d3t5bPbUIvNXjrMd77nOCyj3+d0vy4orW7QAxi2q9TmvVsmqB88Wv4ly7WirfK8FxGRErilX1amzHh0NE4opP1Ka2FI44U/n1GZzNB9Mye+J9hGAbkec7D6o7l8oYsO6OqKh7XT5Tzwi0zbF62zPIZHa/NZDphXhaEfvD9ZYekR8N9ZK2JrcV2uxhjsE4nTtf36TB1y1YUhTMRAh3pfUmXREl1JPwCx2WUov0EffkAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;전환 후 라이트하우스 점수 1&quot;
+        title=&quot;전환 후 라이트하우스 점수 1&quot;
+        src=&quot;/static/34aa8e454630b42d295d61a43653d41b/78a22/lighthouse-after1.png&quot;
+        srcset=&quot;/static/34aa8e454630b42d295d61a43653d41b/5a46d/lighthouse-after1.png 300w,
+/static/34aa8e454630b42d295d61a43653d41b/78a22/lighthouse-after1.png 585w&quot;
+        sizes=&quot;(max-width: 585px) 100vw, 585px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 724px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAABCklEQVQoz21S7U6EMBDsk9DvWktpxXAcMRpjcvGv7/804261RDl+TKDd2ZlhFxFjxDRNMFpjGAZIKaHp/QjFUAqSOJ3HZ66xxjiO8N5DOGMw5YxcKyohU+FM0FIzN3ZeKQXW2lZzzjUxPgtFTjNdfFDKTMLcxM7/wKLEu8ZHvD/VxktkbChM5/TEQhlN6g7FBYQQdtcjDPECGQcbWhrmsuCRJwaj4K8V8+0Fl3VFSulujpzQGYnXNePrc8NlWbAQ2LzPcRfk2bjooUuCphQsdnTmhUml8eAUSpSNw4s5+xJhyXl7zri9bafpesL2JNFB6VOhXZCdvVWYE0Xn+Cdz0b+/jNY/uFvaH3wDqDfi4a2mepIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;전환 후 라이트하우스 점수 2&quot;
+        title=&quot;전환 후 라이트하우스 점수 2&quot;
+        src=&quot;/static/c28c77c482a919ef11cd2e6edaf1a5cd/a242d/lighthouse-after2.png&quot;
+        srcset=&quot;/static/c28c77c482a919ef11cd2e6edaf1a5cd/5a46d/lighthouse-after2.png 300w,
+/static/c28c77c482a919ef11cd2e6edaf1a5cd/0a47e/lighthouse-after2.png 600w,
+/static/c28c77c482a919ef11cd2e6edaf1a5cd/a242d/lighthouse-after2.png 724w&quot;
+        sizes=&quot;(max-width: 724px) 100vw, 724px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;생각보다 낮은 점수에 매우 당황했습니다. Lighthouse 점수가 서비스의 성공 여부를 뜻하지는 않지만, UX 적인 측면에서 사용자들에게 더 좋은 서비스를 제공하는 데 도움이 되기 때문에 이 부분을 최적화하고자 하였습니다. Lighthouse가 언급했던 애플리케이션의 문제점은 아래와 같습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 710px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 16%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsSAAALEgHS3X78AAAAdElEQVQI13XOUQrDIBAEUE/SVaOliVaUIuavvf+lpuNSQijtx2N2RZYxOWe01lBrRYwR1lo45zR/cd/413uv5mzWbUNKSRcRUXP+R+hyIjyUWKqUomlufHyw4dh39N4xxkAI4Wh6ZmksC170/JjzyqN35pXeEZtVuwkSzH0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;라이트하우스 문제점&quot;
+        title=&quot;라이트하우스 문제점&quot;
+        src=&quot;/static/4d1123506f4d2e24705aff064f401a4d/7131f/lighthouse-after3.png&quot;
+        srcset=&quot;/static/4d1123506f4d2e24705aff064f401a4d/5a46d/lighthouse-after3.png 300w,
+/static/4d1123506f4d2e24705aff064f401a4d/0a47e/lighthouse-after3.png 600w,
+/static/4d1123506f4d2e24705aff064f401a4d/7131f/lighthouse-after3.png 710w&quot;
+        sizes=&quot;(max-width: 710px) 100vw, 710px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;언급된 문제점에는 간단한 해결법이 존재했습니다. 리소스를 gzip 형태로 압축하여서 제공하도록 제시하고 있습니다. 이를 해결하기 위하여 사용 중인 Vite의 설정을 수정하였습니다. 파일의 크기가 1kb가 넘어가면 압축하도록 설정하였습니다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;tsx&quot;&gt;&lt;pre class=&quot;language-tsx&quot;&gt;&lt;code class=&quot;language-tsx&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; viteCompression &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;vite-plugin-compression&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    plugins&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;viteCompression&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;압축하였을 때 데이터 전송 자원을 70%가량 줄일 수 있었습니다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 439px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 33.666666666666664%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsSAAALEgHS3X78AAABmElEQVQozz2RW28SURSF+Q+YljO3c5kLQxnoMJVBqIWhBGsRNMaUYhNjYzRGX/z/T59nTqIPO3tlZ+0va5/TMcYglSHPYvppjNSG2JZJYvRFhmm19RilUUWGzhNiq9tZLDV6kGLi+L+vo7VicmE4XKc832XksSIcJPi7Cd77Cv92jPYi/JsCcZzSe5gSFSnKaIL1CP++xLNepZSrzmhg+LHL+bXP+f1hQDM2nC0K/C9zgk9TvIfaLht6xxrxdcHZn4ZgWRBO+ojPM8TzNb2nGTK3F0kLDMKI/auIx5WyJenrgF6m6e5GdO+GdG/6KBHaNGNevBtz/rFCln2X8Hxf0n0zRNiEWtvz24TDYUHTrDkdVtxv11xOKl6WFcu3G5rTns3thixNCb2A2X7NYHrptLRBismY9dOBOElQUjqoBQ4tsKGev2a5ariqKqqrima5YrNs2G63JHZhWtf8/Pad0/GRPM8Jw5BRUThPbD+lfT8HjKIIz/Pwfc/11hgGodPCEwgh3KwsS+rZjPli4YDSJopk5Dz/YG3/C0h51IycAJqwAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;수정 후 라이트하우스 점수 4&quot;
+        title=&quot;수정 후 라이트하우스 점수 4&quot;
+        src=&quot;/static/f6cb5347252d765d8148bcfa3deb9aa5/e3b18/lighthouse-after4.png&quot;
+        srcset=&quot;/static/f6cb5347252d765d8148bcfa3deb9aa5/5a46d/lighthouse-after4.png 300w,
+/static/f6cb5347252d765d8148bcfa3deb9aa5/e3b18/lighthouse-after4.png 439w&quot;
+        sizes=&quot;(max-width: 439px) 100vw, 439px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 744px;&quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 41%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAAA+ElEQVQoz3WRa2rDMBCEdZFYD0uyHlZjORhDUwhN73+m6a4bOyWxfwwI9DE7OytiCCilQGmFpmmglILW+k1KaUgpNzHHstYi54xAPswJ4yxSTsghIqUE7/2uoWs1ui4gRGLzkzPGLKasxbChZHbqUW4ThmFAjHGbvkqTgtP4/hxwnSvOxKUdjiWU0bCpQyx/sdu23Sa/JsyRuBgWzjm3y4mGDP30gXqbMdZxWYU7el2ZE/5cK+5fF9Txgr7Pu5ywvHKiPs7pUb56m8qSdJTsaXUrcTrx8eQuJ1ojMdee+pmo9O7wyqspyxz8L4YMeKtRwjG0Jv//PtIvcIjiun0QMCMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;수정 후 라이트하우스 점수 5&quot;
+        title=&quot;수정 후 라이트하우스 점수 5&quot;
+        src=&quot;/static/565d46738bd5232e9aff5b5383181103/cab8c/lighthouse-after5.png&quot;
+        srcset=&quot;/static/565d46738bd5232e9aff5b5383181103/5a46d/lighthouse-after5.png 300w,
+/static/565d46738bd5232e9aff5b5383181103/0a47e/lighthouse-after5.png 600w,
+/static/565d46738bd5232e9aff5b5383181103/cab8c/lighthouse-after5.png 744w&quot;
+        sizes=&quot;(max-width: 744px) 100vw, 744px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&quot;아쉬웠던-점&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%EC%95%84%EC%89%AC%EC%9B%A0%EB%8D%98-%EC%A0%90&quot; aria-label=&quot;아쉬웠던 점 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;아쉬웠던 점&lt;/h2&gt;
+&lt;p&gt;처음 목표했던 &lt;code class=&quot;language-text&quot;&gt;정식 서비스 오픈일&lt;/code&gt;은 7월 17일이었습니다. 2021년 7월 17일 베타 서비스를 런칭하였기에 2022년 7월 17일은 &lt;code class=&quot;language-text&quot;&gt;1주년 기념&lt;/code&gt;이자 &lt;code class=&quot;language-text&quot;&gt;리뉴얼 적용일&lt;/code&gt;로서 적합하다고 생각됐습니다. 하지만 재단장하기로 결심한 후에도 비즈니스 모델을 정하지 못하여 2주가량 기획 회의만 하였습니다. 6월 마지막 주가 되었음에도 불구하고 &lt;code class=&quot;language-text&quot;&gt;무엇을 팔 것인가?&lt;/code&gt;에 대한 결정을 내리지 못하였습니다. 그렇기에 디자인 시안도 늦어졌고 개발 착수 또한 늦어졌습니다.&lt;/p&gt;
+&lt;p&gt;결국 &lt;code class=&quot;language-text&quot;&gt;정식 서비스 오픈일&lt;/code&gt;을 8월 1일로 미루고 작업을 시작하였는데, QA 시간까지 고려한다면 약 2주 만에 모든 작업을 끝내야 했습니다. 그렇기에 기능들을 빨리 쳐내는 것에 급급했고 세세하게 확인하지 못한 부분도 많았습니다. 또한 운영팀과의 소통도 전무하여 세 번째 사용자인 운영팀의 의견을 전혀 반영하지 못한 채 개발하게 되었습니다.&lt;/p&gt;
+&lt;h2 id=&quot;후기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#%ED%9B%84%EA%B8%B0&quot; aria-label=&quot;후기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;후기&lt;/h2&gt;
+&lt;p&gt;리뉴얼이 끝났지만, 아직 해야 할 일이 많습니다. 당분간 새로운 기능을 추가하는 일은 없으나 빠르게 작업을 하면서 생겼던 문제점을 해결하고 리팩토링을 통하여 코드 퀄리티를 개선하는 작업을 하고자 합니다. 또한 리액트를 공부할 때는 &lt;code class=&quot;language-text&quot;&gt;Create-React-App&lt;/code&gt;을 사용하여 코드에 대해 고민만 하였는데 최적화 작업을 진행하면서 빌드 툴 역시 다룰 줄 알아야 한다는 것을 깨달았습니다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[SVG 다루기 삽질 후기]]></title><link>https://github.com/michaelhur/react/svg-다루기-삽질-후기/</link><guid isPermaLink="false">https://github.com/michaelhur/react/svg-다루기-삽질-후기/</guid><pubDate>Thu, 01 Sep 2022 23:00:28 GMT</pubDate><content:encoded></content:encoded></item><item><title><![CDATA[재사용 가능한 Draggable List 만들기]]></title><link>https://github.com/michaelhur/react/재사용-가능한-draggable-list-만들기/</link><guid isPermaLink="false">https://github.com/michaelhur/react/재사용-가능한-draggable-list-만들기/</guid><pubDate>Tue, 09 Aug 2022 20:00:18 GMT</pubDate><content:encoded></content:encoded></item></channel></rss>
